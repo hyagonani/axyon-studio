@@ -611,7 +611,8 @@
 
         <!-- LAYER 1: BG Image for Canvas (z-0) -->
         <div id="hero-bg"
-            class="absolute inset-0 w-full h-full z-0 bg-[url('./public/HERO.png')] bg-cover bg-center bg-no-repeat lg:mix-blend-overlay opacity-40 grayscale">
+            class="absolute inset-0 w-full h-full z-0 bg-[url('./public/portfolio/optmized/img%20(1).webp')] bg-cover bg-center bg-no-repeat lg:mix-blend-overlay opacity-40"
+            style="filter: grayscale(100%);">
         </div>
         <div
             class="absolute inset-0 w-full h-full z-[1] pointer-events-none bg-gradient-to-b from-black/80 to-transparent">
@@ -1634,43 +1635,67 @@
     <script>
         window.RENDER_SYSTEM_READY = false;
 
-        // --- 0. Preloader Logic ---
-        document.addEventListener('DOMContentLoaded', () => {
+        // --- Helpers ---
+        function onReady(fn) {
+            if (document.readyState !== 'loading') fn();
+            else document.addEventListener('DOMContentLoaded', fn);
+        }
+
+        // --- 0. Preloader Logic (Real monitoring) ---
+        (function() {
             const preloader = document.getElementById('preloader');
             const percentText = document.getElementById('loader-percent');
             const barFill = document.getElementById('loader-bar');
             let progress = 0;
+            let imagesLoaded = 0;
+            const images = document.querySelectorAll('img');
+            const totalImages = images.length || 1;
 
-            const updateLoader = () => {
-                const interval = setInterval(() => {
-                    progress += Math.floor(Math.random() * 5) + 2;
-                    if (progress >= 100) {
-                        progress = 100;
-                        clearInterval(interval);
+            function updateLoaderUI(p) {
+                progress = Math.max(progress, p);
+                if (percentText) percentText.innerText = Math.floor(progress).toString().padStart(2, '0');
+                if (barFill) barFill.style.width = progress + '%';
+            }
 
-                        setTimeout(() => {
-                            if (preloader) preloader.classList.add('fade-out');
-                            // Enable scroll after preloader is gone
-                            document.body.style.overflow = '';
-                        }, 500);
-                        // Delay system start to ensure smooth fade
-                        setTimeout(() => {
-                            window.RENDER_SYSTEM_READY = true;
-                        }, 800);
-                    }
+            // Fake progress while waiting for assets
+            const fakeInterval = setInterval(() => {
+                if (progress < 85) updateLoaderUI(progress + 1);
+            }, 50);
 
-                    if (percentText) percentText.innerText = progress.toString().padStart(2, '0');
-                    if (barFill) barFill.style.width = progress + '%';
-                }, 50);
-            };
+            // Real progress based on images
+            images.forEach(img => {
+                if (img.complete) {
+                    imagesLoaded++;
+                } else {
+                    img.addEventListener('load', () => {
+                        imagesLoaded++;
+                        updateLoaderUI((imagesLoaded / totalImages) * 90);
+                    });
+                    img.addEventListener('error', () => {
+                        imagesLoaded++;
+                        updateLoaderUI((imagesLoaded / totalImages) * 90);
+                    });
+                }
+            });
 
-            // Lock scroll during loading
-            document.body.style.overflow = 'hidden';
-            updateLoader();
-        });
+            window.addEventListener('load', () => {
+                clearInterval(fakeInterval);
+                updateLoaderUI(100);
+                setTimeout(() => {
+                    if (preloader) preloader.classList.add('fade-out');
+                    document.body.style.overflow = '';
+                    setTimeout(() => { window.RENDER_SYSTEM_READY = true; }, 500);
+                }, 600);
+            });
+            
+            // Fallback for very slow networks
+            setTimeout(() => { 
+                if (progress < 100) { progress = 100; updateLoaderUI(100); }
+            }, 8000);
+        })();
 
         // --- 1. Animation On Scroll Observer ---
-        (function () {
+        onReady(() => {
             const once = true;
             if (!window.__inViewIO) {
                 window.__inViewIO = new IntersectionObserver((entries) => {
@@ -1687,11 +1712,11 @@
                     window.__inViewIO.observe(el);
                 });
             };
-            document.addEventListener("DOMContentLoaded", () => initInViewAnimations());
-        })();
+            initInViewAnimations();
+        });
 
         // --- 1.2 Mobile Menu Logic ---
-        document.addEventListener("DOMContentLoaded", () => {
+        onReady(() => {
             const toggle = document.getElementById('mobile-menu-toggle');
             const menu = document.getElementById('mobile-menu');
             const menuIcon = document.getElementById('menu-icon');
@@ -1732,7 +1757,7 @@
         });
 
         // --- 2. Custom Mouse Cursor logic ---
-        document.addEventListener("DOMContentLoaded", () => {
+        onReady(() => {
             const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
             if (isTouch && window.innerWidth < 1024) return;
 
@@ -1932,10 +1957,17 @@
 
                         const heroBg = document.getElementById("hero-bg");
                         if (heroBg) {
-                            const currentGrayscale = 100 - (pctRatio * 100);
+                            const currentGrayscale = Math.max(0, 100 - (pctRatio * 100));
                             const currentOpacity = 0.4 + (pctRatio * 0.6);
                             heroBg.style.filter = `grayscale(${currentGrayscale}%)`;
                             heroBg.style.opacity = currentOpacity;
+                        }
+                    } else if (buckets.length === 0) {
+                        // Fallback: if buckets failed to init, clear grayscale anyway
+                        const heroBg = document.getElementById("hero-bg");
+                        if (heroBg) {
+                            heroBg.style.filter = `grayscale(0%)`;
+                            heroBg.style.opacity = 0.6;
                         }
                     }
 
