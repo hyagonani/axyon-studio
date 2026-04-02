@@ -277,6 +277,53 @@
             --py: 0.5;
         }
 
+        /* Logo Carousel */
+        .logo-carousel-container {
+            overflow: hidden;
+            cursor: grab;
+            position: relative;
+        }
+
+        .logo-carousel-container:active {
+            cursor: grabbing;
+        }
+
+        .logo-carousel-track {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            width: max-content;
+            animation: logoScroll 30s linear infinite;
+            padding: 1rem 0;
+        }
+
+        .logo-carousel-container:hover .logo-carousel-track,
+        .logo-carousel-container.dragging .logo-carousel-track {
+            animation-play-state: paused;
+        }
+
+        @keyframes logoScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-33.333%); }
+        }
+
+        .logo-item {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+            filter: grayscale(100%) brightness(0.5);
+            opacity: 0.5;
+            transition: all 0.4s ease;
+            flex-shrink: 0;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .logo-carousel-container:hover .logo-item:hover {
+            filter: grayscale(0%) brightness(1);
+            opacity: 1;
+        }
+
         /* Serviços — Vertical Rectangle Cards */
         .servico-card {
             flex: 0 0 280px;
@@ -1051,6 +1098,114 @@
         </div>
     </section>
 
+    <!-- SECTION 4.6: Depoimentos (Testimonials) -->
+    <section id="depoimentos" class="relative bg-[#050505] py-32 px-6 lg:px-16 overflow-hidden cursor-hover">
+        <div class="absolute inset-0 grid-bg pointer-events-none opacity-15"></div>
+
+        <!-- Header -->
+        <div class="relative z-10 text-center mb-16 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.1s_both]">
+            <span class="text-[11px] font-mono text-ds3Purple uppercase tracking-[0.25em] mb-4 inline-block border border-ds3Purple/30 px-3 py-1 rounded-full bg-ds3Purple/5">Feedback</span>
+            <h2 class="text-4xl lg:text-5xl text-white font-medium tracking-tighter uppercase mt-6">O QUE DIZEM<br>NOSSOS PARCEIROS</h2>
+        </div>
+
+        <!-- Logos Carousel (inside testimonials) -->
+        <div class="relative mb-20 select-none">
+            <div id="logo-carousel" class="logo-carousel-container">
+                <div class="logo-carousel-track">
+                    <!-- First set -->
+                    <img src="./public/logos-clientes/1.png" alt="Cliente" class="logo-item" draggable="false">
+                    <img src="./public/logos-clientes/2.png" alt="Cliente" class="logo-item" draggable="false">
+                    <img src="./public/logos-clientes/3.png" alt="Cliente" class="logo-item" draggable="false">
+                    <img src="./public/logos-clientes/4.png" alt="Cliente" class="logo-item" draggable="false">
+                    <img src="./public/logos-clientes/5.png" alt="Cliente" class="logo-item" draggable="false">
+                    <img src="./public/logos-clientes/6.png" alt="Cliente" class="logo-item" draggable="false">
+                    <!-- Duplicate for seamless loop -->
+                    <img src="./public/logos-clientes/1.png" alt="Cliente" class="logo-item" draggable="false">
+                    <img src="./public/logos-clientes/2.png" alt="Cliente" class="logo-item" draggable="false">
+                    <img src="./public/logos-clientes/3.png" alt="Cliente" class="logo-item" draggable="false">
+                    <img src="./public/logos-clientes/4.png" alt="Cliente" class="logo-item" draggable="false">
+                    <img src="./public/logos-clientes/5.png" alt="Cliente" class="logo-item" draggable="false">
+                    <img src="./public/logos-clientes/6.png" alt="Cliente" class="logo-item" draggable="false">
+                    <!-- Third set for wide screens -->
+                    <img src="./public/logos-clientes/1.png" alt="Cliente" class="logo-item" draggable="false">
+                    <img src="./public/logos-clientes/2.png" alt="Cliente" class="logo-item" draggable="false">
+                    <img src="./public/logos-clientes/3.png" alt="Cliente" class="logo-item" draggable="false">
+                    <img src="./public/logos-clientes/4.png" alt="Cliente" class="logo-item" draggable="false">
+                    <img src="./public/logos-clientes/5.png" alt="Cliente" class="logo-item" draggable="false">
+                    <img src="./public/logos-clientes/6.png" alt="Cliente" class="logo-item" draggable="false">
+                </div>
+            </div>
+            <!-- Side fades -->
+            <div class="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none"></div>
+            <div class="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none"></div>
+        </div>
+
+        <!-- Testimonial Cards -->
+        <div class="relative z-10 max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+            <!-- Card 1 -->
+            <div class="relative p-8 lg:p-10 border border-white/5 bg-[#0a0a0a] group hover:border-ds3Purple/20 transition-all duration-500 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.2s_both]">
+                <!-- Corner brackets -->
+                <div class="absolute top-0 left-0 w-4 h-4 border-t border-l border-ds3Purple/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-ds3Purple/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                <!-- 5 Stars -->
+                <div class="flex gap-1 mb-6">
+                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                </div>
+
+                <!-- Quote -->
+                <p class="text-white/70 text-sm lg:text-base font-light leading-[1.8] italic mb-8">
+                    "A Axyon entregou antes do prazo estipulado e o rigor técnico das imagens ajudou nossa equipe de corretores a bater a meta de vendas no fim de semana de lançamento. Parceria estratégica real."
+                </p>
+
+                <!-- Author -->
+                <div class="flex flex-col gap-1 border-t border-white/5 pt-6">
+                    <span class="text-white text-sm font-semibold uppercase tracking-wider">Carlos Mendonça</span>
+                    <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.2em]">Diretor Comercial · Incorporadora Vértice</span>
+                </div>
+
+                <!-- Ghost number -->
+                <span class="absolute top-6 right-8 text-[80px] font-black text-white/[0.02] leading-none select-none pointer-events-none">01</span>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="relative p-8 lg:p-10 border border-white/5 bg-[#0a0a0a] group hover:border-ds3Purple/20 transition-all duration-500 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.4s_both]">
+                <!-- Corner brackets -->
+                <div class="absolute top-0 left-0 w-4 h-4 border-t border-l border-ds3Purple/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-ds3Purple/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                <!-- 5 Stars -->
+                <div class="flex gap-1 mb-6">
+                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                </div>
+
+                <!-- Quote -->
+                <p class="text-white/70 text-sm lg:text-base font-light leading-[1.8] italic mb-8">
+                    "O nível de detalhamento e realismo das perspectivas superou nossas expectativas. A qualidade do material foi decisiva para fechar contratos com investidores internacionais antes mesmo da obra iniciar."
+                </p>
+
+                <!-- Author -->
+                <div class="flex flex-col gap-1 border-t border-white/5 pt-6">
+                    <span class="text-white text-sm font-semibold uppercase tracking-wider">Beatriz Almeida</span>
+                    <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.2em]">CEO · Construtora Opus Prime</span>
+                </div>
+
+                <!-- Ghost number -->
+                <span class="absolute top-6 right-8 text-[80px] font-black text-white/[0.02] leading-none select-none pointer-events-none">02</span>
+            </div>
+
+        </div>
+    </section>
+
     <!-- SECTION 5: Serviços (Vertical Cards Horizontal Layout) -->
     <section id="servicos" class="relative bg-[#050505] py-32 px-6 lg:px-16 overflow-hidden cursor-hover">
         <!-- Background grid subtle -->
@@ -1479,13 +1634,57 @@
                 if (portfolio) {
                     portfolio.addEventListener('mousemove', (e) => {
                         const { width, height, left, top } = portfolio.getBoundingClientRect();
-                        // Normalize mouse position to [-1, 1] range relative to section center
                         const x = ((e.clientX - left) / width) - 0.5;
                         const y = ((e.clientY - top) / height) - 0.5;
-
-                        // Set CSS variables for smooth translation
                         portfolio.style.setProperty('--px', x.toFixed(3));
                         portfolio.style.setProperty('--py', y.toFixed(3));
+                    });
+                }
+
+                // --- 6. Logo Carousel Drag Logic ---
+                const carousel = document.getElementById('logo-carousel');
+                if (carousel) {
+                    const track = carousel.querySelector('.logo-carousel-track');
+                    let isDragging = false;
+                    let startX = 0;
+                    let scrollStart = 0;
+
+                    carousel.addEventListener('mousedown', (e) => {
+                        isDragging = true;
+                        startX = e.pageX;
+                        scrollStart = carousel.scrollLeft;
+                        carousel.classList.add('dragging');
+                    });
+
+                    document.addEventListener('mousemove', (e) => {
+                        if (!isDragging) return;
+                        e.preventDefault();
+                        const dx = e.pageX - startX;
+                        carousel.scrollLeft = scrollStart - dx;
+                    });
+
+                    document.addEventListener('mouseup', () => {
+                        isDragging = false;
+                        carousel.classList.remove('dragging');
+                    });
+
+                    // Touch support
+                    carousel.addEventListener('touchstart', (e) => {
+                        isDragging = true;
+                        startX = e.touches[0].pageX;
+                        scrollStart = carousel.scrollLeft;
+                        carousel.classList.add('dragging');
+                    }, { passive: true });
+
+                    carousel.addEventListener('touchmove', (e) => {
+                        if (!isDragging) return;
+                        const dx = e.touches[0].pageX - startX;
+                        carousel.scrollLeft = scrollStart - dx;
+                    }, { passive: true });
+
+                    carousel.addEventListener('touchend', () => {
+                        isDragging = false;
+                        carousel.classList.remove('dragging');
                     });
                 }
             }
