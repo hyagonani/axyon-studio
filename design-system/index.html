@@ -265,8 +265,8 @@
         #portfolio {
             position: relative;
             background: #050505;
-            mask-image: linear-gradient(to bottom, transparent, black 15%, black);
-            -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black);
+            mask-image: none;
+            -webkit-mask-image: none;
             z-index: 20;
             overflow: hidden;
             clip-path: inset(0);
@@ -421,7 +421,7 @@
             <a href="#hero" class="hover:text-ds3Purple transition-colors cursor-hover">Home</a>
             <a href="#portfolio" class="hover:text-ds3Purple transition-colors cursor-hover">Portfolio</a>
             <a href="#" class="hover:text-ds3Purple transition-colors cursor-hover">About</a>
-            <a href="#" class="hover:text-ds3Purple transition-colors cursor-hover">Contact</a>
+            <a href="#contato" class="hover:text-ds3Purple transition-colors cursor-hover">Contact</a>
         </div>
     </nav>
 
@@ -940,7 +940,7 @@
             <div
                 class="flex flex-col items-center justify-center text-center gap-4 mb-20 max-w-3xl mx-auto px-6 relative z-50 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.1s_both]">
                 <span
-                    class="text-[11px] font-mono text-ds3Purple uppercase tracking-[0.25em] mb-2 border border-ds3Purple/30 px-3 py-1 rounded-full bg-ds3Purple/5">Portfolio</span>
+                    class="text-[11px] font-mono text-[#b07ce8] uppercase tracking-[0.25em] mb-2 border border-[#8d4fc0]/60 px-3 py-1 rounded-full bg-[#8d4fc0]/15">Portfolio</span>
                 <h2 class="text-4xl lg:text-5xl text-white font-medium tracking-tighter uppercase">RESULTADO DE ALTA
                     PERFORMANCE</h2>
                 <p class="text-base lg:text-lg text-neutral-400 font-light leading-relaxed mt-4">
@@ -1122,6 +1122,92 @@
                 </div>
             </div>
 
+        </div>
+    </section>
+
+    <!-- SECTION 6: Contato (Formulário Centralizado) -->
+    <section id="contato" class="relative bg-[#050505] py-32 px-6 lg:px-16 overflow-hidden cursor-hover">
+        <!-- Background grid subtle -->
+        <div class="absolute inset-0 grid-bg pointer-events-none opacity-20"></div>
+
+        <!-- Centered Content -->
+        <div class="relative z-10 max-w-2xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-16 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.1s_both]">
+                <span class="text-[11px] font-mono text-ds3Purple uppercase tracking-[0.25em] mb-4 inline-block border border-ds3Purple/30 px-3 py-1 rounded-full bg-ds3Purple/5">Contato</span>
+                <h2 class="text-4xl lg:text-5xl text-white font-medium tracking-tighter uppercase mt-6">VAMOS ANTECIPAR<br>O SEU SUCESSO?</h2>
+                <p class="text-sm text-neutral-500 font-light leading-relaxed mt-6 font-mono">
+                    Preencha o formulário e nossa equipe entrará em contato em até 24h.
+                </p>
+            </div>
+
+            <!-- Form Box -->
+            <div class="relative p-8 lg:p-12 border border-white/5 bg-[#0a0a0a] animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.3s_both]">
+                <!-- Corner brackets -->
+                <div class="absolute top-0 left-0 w-4 h-4 border-t border-l border-ds3Purple/40"></div>
+                <div class="absolute top-0 right-0 w-4 h-4 border-t border-r border-ds3Purple/40"></div>
+                <div class="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-ds3Purple/40"></div>
+                <div class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-ds3Purple/40"></div>
+
+                <form class="flex flex-col gap-8" onsubmit="event.preventDefault();">
+                    <!-- Nome -->
+                    <div class="flex flex-col gap-2">
+                        <label class="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.2em]">Nome</label>
+                        <div class="border-b border-white/10 pb-3 focus-within:border-ds3Purple/50 transition-colors">
+                            <input type="text" placeholder="Seu nome completo"
+                                class="bg-transparent border-none outline-none text-white text-sm w-full placeholder:text-neutral-700 font-light cursor-hover" />
+                        </div>
+                    </div>
+
+                    <!-- Empresa -->
+                    <div class="flex flex-col gap-2">
+                        <label class="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.2em]">Empresa</label>
+                        <div class="border-b border-white/10 pb-3 focus-within:border-ds3Purple/50 transition-colors">
+                            <input type="text" placeholder="Nome da empresa ou incorporadora"
+                                class="bg-transparent border-none outline-none text-white text-sm w-full placeholder:text-neutral-700 font-light cursor-hover" />
+                        </div>
+                    </div>
+
+                    <!-- E-mail -->
+                    <div class="flex flex-col gap-2">
+                        <label class="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.2em]">E-mail</label>
+                        <div class="border-b border-white/10 pb-3 focus-within:border-ds3Purple/50 transition-colors">
+                            <input type="email" placeholder="seu@email.com"
+                                class="bg-transparent border-none outline-none text-white text-sm w-full placeholder:text-neutral-700 font-light cursor-hover" />
+                        </div>
+                    </div>
+
+                    <!-- Mensagem -->
+                    <div class="flex flex-col gap-2">
+                        <label class="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.2em]">Mensagem</label>
+                        <div class="border-b border-white/10 pb-3 focus-within:border-ds3Purple/50 transition-colors">
+                            <textarea rows="4" placeholder="Descreva seu projeto, prazos e necessidades..."
+                                class="bg-transparent border-none outline-none text-white text-sm w-full placeholder:text-neutral-700 font-light resize-none cursor-hover"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- CTA Button (Design System Pattern) -->
+                    <div class="mt-4 flex justify-center">
+                        <button type="submit"
+                            class="group relative inline-flex justify-center items-center px-10 py-4 border border-neutral-800 hover:border-ds3Purple transition-all duration-300 cursor-hover">
+                            <!-- Corner accents -->
+                            <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-ds3Purple opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-1 -translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0"></div>
+                            <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-ds3Purple opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0"></div>
+                            <!-- Dot grid hover bg -->
+                            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMTQxLCA3OSwgMTkyLCAwLjIpIi8+PC9zdmc+')] transition-opacity duration-300"></div>
+                            <span class="text-white font-medium uppercase tracking-wider text-sm relative z-10">Solicitar Orçamento</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-3 text-ds3Purple relative z-10">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Footer micro text -->
+            <p class="text-center text-[10px] font-mono text-neutral-600 mt-8 tracking-wider uppercase">
+                Resposta garantida em até 24 horas úteis · AXYON STUDIO 3D
+            </p>
         </div>
     </section>
 
