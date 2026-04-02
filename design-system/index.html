@@ -38,12 +38,15 @@
 
     <!-- Custom CSS -->
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: #050505;
             color: #d4d4d4;
             overflow-x: hidden;
-            scroll-behavior: smooth;
         }
 
         /* Typography Highlights */
@@ -250,7 +253,6 @@
         /* Depth variants */
         .depth-deep {
             --depth: 5;
-            opacity: 0.8;
         }
 
         .depth-mid {
@@ -461,19 +463,23 @@
     <!-- Navigation Navbar -->
     <nav
         class="fixed top-0 left-0 w-full z-[100] bg-black/80 backdrop-blur-md border-b border-white/10 px-6 py-6 flex justify-between items-center text-xs font-mono uppercase tracking-widest text-neutral-500 cursor-hover">
-        <a href="#" class="flex items-center gap-2 cursor-hover transition-opacity hover:opacity-80">
+        <a href="#hero" class="flex items-center gap-2 cursor-hover transition-opacity hover:opacity-80">
             <img src="./public/LOGO%20AXYON.png" alt="Axyon Logo" class="h-10 md:h-12 w-auto object-contain" />
         </a>
-        <div class="hidden md:flex gap-8">
+        <div class="hidden lg:flex gap-6 xl:gap-8">
             <a href="#hero" class="hover:text-ds3Purple transition-colors cursor-hover">Home</a>
+            <a href="#sobre" class="hover:text-ds3Purple transition-colors cursor-hover">Propósito</a>
+            <a href="#especialidades" class="hover:text-ds3Purple transition-colors cursor-hover">Time</a>
+            <a href="#processo" class="hover:text-ds3Purple transition-colors cursor-hover">Processo</a>
             <a href="#portfolio" class="hover:text-ds3Purple transition-colors cursor-hover">Portfolio</a>
-            <a href="#" class="hover:text-ds3Purple transition-colors cursor-hover">About</a>
-            <a href="#contato" class="hover:text-ds3Purple transition-colors cursor-hover">Contact</a>
+            <a href="#depoimentos" class="hover:text-ds3Purple transition-colors cursor-hover">Depoimentos</a>
+            <a href="#servicos" class="hover:text-ds3Purple transition-colors cursor-hover">Serviços</a>
+            <a href="#contato" class="hover:text-ds3Purple transition-colors cursor-hover">Contato</a>
         </div>
     </nav>
 
     <!-- SECTION 0: Hero -->
-    <section id="hero" class="relative w-full h-screen overflow-hidden isolate z-0 pt-24 cursor-hover">
+    <section id="hero" class="relative w-full h-screen overflow-hidden isolate z-0 pt-24 cursor-hover scroll-mt-24">
         <!-- Background Grid GridBg -->
         <div class="absolute inset-0 grid-bg pointer-events-none z-0 mt-24"></div>
 
@@ -526,7 +532,7 @@
                 class="flex flex-col sm:flex-row items-start sm:items-center gap-6 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.6s_both] pointer-events-auto cursor-hover">
                 <!-- Botão Primário (Glow Edge & Hover) -->
                 <a class="group relative isolate inline-flex items-center justify-center gap-3 rounded-none bg-ds3Surface/40 backdrop-blur-md px-6 py-4 text-sm font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:shadow-[0_0_40px_-5px_rgba(141,79,192,0.7)] cursor-hover"
-                    href="#" style="--spread: 90deg; --shimmer-color: #8d4fc0;">
+                    href="#contato" style="--spread: 90deg; --shimmer-color: #8d4fc0;">
 
                     <!-- Borda Animação Masked so não passa no meio -->
                     <div class="absolute inset-0 rounded-none p-[1px] -z-20 group-hover:opacity-0 transition-opacity duration-300"
@@ -553,7 +559,7 @@
 
                 <!-- Botão Secundário -->
                 <a class="btn-secondary group relative inline-flex justify-center items-center p-4 border border-white/20 rounded-none transition-all duration-300"
-                    href="#">
+                    href="#processo">
                     <button
                         class="btn flex items-center gap-3 bg-transparent text-white font-medium uppercase tracking-wider text-sm relative z-10 cursor-hover">
                         Conhecer o Processo
@@ -576,7 +582,7 @@
 
     <!-- SECTION 1: Dobra 2 (Sobre Nós) -->
     <section id="sobre"
-        class="min-h-screen flex items-center py-16 px-6 lg:px-12 max-w-[90rem] mx-auto border-t border-white/5 bg-ds3Aura relative z-20 cursor-hover">
+        class="min-h-screen flex items-center py-16 px-6 lg:px-12 max-w-[90rem] mx-auto border-t border-white/5 bg-ds3Aura relative z-20 cursor-hover scroll-mt-24">
         <div
             class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 w-full animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.2s_both]">
 
@@ -724,7 +730,7 @@
 
     <!-- SECTION 2: Dobra 3 (O Time / Especialidades) -->
     <section id="especialidades"
-        class="py-24 px-6 lg:px-12 max-w-[90rem] mx-auto border-t border-white/5 bg-ds3Surface relative z-20 overflow-hidden cursor-hover">
+        class="py-24 px-6 lg:px-12 max-w-[90rem] mx-auto border-t border-white/5 bg-ds3Surface relative z-20 overflow-hidden cursor-hover scroll-mt-24">
         <!-- SVG Dot Pattern Background -->
         <div class="absolute inset-0 z-0 opacity-100 pointer-events-none mix-blend-screen"
             style="background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEuNSIgZmlsbD0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjIpIi8+PC9zdmc+'); mask-image: radial-gradient(circle at center, black 10%, transparent 60%); -webkit-mask-image: radial-gradient(circle at top, black 10%, transparent 80%);">
@@ -833,7 +839,7 @@
 
     <!-- SECTION 3: Dobra 4 (Processo Axyon) -->
     <section id="processo"
-        class="py-24 px-6 lg:px-12 max-w-[90rem] mx-auto border-t border-white/5 bg-ds3Aura relative z-20 cursor-hover overflow-hidden">
+        class="py-24 px-6 lg:px-12 max-w-[90rem] mx-auto border-t border-white/5 bg-ds3Aura relative z-20 cursor-hover overflow-hidden scroll-mt-24">
 
         <!-- Header Center -->
         <div
@@ -981,7 +987,7 @@
     </section>
 
     <!-- SECTION 4: Portfolio (Interactive Parallax Grid) -->
-    <section id="portfolio" class="parallax-section cursor-hover">
+    <section id="portfolio" class="parallax-section cursor-hover scroll-mt-24">
         <div class="portfolio-container">
             <!-- Header -->
             <div
@@ -1001,95 +1007,95 @@
                 <div class="portfolio-layer">
                     <!-- Mix of depth classes for parallax variety -->
                     <div class="portfolio-card depth-deep"><img src="./public/portfolio/img (1).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-mid"><img src="./public/portfolio/img (2).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-front"><img src="./public/portfolio/img (3).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-deep"><img src="./public/portfolio/img (4).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-mid"><img src="./public/portfolio/img (5).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-front"><img src="./public/portfolio/img (6).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-deep"><img src="./public/portfolio/img (7).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-mid"><img src="./public/portfolio/img (8).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-front"><img src="./public/portfolio/img (9).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-deep"><img src="./public/portfolio/img (10).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-mid"><img src="./public/portfolio/img (11).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-front"><img src="./public/portfolio/img (12).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-deep"><img src="./public/portfolio/img (13).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-mid"><img src="./public/portfolio/img (14).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-front"><img src="./public/portfolio/img (15).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-deep"><img src="./public/portfolio/img (16).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-mid"><img src="./public/portfolio/img (17).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-front"><img src="./public/portfolio/img (18).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-deep"><img src="./public/portfolio/img (19).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-mid"><img src="./public/portfolio/img (20).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-front"><img src="./public/portfolio/img (21).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-deep"><img src="./public/portfolio/img (22).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-mid"><img src="./public/portfolio/img (23).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-front"><img src="./public/portfolio/img (24).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-deep"><img src="./public/portfolio/img (25).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-mid"><img src="./public/portfolio/img (26).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-front"><img src="./public/portfolio/img (27).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-deep"><img src="./public/portfolio/img (28).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-mid"><img src="./public/portfolio/img (29).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-front"><img src="./public/portfolio/img (30).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-deep"><img src="./public/portfolio/img (31).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-mid"><img src="./public/portfolio/img (32).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-front"><img src="./public/portfolio/img (33).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <!-- Portfolio Update — Images 6-9 first -->
                     <div class="portfolio-card depth-deep"><img src="./public/portfolio-update/img (6).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-mid"><img src="./public/portfolio-update/img (7).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-front"><img src="./public/portfolio-update/img (8).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-deep"><img src="./public/portfolio-update/img (9).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <!-- Portfolio Update — Remaining images -->
                     <div class="portfolio-card depth-mid"><img src="./public/portfolio-update/img (1).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-front"><img src="./public/portfolio-update/img (2).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-deep"><img src="./public/portfolio-update/img (3).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-mid"><img src="./public/portfolio-update/img (4).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-front"><img src="./public/portfolio-update/img (5).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-deep"><img src="./public/portfolio-update/img (10).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                     <div class="portfolio-card depth-mid"><img src="./public/portfolio-update/img (11).png"
-                            alt="Axyon Portfolio" loading="lazy" decoding="async"></div>
+                            alt="Axyon Portfolio" decoding="async"></div>
                 </div>
             </div>
 
@@ -1099,7 +1105,7 @@
     </section>
 
     <!-- SECTION 4.6: Depoimentos (Testimonials) -->
-    <section id="depoimentos" class="relative bg-[#050505] py-32 px-6 lg:px-16 overflow-hidden cursor-hover">
+    <section id="depoimentos" class="relative bg-[#050505] py-32 px-6 lg:px-16 overflow-hidden cursor-hover scroll-mt-24">
         <div class="absolute inset-0 grid-bg pointer-events-none opacity-15"></div>
 
         <!-- Header -->
@@ -1207,7 +1213,7 @@
     </section>
 
     <!-- SECTION 5: Serviços (Vertical Cards Horizontal Layout) -->
-    <section id="servicos" class="relative bg-[#050505] py-32 px-6 lg:px-16 overflow-hidden cursor-hover">
+    <section id="servicos" class="relative bg-[#050505] py-32 px-6 lg:px-16 overflow-hidden cursor-hover scroll-mt-24">
         <!-- Background grid subtle -->
         <div class="absolute inset-0 grid-bg pointer-events-none opacity-30"></div>
 
@@ -1305,7 +1311,7 @@
     </section>
 
     <!-- SECTION 6: Contato (Formulário Centralizado) -->
-    <section id="contato" class="relative bg-[#050505] py-32 px-6 lg:px-16 overflow-hidden cursor-hover">
+    <section id="contato" class="relative bg-[#050505] py-32 px-6 lg:px-16 overflow-hidden cursor-hover scroll-mt-24">
         <!-- Background grid subtle -->
         <div class="absolute inset-0 grid-bg pointer-events-none opacity-20"></div>
 
@@ -1687,6 +1693,32 @@
                         carousel.classList.remove('dragging');
                     });
                 }
+                // --- 7. Smooth Scroll Anchor Handler ---
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        const targetId = this.getAttribute('href');
+                        if (targetId === '#' || targetId === '#hero') {
+                            e.preventDefault();
+                            window.scrollTo({
+                                top: 0,
+                                behavior: 'smooth'
+                            });
+                            return;
+                        }
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            e.preventDefault();
+                            const offset = 96; // Matching scroll-mt-24 (6rem)
+                            const elementPosition = targetElement.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
             }
         });
     </script>
