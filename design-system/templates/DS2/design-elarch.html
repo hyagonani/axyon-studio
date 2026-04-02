@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design System — Elarch.studio (DS2)</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,700;0,800;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/index-ByFoUh7y.css">
+
+    <style type="text/css">
+      /* CSS Variables extraction for Design System */
+      :root {
+        --background: #000008;
+        --foreground: #ffffff;
+        --g900: #111116;
+        --g800: #22222a;
+        --g700: #33333e;
+        --g500: #888899;
+        --g300: #bbbbcc;
+        --secondary: #0086bd;
+      }
+      body {
+        background-color: var(--background);
+        color: var(--foreground);
+        font-family: 'Montserrat', sans-serif;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+
+      /* Documentation Container */
+      .ds-section {
+        padding: 120px 60px;
+        max-width: 1400px;
+        margin: 0 auto;
+        border-bottom: 1px solid var(--g800);
+      }
+      @media (max-width: 900px) {
+        .ds-section { padding: 80px 24px; }
+      }
+      .ds-section-title {
+        margin-bottom: 60px;
+      }
+
+      /* Fallback for missing Tailwind vars in static view */
+      .bg-background { background-color: var(--background); }
+      .text-foreground { color: var(--foreground); }
+      .bg-foreground { background-color: var(--foreground); }
+      .text-background { color: var(--background); }
+      .bg-g900 { background-color: var(--g900); }
+      .bg-g800 { background-color: var(--g800); }
+      .bg-g700 { background-color: var(--g700); }
+      .border-g800 { border-color: var(--g800); }
+      .text-g900 { color: var(--g900); }
+      .text-g700 { color: var(--g700); }
+      .text-g500 { color: var(--g500); }
+      .text-g300 { color: var(--g300); }
+      .text-secondary { color: var(--secondary); }
+      .font-montserrat { font-family: 'Montserrat', sans-serif; }
+
+      /* Simulate native hover interactions for demonstration without JS bundle */
+      .service-card { transition: background-color 0.3s ease; }
+      .service-card:hover { background-color: #18181A; }
+      .service-card .sc-num { transition: color 0.3s ease; }
+      .service-card:hover .sc-num { color: #ffffff; }
+      .service-card .sc-arrow { opacity: 0; transition: opacity 0.3s ease; }
+      .service-card:hover .sc-arrow { opacity: 1; transform:translateY(-4px) translateX(4px); }
+
+      /* Portfolio grid fallback display */
+      .portfolio-grid { display: grid; }
+      @media (max-width: 900px) {
+          .portfolio-grid { display: flex; flex-direction: column; gap: 12px; }
+          .portfolio-grid > a { width: 100%; height: 280px !important; grid-area: auto !important; }
+      }
+
+      /* Animations extracted from index.html */
+      @keyframes digit-flip {
+        0% { transform: translateY(40px); opacity: 0; }
+        100% { transform: translateY(0); opacity: 1; }
+      }
+      .animate-digit-flip {
+        animation: digit-flip 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      @keyframes scroll-pulse {
+        0% { transform: translateY(-100%); }
+        100% { transform: translateY(100%); }
+      }
+      .WhatsApp-bounce {
+         transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      .WhatsApp-bounce:hover {
+         transform: scale(1.05);
+      }
+    </style>
+</head>
+<body class="bg-background text-foreground font-montserrat">
+
+  <!-- Custom Cursor Elements -->
+  <div class="fixed top-0 left-0 pointer-events-none ds-cursor-dot" style="width: 8px; height: 8px; background: rgb(255, 255, 255); border-radius: 50%; z-index: 9999; transition: transform 0.05s linear; transform: translate(0px, 0px) scale(1);"></div>
+  <div class="fixed top-0 left-0 pointer-events-none ds-cursor-ring" style="width: 32px; height: 32px; border: 1px solid rgba(255, 255, 255, 0.55); border-radius: 50%; z-index: 9999; transition: width 0.3s, height 0.3s, border-color 0.3s, background-color 0.3s; transform: translate(0px, 0px);"></div>
+
+  <!-- Documentation Nav matching Print structure -->
+  <nav class="fixed top-0 left-0 w-full z-50 transition-all duration-300" style="background: rgba(0, 0, 0, 0.92); backdrop-filter: blur(24px); padding: 16px 60px;">
+    <div class="flex items-center justify-between max-w-[1600px] mx-auto nav-inner">
+      <button class="font-montserrat font-[800] text-foreground tracking-[0.2em] uppercase text-sm bg-transparent border-none">ELARCH.STUDIO</button>
+      <div class="hidden md:flex items-center gap-10">
+        <a class="text-[10px] cursor-hover font-semibold tracking-[0.25em] uppercase transition-opacity duration-300 hover:text-white bg-transparent border-none" href="#" style="color: rgba(255, 255, 255, 0.75); text-decoration: none;">PROJETOS</a>
+        <a class="text-[10px] cursor-hover font-semibold tracking-[0.25em] uppercase transition-opacity duration-300 hover:text-white bg-transparent border-none" href="#" style="color: rgba(255, 255, 255, 0.75); text-decoration: none;">SERVIÇOS</a>
+        <a class="text-[10px] cursor-hover font-semibold tracking-[0.25em] uppercase transition-opacity duration-300 hover:text-white bg-transparent border-none" href="#" style="color: rgba(255, 255, 255, 0.75); text-decoration: none;">QUEM SOMOS</a>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="#contato" class="hidden md:flex cursor-hover bg-foreground text-background text-[10px] items-center justify-center font-bold tracking-[0.2em] uppercase px-5 py-2.5 transition-opacity duration-300 hover:opacity-85 border-none mt-0 text-decoration-none" style="text-decoration:none;">FALE CONOSCO</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 0) Hero Section Exact Clone -->
+  <section id="hero" class="relative w-full h-screen max-[900px]:h-[100svh] max-[900px]:max-h-[100svh] overflow-hidden isolate z-0 max-[900px]:[contain:strict]">
+    <!-- LAYER 1: BG Image (z-0) without excessive darkening filters -->
+    <div class="absolute inset-0 w-full h-full z-0" style="background-image: url('./images/hero-bg.jpg'); background-size: cover; background-position: center center; background-repeat: no-repeat;"></div>
+    
+    <!-- Ligeiro sombreamento linear para garantir a leitura do texto brilhante sobre a foto -->
+    <div class="absolute inset-0 w-full h-full z-[1] pointer-events-none" style="background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 100%);"></div>
+
+    <!-- LAYER 2: QUADRADINHOS (z-10) -->
+    <canvas id="buckets-canvas" class="absolute inset-0 w-full h-full z-10 pointer-events-none"></canvas>
+
+    <!-- HUD Stats (z-20) Overlay Top Right -->
+    <div class="absolute top-[100px] right-[60px] z-[25] text-right font-mono hidden md:block select-none cursor-hover">
+      <div class="text-[10px] font-semibold tracking-[0.2em] mb-1"><span style="color: rgba(255, 255, 255, 0.4);">RENDERING </span><span id="stat-percent" style="color: rgba(255, 255, 255, 0.9);">0%</span></div>
+      <div class="text-[10px] font-semibold tracking-[0.2em] mb-1"><span style="color: rgba(255, 255, 255, 0.4);">BUCKETS </span><span id="stat-buckets" style="color: rgba(255, 255, 255, 0.9);">0/0</span></div>
+      <div class="text-[10px] font-semibold tracking-[0.2em] mb-1"><span style="color: rgba(255, 255, 255, 0.4);">TIME </span><span id="stat-time" style="color: rgba(255, 255, 255, 0.9);">00:00:00</span></div>
+    </div>
+    
+    <!-- LAYER 3: TEXTOS (z-20) -->
+    <div class="absolute inset-0 z-20 flex flex-col justify-center px-[60px] pointer-events-none max-[900px]:justify-end max-[900px]:px-6 max-[900px]:pb-24 max-[900px]:top-[90px] max-[900px]:bottom-auto">
+      <div class="anim-fade-up pointer-events-auto cursor-hover" style="animation-delay: 0.1s;">
+        <p class="text-[10px] font-semibold tracking-[0.4em] uppercase text-foreground mb-5">VISUALIZAÇÃO ARQUITETÔNICA — ELARCH.STUDIO</p>
+      </div>
+      <div class="anim-fade-up pointer-events-auto cursor-hover" style="animation-delay: 0.3s;">
+        <h1 class="font-[900] uppercase leading-[0.95] max-[900px]:!text-[clamp(36px,10vw,52px)]" style="font-size: clamp(52px, 7.5vw, 116px); letter-spacing: -0.04em;">ANTES DE CONSTRUIR,<br><em class="font-light italic" style="font-family:'Barlow Condensed', sans-serif; letter-spacing: 0.02em;">O MUNDO JÁ</em><br>PRECISA VER.</h1>
+      </div>
+      <div class="anim-fade-up mt-8 max-w-[500px] pointer-events-auto" style="animation-delay: 0.5s;">
+        <p class="text-[13px] leading-[1.75] max-w-[380px]" style="color: rgba(255, 255, 255, 0.7);">Transformamos projetos arquitetônicos em experiências visuais que vendem — precisão técnica, linguagem premium e inovação em cada entrega.</p>
+      </div>
+    </div>
+    
+    <div class="absolute bottom-[60px] left-[60px] z-10 hidden md:flex flex-col items-center gap-3">
+      <div class="w-[1px] h-[54px]" style="background: linear-gradient(white, transparent); animation: 2s ease-in-out 0s infinite normal none running scroll-pulse;"></div>
+      <span class="text-[9px] font-semibold tracking-[0.3em] uppercase" style="color: rgba(255, 255, 255, 0.4); writing-mode: vertical-lr;">SCROLL</span>
+    </div>
+    <div class="absolute bottom-[60px] right-[60px] z-10 text-right anim-fade-up hidden md:block" style="animation-delay: 0.8s; color: rgba(255, 255, 255, 0.28);">
+      <p class="text-[9px] tracking-[0.3em] leading-relaxed">Mova o mouse para<br>revelar a imagem</p>
+    </div>
+  </section>
+
+  <!-- 1) Typography -->
+  <section id="typography" class="ds-section relative z-[1] bg-background">
+    <div class="ds-section-title">
+      <p class="text-[10px] font-semibold tracking-[0.4em] uppercase text-g500 mb-4 cursor-hover w-max">Sec. 01</p>
+      <h2 class="font-[900] uppercase leading-[1.05] cursor-hover w-max" style="font-size: clamp(34px, 4.5vw, 68px);">Tipografia</h2>
+    </div>
+
+    <div class="flex flex-col border-t border-g800">
+      <!-- Heading 1 -->
+      <div class="flex justify-between items-center py-8 border-b border-g800 max-[900px]:flex-col max-[900px]:items-start max-[900px]:gap-4">
+        <div class="w-1/4 text-[11px] font-semibold tracking-[0.3em] uppercase text-g500">Heading 1</div>
+        <div class="w-2/4">
+          <h1 class="font-[900] uppercase leading-[0.95]" style="font-size: clamp(52px, 7.5vw, 116px); letter-spacing: -0.04em;">Heading 1</h1>
+        </div>
+        <div class="w-1/4 text-right text-[11px] text-g500 max-[900px]:text-left">clamp(52px, 116px) / 0.95</div>
+      </div>
+      <!-- Heading 2 -->
+      <div class="flex justify-between items-center py-8 border-b border-g800 max-[900px]:flex-col max-[900px]:items-start max-[900px]:gap-4">
+        <div class="w-1/4 text-[11px] font-semibold tracking-[0.3em] uppercase text-g500">Heading 2</div>
+        <div class="w-2/4">
+          <h2 class="font-[900] uppercase leading-[1.05]" style="font-size: clamp(34px, 4.5vw, 68px);">Heading 2 / Italic <em class="font-light italic" style="font-family:'Barlow Condensed', sans-serif;">em</em></h2>
+        </div>
+        <div class="w-1/4 text-right text-[11px] text-g500 max-[900px]:text-left">clamp(34px, 68px) / 1.05</div>
+      </div>
+      <!-- Title Ghosted -->
+      <div class="flex justify-between items-center py-8 border-b border-g800 max-[900px]:flex-col max-[900px]:items-start max-[900px]:gap-4">
+        <div class="w-1/4 text-[11px] font-semibold tracking-[0.3em] uppercase text-g500">Super Title Ghost</div>
+        <div class="w-2/4">
+          <span class="font-[900] uppercase" style="font-size: clamp(60px, 10vw, 120px); color: transparent; -webkit-text-stroke: 1px rgb(90, 90, 90);">ELARCH</span>
+        </div>
+        <div class="w-1/4 text-right text-[11px] text-g500 max-[900px]:text-left">clamp(100px) / border-stroke</div>
+      </div>
+      <!-- Heading 3 -->
+      <div class="flex justify-between items-center py-8 border-b border-g800 max-[900px]:flex-col max-[900px]:items-start max-[900px]:gap-4">
+        <div class="w-1/4 text-[11px] font-semibold tracking-[0.3em] uppercase text-g500">Heading 3 / Card Name</div>
+        <div class="w-2/4">
+          <h3 class="text-[14px] font-bold text-foreground">Renderização 3D</h3>
+        </div>
+        <div class="w-1/4 text-right text-[11px] text-g500 max-[900px]:text-left">14px / bold</div>
+      </div>
+      <!-- Paragraph -->
+      <div class="flex justify-between items-center py-8 border-b border-g800 max-[900px]:flex-col max-[900px]:items-start max-[900px]:gap-4">
+        <div class="w-1/4 text-[11px] font-semibold tracking-[0.3em] uppercase text-g500">Regular L</div>
+        <div class="w-2/4">
+          <p class="text-[15px] leading-[1.85] text-g300">A Elarch.studio é um estúdio especializado em visualização arquitetônica para construtoras e incorporadoras.</p>
+        </div>
+        <div class="w-1/4 text-right text-[11px] text-g500 max-[900px]:text-left">15px / 1.85 / text-g300</div>
+      </div>
+      <!-- Small Label -->
+      <div class="flex justify-between items-center py-8 border-b border-g800 max-[900px]:flex-col max-[900px]:items-start max-[900px]:gap-4">
+        <div class="w-1/4 text-[11px] font-semibold tracking-[0.3em] uppercase text-g500">Label Text</div>
+        <div class="w-2/4">
+          <span class="text-[10px] font-semibold tracking-[0.25em] text-g500">SCROLL</span>
+        </div>
+        <div class="w-1/4 text-right text-[11px] text-g500 max-[900px]:text-left">10px / 0.25em tracking</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2) Colors & Surfaces -->
+  <section id="colors" class="ds-section relative z-[1] bg-background">
+    <div class="ds-section-title">
+      <p class="text-[10px] font-semibold tracking-[0.4em] uppercase text-g500 mb-4 cursor-hover w-max">Sec. 02</p>
+      <h2 class="font-[900] uppercase leading-[1.05] cursor-hover w-max" style="font-size: clamp(34px, 4.5vw, 68px);">Cores & Superfícies</h2>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+      <div class="cursor-hover group">
+        <div class="h-24 w-full bg-foreground rounded-sm border border-g800 mb-3 group-hover:scale-105 transition-transform duration-300"></div>
+        <div class="text-[11px] font-bold tracking-[0.25em] uppercase text-foreground mb-1">Foreground</div>
+        <div class="text-[10px] text-g500">#ffffff</div>
+      </div>
+      <div class="cursor-hover group">
+        <div class="h-24 w-full bg-background rounded-sm border border-g800 mb-3 group-hover:scale-105 transition-transform duration-300"></div>
+        <div class="text-[11px] font-bold tracking-[0.25em] uppercase text-foreground mb-1">Background</div>
+        <div class="text-[10px] text-g500">#000008</div>
+      </div>
+      <div class="cursor-hover group">
+        <div class="h-24 w-full bg-g900 rounded-sm border border-g800 mb-3 group-hover:scale-105 transition-transform duration-300"></div>
+        <div class="text-[11px] font-bold tracking-[0.25em] uppercase text-foreground mb-1">Gray 900</div>
+        <div class="text-[10px] text-g500">#111116</div>
+      </div>
+      <div class="cursor-hover group">
+        <div class="h-24 w-full bg-g800 rounded-sm border border-g800 mb-3 group-hover:scale-105 transition-transform duration-300"></div>
+        <div class="text-[11px] font-bold tracking-[0.25em] uppercase text-foreground mb-1">Gray 800</div>
+        <div class="text-[10px] text-g500">#22222a</div>
+      </div>
+      <div class="cursor-hover group">
+        <div class="h-24 w-full bg-g700 rounded-sm mb-3 group-hover:scale-105 transition-transform duration-300"></div>
+        <div class="text-[11px] font-bold tracking-[0.25em] uppercase text-foreground mb-1">Gray 700</div>
+        <div class="text-[10px] text-g500">#33333e</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3) UI Components -->
+  <section id="components" class="ds-section relative z-[1] bg-background">
+    <div class="ds-section-title">
+      <p class="text-[10px] font-semibold tracking-[0.4em] uppercase text-g500 mb-4 cursor-hover w-max">Sec. 03</p>
+      <h2 class="font-[900] uppercase leading-[1.05] cursor-hover w-max" style="font-size: clamp(34px, 4.5vw, 68px);">Componentes</h2>
+    </div>
+
+    <!-- Buttons -->
+    <h3 class="text-[14px] font-bold mb-6 text-foreground">Botões Interativos</h3>
+    <div class="flex flex-wrap items-center gap-12 border border-g800 px-8 py-12 rounded-sm mb-16">
+      
+      <div class="flex flex-col gap-5">
+        <span class="text-[10px] text-g500 font-mono tracking-widest uppercase">Primary Button</span>
+        <button class="bg-foreground text-background text-[10px] font-bold tracking-[0.2em] uppercase px-5 py-3 transition-opacity duration-300 hover:opacity-85 border-none cursor-hover w-max">
+          Fale Conosco
+        </button>
+      </div>
+
+      <div class="flex flex-col gap-5">
+        <span class="text-[10px] text-g500 font-mono tracking-widest uppercase">Ghost Anchor Link</span>
+        <a class="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.25em] text-foreground border-b border-foreground pb-1 transition-all duration-300 hover:gap-4 w-max cursor-hover" href="#" style="text-decoration:none;">
+          Conheça o estúdio <span style="font-family:serif;">→</span>
+        </a>
+      </div>
+
+      <div class="flex flex-col gap-5">
+        <span class="text-[10px] text-g500 font-mono tracking-widest uppercase">Secondary Outline</span>
+        <a class="text-[10px] font-bold tracking-[0.25em] uppercase border border-foreground text-foreground px-6 py-3 transition-all duration-300 hover:bg-foreground hover:text-background whitespace-nowrap self-start cursor-hover" href="#" style="text-decoration:none;">
+          Ver todos os serviços →
+        </a>
+      </div>
+      
+    </div>
+
+    <!-- Cards -->
+    <h3 class="text-[14px] font-bold mb-6 text-foreground">Service Cards & Grid</h3>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-[1px] bg-g700 mb-16 border-t border-b border-g700">
+      <div class="service-card relative bg-g900 p-[42px_30px] flex flex-col justify-between min-h-[260px] overflow-hidden group cursor-hover">
+        <div class="relative z-10 pointer-events-none">
+          <span class="sc-num text-[10px] font-semibold tracking-[0.25em] text-g500">01</span>
+          <h3 class="sc-name text-[14px] font-bold mt-4 mb-3 text-foreground">Renderização 3D</h3>
+          <p class="sc-desc text-[12px] leading-[1.7] text-g300">Imagens fotorrealistas que transformam projetos em desejo.</p>
+        </div>
+        <span class="sc-arrow absolute bottom-6 right-6 text-[18px] text-g500 pointer-events-none" style="font-family:serif;">↗</span>
+      </div>
+      <div class="service-card relative bg-g900 p-[42px_30px] flex flex-col justify-between min-h-[260px] overflow-hidden group cursor-hover">
+        <div class="relative z-10 pointer-events-none">
+          <span class="sc-num text-[10px] font-semibold tracking-[0.25em] text-g500">02</span>
+          <h3 class="sc-name text-[14px] font-bold mt-4 mb-3 text-foreground">Filmes Imobiliários</h3>
+          <p class="sc-desc text-[12px] leading-[1.7] text-g300">Narrativas cinematográficas em movimento.</p>
+        </div>
+        <span class="sc-arrow absolute bottom-6 right-6 text-[18px] text-g500 pointer-events-none" style="font-family:serif;">↗</span>
+      </div>
+    </div>
+
+    <!-- Portfolio Bento Grid (Simulated layout) -->
+    <h3 class="text-[14px] font-bold mb-6 text-foreground">Bento Layout (Portfolio Elevado)</h3>
+    <div class="portfolio-grid" style="grid-template-columns: repeat(12, 1fr); grid-template-rows: auto; gap: 12px;">
+      <!-- Main big featured item -->
+      <a class="group cursor-hover" href="#" style="grid-area: 1 / 1 / 3 / 8; height: 350px; position: relative; overflow: hidden; display: block; border: 1px solid var(--g800);">
+        <div class="absolute inset-0 w-full h-full" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="z-index: 5;">
+          <span class="text-[9px] font-semibold tracking-[0.3em] uppercase text-g300 mb-2" style="transform:translateY(10px); opacity:0; transition:all 0.5s ease 0.1s; group-hover:transform:translateY(0); group-hover:opacity:100;">Renderização 3D</span>
+          <span class="text-[15px] font-bold text-foreground" style="transform:translateY(10px); opacity:0; transition:all 0.5s ease 0.2s; group-hover:transform:translateY(0); group-hover:opacity:100;">Residencial Eva</span>
+        </div>
+      </a>
+      <a class="group cursor-hover" href="#" style="grid-area: 1 / 8 / 3 / 13; height: 350px; position: relative; overflow: hidden; display: block; border: 1px solid var(--g800);">
+        <div class="absolute inset-0 w-full h-full" style="background-color: #1a1a24;"></div>
+        <div class="absolute inset-0 flex justify-center items-center opacity-100 transition-opacity duration-300 group-hover:opacity-0"><span class="text-g500 text-xs font-mono tracking-[0.2em] uppercase">Hover Overlay Reveal</span></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style="z-index: 5;">
+          <span class="text-[9px] font-semibold tracking-[0.3em] uppercase text-g300 mb-2">Video</span>
+          <span class="text-[15px] font-bold text-foreground">Attos by Pininfarina</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Extra UI components -->
+    <h3 class="text-[14px] font-bold mt-12 mb-6 text-foreground">Outros Componentes (Extraídos)</h3>
+    <div class="flex flex-wrap items-center gap-12 border border-g800 px-8 py-12 rounded-sm mb-16 relative bg-g900">
+      
+      <!-- Mobile Nav Toggle -->
+      <div class="flex flex-col gap-5 items-center">
+        <span class="text-[10px] text-g500 font-mono tracking-widest uppercase">Mobile Toggle</span>
+        <button class="flex flex-col justify-center items-center w-8 h-8 gap-[5px] bg-transparent border border-g700 rounded-sm cursor-hover p-2 transition-colors hover:bg-g800" aria-label="Menu">
+          <span class="block w-5 h-[1.5px] bg-foreground transition-all duration-300 origin-center"></span>
+          <span class="block w-5 h-[1.5px] bg-foreground transition-all duration-300 origin-center"></span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4) Ícones & Flutuantes -->
+  <section id="icons" class="ds-section relative z-[1] bg-background border-t border-g800">
+    <div class="ds-section-title">
+      <p class="text-[10px] font-semibold tracking-[0.4em] uppercase text-g500 mb-4 cursor-hover w-max">Sec. 04</p>
+      <h2 class="font-[900] uppercase leading-[1.05] cursor-hover w-max" style="font-size: clamp(34px, 4.5vw, 68px);">Ícones & Flats</h2>
+    </div>
+
+    <div class="flex flex-col gap-6 mb-16 relative h-[250px] bg-[url('images/hero-bg.jpg')] bg-cover bg-center rounded-sm overflow-hidden isolate border border-g800">
+      <div class="absolute inset-0 bg-black/60 z-[1]"></div>
+      <div class="relative z-10 p-8 flex items-center justify-center w-full h-full">
+        <a href="#" target="_blank" class="group flex items-center gap-3 cursor-hover WhatsApp-bounce" style="transform-origin:center right;">
+          <style>.group:hover .wa-tooltip { opacity: 1 !important; transform: translateX(0) !important; }</style>
+          <span class="wa-tooltip text-[11px] font-semibold tracking-wide text-foreground px-3 py-1.5 rounded-full whitespace-nowrap transition-all duration-300" style="background: #111116; border: 1px solid #33333e; opacity: 0; transform: translateX(8px);">Falar no WhatsApp</span>
+          <div class="flex items-center justify-center rounded-full transition-transform duration-300" style="width: 60px; height: 60px; background: rgb(37, 211, 102); box-shadow: rgba(37, 211, 102, 0.4) 0px 4px 20px;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5) Motion & Animações -->
+  <section id="motion" class="ds-section relative z-[1] bg-background border-t border-g800">
+    <div class="ds-section-title">
+      <p class="text-[10px] font-semibold tracking-[0.4em] uppercase text-g500 mb-4 cursor-hover w-max">Sec. 05</p>
+      <h2 class="font-[900] uppercase leading-[1.05] cursor-hover w-max" style="font-size: clamp(34px, 4.5vw, 68px);">Motion Gallery</h2>
+    </div>
+
+    <div class="grid grid-cols-2 gap-8">
+      <!-- Counters -->
+      <div class="flex flex-col gap-6 p-8 bg-g900 border border-g800">
+         <span class="text-[10px] text-g500 font-mono tracking-widest uppercase">Digit Flip Counter</span>
+         <p class="text-[12px] text-g500">Ao carregar a página, os números deslizam de baixo para cima.</p>
+         <div class="text-[48px] font-[900] overflow-hidden" style="line-height:1.2;">
+           <span class="inline-block animate-digit-flip text-foreground">1.012+</span>
+         </div>
+         <div class="text-[48px] font-[900] overflow-hidden" style="line-height:1.2;">
+           <span class="inline-block animate-digit-flip text-foreground" style="animation-delay: 0.2s;">15+</span>
+         </div>
+      </div>
+      <!-- Scroll Indicator -->
+      <div class="flex flex-col gap-6 p-8 bg-g900 border border-g800 items-center justify-center text-center">
+         <span class="text-[10px] text-g500 font-mono tracking-widest uppercase mb-4">Vertical Scroll Pulse</span>
+         <div class="w-[1px] h-[54px] relative overflow-hidden bg-g700">
+           <div class="w-[1px] h-[54px] absolute top-0 left-0" style="background: linear-gradient(white, transparent); animation: 2s ease-in-out 0s infinite normal none running scroll-pulse;"></div>
+         </div>
+         <span class="text-[9px] font-semibold tracking-[0.3em] uppercase mt-2 text-g500">SCROLL</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Script Interactions & Grid Box Reveal Replicator -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Custom Smooth Hover Cursor Extracted Logic
+      const dot = document.querySelector('.ds-cursor-dot');
+      const ring = document.querySelector('.ds-cursor-ring');
+      
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let ringX = mouseX;
+      let ringY = mouseY;
+      
+      document.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        if(dot) dot.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
+      });
+      
+      const animateCursor = () => {
+        ringX += (mouseX - ringX) * 0.15;
+        ringY += (mouseY - ringY) * 0.15;
+        if(ring) ring.style.transform = `translate(${ringX - 16}px, ${ringY - 16}px)`;
+        requestAnimationFrame(animateCursor);
+      };
+      animateCursor();
+
+      document.querySelectorAll("a, button, .cursor-hover").forEach(el => {
+         el.addEventListener("mouseenter", () => {
+            if(ring) {
+               ring.style.width = "56px";
+               ring.style.height = "56px";
+               ring.style.transform = `translate(${ringX - 28}px, ${ringY - 28}px)`; // Offset center visually
+               ring.style.backgroundColor = "rgba(255,255,255,1)";
+               ring.style.mixBlendMode = "difference";
+            }
+         });
+         el.addEventListener("mouseleave", () => {
+            if(ring) {
+               ring.style.width = "32px";
+               ring.style.height = "32px";
+               ring.style.transform = `translate(${ringX - 16}px, ${ringY - 16}px)`;
+               ring.style.backgroundColor = "transparent";
+               ring.style.mixBlendMode = "normal";
+            }
+         });
+      });
+
+      // 2. Buckets Rendering Grid Reveal logic (For the Hero Canvas)
+      const canvas = document.getElementById("buckets-canvas");
+      if(canvas) {
+        const ctx = canvas.getContext("2d", { alpha: true });
+        let buckets = [];
+        const BUCKET_SIZE = window.innerWidth < 900 ? 30 : 50; // Diminuído em 50%
+        let cols, rows;
+        let timeElapsed = 0;
+        let isHoveringHero = false;
+
+        const statBuckets = document.getElementById("stat-buckets");
+        const statPercent = document.getElementById("stat-percent");
+        const statTime = document.getElementById("stat-time");
+
+        function initGrid() {
+          const heroDiv = document.getElementById("hero");
+          const width = window.innerWidth;
+          const height = heroDiv ? heroDiv.clientHeight : window.innerHeight;
+          
+          canvas.width = width;
+          canvas.height = height;
+          
+          cols = Math.ceil(canvas.width / BUCKET_SIZE);
+          rows = Math.ceil(canvas.height / BUCKET_SIZE);
+          buckets = [];
+
+          let bucketIndex = 0;
+          for (let y = 0; y < rows; y++) {
+            for (let x = 0; x < cols; x++) {
+              buckets.push({
+                x: x * BUCKET_SIZE,
+                y: y * BUCKET_SIZE,
+                w: BUCKET_SIZE,
+                h: BUCKET_SIZE,
+                id: bucketIndex,
+                opacity: 0.50, // Start semi-transparent to reveal image below
+                revealed: false
+              });
+              bucketIndex++;
+            }
+          }
+          if (statBuckets) statBuckets.innerText = `0/${buckets.length}`;
+        }
+        
+        window.addEventListener("resize", initGrid);
+        initGrid();
+
+        const heroRect = document.getElementById("hero");
+        heroRect.addEventListener("mousemove", (e) => {
+           isHoveringHero = true;
+           // Fast track unhide of bucket right under mouse
+           const bx = Math.floor(mouseX / BUCKET_SIZE);
+           const by = Math.floor(mouseY / BUCKET_SIZE);
+           const idx = by * cols + bx;
+           if(buckets[idx]) buckets[idx].revealed = true;
+        });
+        heroRect.addEventListener("mouseleave", () => {
+           isHoveringHero = false;
+        });
+
+        const MOUSE_REVEAL_RADIUS = 300; // Wipe radius
+        const REVEAL_SPEED = 0.05;
+
+        function renderGrid() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // Re-fill entirely with solid base layer underneath logic
+            // Actually, we don't clear the solid base, we draw the solid buckets on top.
+            let clearedCount = 0;
+
+            for(let i = 0; i < buckets.length; i++) {
+                let b = buckets[i];
+                
+                // Mouse distance reveal logic
+                if (isHoveringHero) {
+                   const cx = b.x + b.w / 2;
+                   const cy = b.y + b.h / 2;
+                   // Mouse distance
+                   const distance = Math.hypot(cx - mouseX, cy - mouseY);
+                   
+                   // If mouse is near, flag to reveal
+                   if (distance < MOUSE_REVEAL_RADIUS) {
+                      b.revealed = true;
+                   }
+                }
+
+                // Fade away block softly
+                if (b.revealed && b.opacity > 0) {
+                    b.opacity -= REVEAL_SPEED;
+                    if (b.opacity <= 0) b.opacity = 0;
+                }
+                
+                if (b.opacity <= 0.05) clearedCount++;
+
+                // Draw translucent block over the image
+                if (b.opacity > 0) {
+                    // Slight dark grey tint that dissipates when revealed
+                    // Use a slightly lighter gray so we can see the text/borders
+                    ctx.fillStyle = `rgba(18, 18, 25, ${b.opacity * 0.9})`; 
+                    ctx.fillRect(b.x, b.y, b.w, b.h);
+
+                    // Faint bucket lines (white stroke) forming the grid cell limit
+                    ctx.strokeStyle = `rgba(255, 255, 255, ${b.opacity * 0.4})`; 
+                    ctx.lineWidth = 1;
+                    ctx.strokeRect(b.x, b.y, b.w, b.h);
+
+                    // Mock bucket statistics text in center of box
+                    if (b.opacity > 0) { 
+                        ctx.fillStyle = `rgba(255, 255, 255, ${b.opacity * 0.9})`;
+                        // Size slightly proportional to new smaller bucket
+                        ctx.font = "8px monospace";
+                        // Calculate percentage of rendering "done" based on opacity
+                        let pct = ( (1 - b.opacity) * 100 ).toFixed(0);
+                        if (pct < 10) pct = pct; // formatting
+                        ctx.fillText(`${pct}%`, b.x + 4, b.y + 12);
+                    }
+                }
+            }
+
+            // Update stats texts
+            if (statPercent && buckets.length > 0) {
+                 const pct = Math.floor((clearedCount / buckets.length) * 100);
+                 statPercent.innerText = `${pct}%`;
+                 statBuckets.innerText = `${clearedCount}/${buckets.length}`;
+            }
+
+            requestAnimationFrame(renderGrid);
+        }
+        renderGrid();
+
+        // Autonomous Reveal Simulator over time
+        setInterval(() => {
+          if(!isHoveringHero && buckets.length > 0) {
+            const hidden = buckets.filter(b => !b.revealed);
+            // Simulate buckets being rendered automatically 
+            for(let i=0; i<3; i++) {
+                if(hidden.length > 0) {
+                    const idx = Math.floor(Math.random() * hidden.length);
+                    hidden[idx].revealed = true;
+                    hidden.splice(idx, 1);
+                }
+            }
+          }
+          timeElapsed++;
+          if (statTime) {
+             const m = Math.floor(timeElapsed / 60);
+             const s = timeElapsed % 60;
+             statTime.innerText = `00:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+          }
+        }, 300);
+      }
+    });
+
+    // Custom CSS for internal group-hover transitions inside portfolio
+    const styleSheet = document.createElement("style");
+    styleSheet.type = "text/css";
+    styleSheet.innerText = `
+      .group:hover .group-hover\\:translateY\\(0\\) { transform: translateY(0); }
+      .group:hover .group-hover\\:opacity\\:100 { opacity: 1; }
+    `;
+    document.head.appendChild(styleSheet);
+  </script>
+</body>
+</html>

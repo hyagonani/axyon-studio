@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axyon - Visualização Arquitetônica Estratégica</title>
+
+    <!-- External Scripts for Standalone functionality -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:wght@300..900&display=swap"
+        rel="stylesheet" />
+
+    <!-- Shared Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ds3Aura: '#050505',
+                        ds3Surface: '#0A0A0A',
+                        ds3Purple: '#8d4fc0',
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                        montserrat: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #050505;
+            color: #d4d4d4;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Typography Highlights */
+        .text-ghost {
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4);
+            transition: all 0.4s ease;
+        }
+
+        .text-ghost:hover {
+            -webkit-text-stroke: 1px #8d4fc0;
+            color: #8d4fc0;
+            text-shadow: 0 0 20px rgba(141, 79, 192, 0.3);
+        }
+
+        /* DS3 Grid Pattern */
+        .grid-bg {
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 70%);
+        }
+
+        /* DS3 Sequence animation intro */
+        @keyframes fadeSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+                filter: blur(8px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0px);
+            }
+        }
+
+        .animate-on-scroll {
+            animation-play-state: paused !important;
+        }
+
+        .animate-on-scroll.animate {
+            animation-play-state: running !important;
+        }
+
+        /* Custom Double Ring Hover Cursor Effect (Elarch Inspired) */
+        .cursor-hover:hover {
+            cursor: none;
+        }
+
+        /* Button Glow & Accent */
+        .btn-primary:hover .btn-text {
+            color: #000;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        @keyframes beam-drop {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        @keyframes beam-slide {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+    </style>
+</head>
+
+<body class="selection:bg-ds3Purple selection:text-black">
+    <!-- Custom Cursor Overlay -->
+    <div class="fixed top-0 left-0 pointer-events-none ds-cursor-dot"
+        style="width: 8px; height: 8px; background: #fff; border-radius: 50%; z-index: 9999; transition: transform 0.05s linear; transform: translate(0px, 0px) scale(1);">
+    </div>
+    <div class="fixed top-0 left-0 pointer-events-none ds-cursor-ring"
+        style="width: 32px; height: 32px; border: 1px solid rgba(255, 255, 255, 0.55); border-radius: 50%; z-index: 9999; transition: width 0.3s, height 0.3s, border-color 0.3s, background-color 0.3s; transform: translate(0px, 0px);">
+    </div>
+
+    <!-- Background (Aura + Matrix gradient) -->
+    <div class="fixed top-0 w-full h-screen -z-10 bg-ds3Aura saturate-0 brightness-50 mix-blend-screen"
+        style="mask-image: linear-gradient(to bottom, transparent, black 0%, black 80%, transparent);"></div>
+
+    <!-- Navigation Navbar -->
+    <nav
+        class="fixed top-0 left-0 w-full z-[100] bg-black/80 backdrop-blur-md border-b border-white/10 px-6 py-6 flex justify-between items-center text-xs font-mono uppercase tracking-widest text-neutral-500 cursor-hover">
+        <a href="#" class="flex items-center gap-2 cursor-hover transition-opacity hover:opacity-80">
+            <img src="./public/LOGO%20AXYON.png" alt="Axyon Logo" class="h-10 md:h-12 w-auto object-contain" />
+        </a>
+        <div class="hidden md:flex gap-8">
+            <a href="#hero" class="hover:text-ds3Purple transition-colors cursor-hover">Home</a>
+            <a href="#" class="hover:text-ds3Purple transition-colors cursor-hover">Portfolio</a>
+            <a href="#" class="hover:text-ds3Purple transition-colors cursor-hover">About</a>
+            <a href="#" class="hover:text-ds3Purple transition-colors cursor-hover">Contact</a>
+        </div>
+    </nav>
+
+    <!-- SECTION 0: Hero -->
+    <section id="hero" class="relative w-full h-screen overflow-hidden isolate z-0 pt-24 cursor-hover">
+        <!-- Background Grid GridBg -->
+        <div class="absolute inset-0 grid-bg pointer-events-none z-0 mt-24"></div>
+
+        <!-- LAYER 1: BG Image for Canvas (z-0) -->
+        <div id="hero-bg"
+            class="absolute inset-0 w-full h-full z-0 bg-[url('./public/HERO.png')] bg-cover bg-center bg-no-repeat"
+            style="mix-blend-mode: overlay; opacity: 0.4; filter: grayscale(100%);"></div>
+        <div
+            class="absolute inset-0 w-full h-full z-[1] pointer-events-none bg-gradient-to-b from-black/80 to-transparent">
+        </div>
+
+        <!-- LAYER 2: ELARCH QUADRADINHOS BUCKETS (z-10) -->
+        <canvas id="buckets-canvas" class="absolute inset-0 w-full h-full z-10 pointer-events-none mt-24"></canvas>
+
+        <!-- LAYER 3: HUD Stats Interface (z-20) -->
+        <div
+            class="absolute top-[120px] right-[60px] z-[25] text-right font-mono hidden md:block select-none cursor-hover">
+            <div class="text-[10px] font-semibold tracking-[0.2em] mb-1"><span class="text-white/40">RENDERING
+                </span><span id="stat-percent" class="text-white/90">0%</span></div>
+            <div class="text-[10px] font-semibold tracking-[0.2em] mb-1"><span class="text-white/40">BUCKETS
+                </span><span id="stat-buckets" class="text-white/90">0/0</span></div>
+            <div class="text-[10px] font-semibold tracking-[0.2em] mb-1"><span class="text-white/40">TIME </span><span
+                    id="stat-time" class="text-white/90">00:00:00</span></div>
+        </div>
+
+        <!-- LAYER 4: Main Text / CTA -->
+        <div class="absolute inset-0 z-20 flex flex-col justify-center px-6 lg:px-24 pointer-events-none">
+            <!-- Eyebrow Text -->
+            <span
+                class="text-sm font-mono text-neutral-400 uppercase tracking-[0.2em] mb-6 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.1s_both] cursor-hover pointer-events-auto">
+                VISUALIZAÇÃO ARQUITETÔNICA ESTRATÉGICA
+            </span>
+
+            <!-- Headline -->
+            <h1
+                class="text-5xl lg:text-[4.5rem] leading-[1.05] uppercase font-medium text-white tracking-tighter mb-8 cursor-hover pointer-events-auto max-w-4xl animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.2s_both]">
+                O <span class="text-ghost">Futuro</span> do Seu Lançamento Materializado <span
+                    class="text-ghost">Hoje.</span>
+            </h1>
+
+            <!-- Sub-headline -->
+            <p
+                class="text-lg lg:text-xl text-neutral-300 font-light leading-relaxed max-w-2xl mb-12 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.4s_both] cursor-hover pointer-events-auto">
+                Transformamos o potencial técnico do seu projeto em desejo imediato de compra. Imagens e vídeos de alta
+                fidelidade que antecipam o sucesso das suas vendas, entregues rigorosamente antes do prazo.
+            </p>
+
+            <!-- Call to Action -->
+            <div
+                class="flex flex-col sm:flex-row items-start sm:items-center gap-6 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.6s_both] pointer-events-auto cursor-hover">
+                <!-- Botão Primário (Glow Edge & Hover) -->
+                <a class="group relative isolate inline-flex items-center justify-center gap-3 rounded-none bg-ds3Surface/40 backdrop-blur-md px-6 py-4 text-sm font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:shadow-[0_0_40px_-5px_rgba(141,79,192,0.7)] cursor-hover"
+                    href="#" style="--spread: 90deg; --shimmer-color: #8d4fc0;">
+
+                    <!-- Borda Animação Masked so não passa no meio -->
+                    <div class="absolute inset-0 rounded-none p-[1px] -z-20 group-hover:opacity-0 transition-opacity duration-300"
+                        style="mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask-composite: exclude; -webkit-mask-composite: xor;">
+                        <div class="absolute inset-[-100%] w-[300%] h-[300%] animate-[spin_3s_linear_infinite]">
+                            <div class="absolute inset-0"
+                                style="background: conic-gradient(from 180deg, transparent 0, var(--shimmer-color) var(--spread), transparent var(--spread));">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Efeito de Glow no Hover -->
+                    <div
+                        class="absolute inset-0 rounded-none bg-ds3Purple/0 group-hover:bg-ds3Purple/20 transition-all duration-300 -z-10">
+                    </div>
+                    <div
+                        class="absolute inset-0 rounded-none border border-transparent group-hover:border-ds3Purple/80 transition-all duration-300 -z-10 shadow-[inset_0_0_15px_rgba(141,79,192,0)] group-hover:shadow-[inset_0_0_15px_rgba(141,79,192,0.6)]">
+                    </div>
+
+                    Acelerar Minhas Vendas
+                    <iconify-icon icon="solar:arrow-right-line-duotone"
+                        class="text-ds3Purple text-xl group-hover:text-white transition-colors duration-300"></iconify-icon>
+                </a>
+
+                <!-- Botão Secundário -->
+                <a class="btn-secondary group relative inline-flex justify-center items-center p-4 border border-white/20 rounded-none transition-all duration-300"
+                    href="#">
+                    <button
+                        class="btn flex items-center gap-3 bg-transparent text-white font-medium uppercase tracking-wider text-sm relative z-10 cursor-hover">
+                        Conhecer o Processo
+                        <iconify-icon icon="solar:play-circle-bold-duotone"
+                            class="text-xl opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                    </button>
+                </a>
+            </div>
+
+            <!-- Social Proof -->
+            <div
+                class="mt-12 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.8s_both] pointer-events-auto cursor-hover flex items-center gap-3">
+                <div class="h-[1px] w-8 bg-ds3Purple"></div>
+                <span class="text-xs font-mono text-neutral-400 uppercase tracking-widest">
+                    15 anos de Visão técnica unida à alta performance em visualização.
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 1: Dobra 2 (Sobre Nós) -->
+    <section id="sobre" class="min-h-screen flex items-center py-16 px-6 lg:px-12 max-w-[90rem] mx-auto border-t border-white/5 bg-ds3Aura relative z-20 cursor-hover">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 w-full animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.2s_both]">
+            
+            <!-- Left Column: Content -->
+            <div class="flex flex-col justify-center gap-7">
+                <!-- Header -->
+                <div class="flex items-end gap-3 border-b border-white/5 pb-4">
+                    <h2 class="text-3xl lg:text-4xl text-white font-medium tracking-tight">NOSSO PROPÓSITO</h2>
+                </div>
+
+                <!-- Main Text -->
+                <p class="text-base lg:text-lg text-neutral-300 font-light leading-relaxed">
+                    <span class="text-white font-medium">Mais do que renders de alta fidelidade, entregamos inteligência visual estratégica.</span> Unimos visão arquitetônica e processos otimizados por IA para atuar como o braço direito da sua incorporadora. Nosso objetivo? Eliminar o retrabalho e acelerar o seu ciclo de vendas.
+                </p>
+
+                <!-- Visão -->
+                <div class="bg-neutral-900/40 border-l-2 border-ds3Purple py-4 px-6 text-sm leading-relaxed text-neutral-400">
+                    <span class="text-white font-semibold uppercase tracking-widest text-[10px] block mb-1.5">Visão</span>
+                    Ser a referência absoluta em tecnologia aplicada a lançamentos imobiliários no Brasil até 2029.
+                </div>
+
+                <!-- Nossos Valores -->
+                <div class="pt-2">
+                    <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest block mb-5">Nossos Valores</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-6">
+                        <!-- Value 1 -->
+                        <div class="flex items-start gap-3 group cursor-hover">
+                            <iconify-icon icon="solar:shield-check-bold-duotone" class="text-ds3Purple text-lg mt-0.5 opacity-80 group-hover:opacity-100"></iconify-icon>
+                            <div>
+                                <h4 class="text-[13px] font-semibold text-white uppercase tracking-wider mb-0.5">Transparência Cristã</h4>
+                                <p class="text-xs text-neutral-400 font-light leading-relaxed">Seriedade e honestidade em cada acordo.</p>
+                            </div>
+                        </div>
+                        <!-- Value 2 -->
+                        <div class="flex items-start gap-3 group cursor-hover">
+                            <iconify-icon icon="solar:bolt-bold-duotone" class="text-ds3Purple text-lg mt-0.5 opacity-80 group-hover:opacity-100"></iconify-icon>
+                            <div>
+                                <h4 class="text-[13px] font-semibold text-white uppercase tracking-wider mb-0.5">Agilidade Antecipada</h4>
+                                <p class="text-xs text-neutral-400 font-light leading-relaxed">Nosso padrão é entregar antes do prazo.</p>
+                            </div>
+                        </div>
+                        <!-- Value 3 -->
+                        <div class="flex items-start gap-3 group cursor-hover">
+                            <iconify-icon icon="solar:cpu-bold-duotone" class="text-ds3Purple text-lg mt-0.5 opacity-80 group-hover:opacity-100"></iconify-icon>
+                            <div>
+                                <h4 class="text-[13px] font-semibold text-white uppercase tracking-wider mb-0.5">Inovação com Propósito</h4>
+                                <p class="text-xs text-neutral-400 font-light leading-relaxed">IA como ferramenta para gerar lucro.</p>
+                            </div>
+                        </div>
+                        <!-- Value 4 -->
+                        <div class="flex items-start gap-3 group cursor-hover">
+                            <iconify-icon icon="solar:star-fall-bold-duotone" class="text-ds3Purple text-lg mt-0.5 opacity-80 group-hover:opacity-100"></iconify-icon>
+                            <div>
+                                <h4 class="text-[13px] font-semibold text-white uppercase tracking-wider mb-0.5">Excelência no Detalhe</h4>
+                                <p class="text-xs text-neutral-400 font-light leading-relaxed">Rigor técnico somado à sensibilidade artística.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Indicadores de Autoridade -->
+                <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/5 mt-2">
+                     <!-- Metric 01 -->
+                    <div class="flex flex-col group cursor-hover">
+                        <span class="text-3xl lg:text-4xl font-light text-white tracking-tighter group-hover:text-ds3Purple transition-colors duration-300 mb-1">15+</span>
+                        <span class="text-[9px] lg:text-[10px] font-semibold text-neutral-600 uppercase tracking-widest group-hover:text-white transition-colors">Anos de Expertise Técnica</span>
+                    </div>
+                     <!-- Metric 02 -->
+                    <div class="flex flex-col group cursor-hover">
+                        <span class="text-3xl lg:text-4xl font-light text-white tracking-tighter group-hover:text-ds3Purple transition-colors duration-300 mb-1">100%</span>
+                        <span class="text-[9px] lg:text-[10px] font-semibold text-neutral-600 uppercase tracking-widest group-hover:text-white transition-colors">Foco em Lançamentos</span>
+                    </div>
+                     <!-- Metric 03 -->
+                    <div class="flex flex-col group cursor-hover">
+                        <span class="text-3xl lg:text-4xl font-light text-white tracking-tighter group-hover:text-ds3Purple transition-colors duration-300 mb-1">Zero</span>
+                        <span class="text-[9px] lg:text-[10px] font-semibold text-neutral-600 uppercase tracking-widest group-hover:text-white transition-colors">Retrabalho no Processo</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Image -->
+            <div class="relative h-[55vh] lg:h-[80vh] min-h-[450px] w-full bg-neutral-900 border border-white/10 group overflow-hidden cursor-hover">
+                 <!-- Background Grid hover mask -->
+                 <div class="absolute inset-0 grid-bg opacity-30 pointer-events-none z-10 mix-blend-overlay group-hover:opacity-10 transition-opacity duration-700"></div>
+                 
+                 <img src="./public/2dobra.png" alt="Axyon Estúdio 3D Edifício" class="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[2000ms] ease-out z-0 relative" />
+                 
+                 <!-- Tech aesthetic overlays -->
+                 <div class="absolute bottom-5 left-5 bg-black/60 backdrop-blur-md px-3 py-1.5 border border-white/10 z-20 transition-transform duration-500 group-hover:translate-x-2">
+                     <span class="text-[9px] font-mono uppercase text-white tracking-[0.2em]">Fig.01_TOWER</span>
+                 </div>
+                 <div class="absolute top-5 right-5 flex flex-col gap-1 z-20">
+                     <div class="w-1 h-1 bg-ds3Purple rounded-full animate-pulse"></div>
+                     <div class="w-1 h-1 bg-white/30 rounded-full"></div>
+                 </div>
+                 
+                 <!-- Beam border interactions -->
+                 <div class="absolute top-0 bottom-0 left-0 w-[1px] bg-white/5 z-10 overflow-hidden">
+                     <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-ds3Purple to-transparent -translate-y-[100%] group-hover:animate-[beam-drop_3s_cubic-bezier(0.4,0,0.2,1)_infinite]"></div>
+                 </div>
+                 <div class="absolute bottom-0 left-0 right-0 h-[1px] bg-white/5 z-10 overflow-hidden">
+                     <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-ds3Purple to-transparent -translate-x-[100%] group-hover:animate-[beam-slide_3s_cubic-bezier(0.4,0,0.2,1)_infinite]"></div>
+                 </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- SCRIPTS ENGINES -->
+    <script>
+        // --- 1. Animation On Scroll Observer ---
+        (function () {
+            const once = true;
+            if (!window.__inViewIO) {
+                window.__inViewIO = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("animate");
+                            if (once) window.__inViewIO.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: "0px 0px -5% 0px" });
+            }
+            window.initInViewAnimations = function (selector = ".animate-on-scroll") {
+                document.querySelectorAll(selector).forEach((el) => {
+                    window.__inViewIO.observe(el);
+                });
+            };
+            document.addEventListener("DOMContentLoaded", () => initInViewAnimations());
+        })();
+
+        // --- 2. Custom Mouse Cursor logic ---
+        document.addEventListener("DOMContentLoaded", () => {
+            const dot = document.querySelector('.ds-cursor-dot');
+            const ring = document.querySelector('.ds-cursor-ring');
+
+            let mouseX = window.innerWidth / 2;
+            let mouseY = window.innerHeight / 2;
+            let ringX = mouseX;
+            let ringY = mouseY;
+
+            document.addEventListener("mousemove", (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                if (dot) dot.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
+            });
+
+            const animateCursor = () => {
+                ringX += (mouseX - ringX) * 0.15;
+                ringY += (mouseY - ringY) * 0.15;
+                if (ring) ring.style.transform = `translate(${ringX - 16}px, ${ringY - 16}px)`;
+                requestAnimationFrame(animateCursor);
+            };
+            animateCursor();
+
+            // Hover effects
+            document.querySelectorAll("a, button, .cursor-hover, input").forEach(el => {
+                el.addEventListener("mouseenter", () => {
+                    if (ring) {
+                        ring.style.width = "56px";
+                        ring.style.height = "56px";
+                        ring.style.transform = `translate(${ringX - 28}px, ${ringY - 28}px)`;
+                        ring.style.backgroundColor = "rgba(255,255,255,1)";
+                        ring.style.mixBlendMode = "difference";
+                    }
+                });
+                el.addEventListener("mouseleave", () => {
+                    if (ring) {
+                        ring.style.width = "32px";
+                        ring.style.height = "32px";
+                        ring.style.transform = `translate(${ringX - 16}px, ${ringY - 16}px)`;
+                        ring.style.backgroundColor = "transparent";
+                        ring.style.mixBlendMode = "normal";
+                    }
+                });
+            });
+
+            // --- 3. Rendering Grid Buckets Effect ---
+            const canvas = document.getElementById("buckets-canvas");
+            if (canvas) {
+                const ctx = canvas.getContext("2d", { alpha: true });
+                let buckets = [];
+                const BUCKET_SIZE = window.innerWidth < 900 ? 30 : 50;
+                let cols, rows;
+                let timeElapsed = 0;
+                let isHoveringHero = false;
+
+                const statBuckets = document.getElementById("stat-buckets");
+                const statPercent = document.getElementById("stat-percent");
+                const statTime = document.getElementById("stat-time");
+
+                function initGrid() {
+                    const heroDiv = document.getElementById("hero");
+                    const width = window.innerWidth;
+                    const height = heroDiv ? heroDiv.clientHeight : window.innerHeight;
+
+                    canvas.width = width;
+                    canvas.height = height;
+
+                    cols = Math.ceil(canvas.width / BUCKET_SIZE);
+                    rows = Math.ceil(canvas.height / BUCKET_SIZE);
+                    buckets = [];
+
+                    let bucketIndex = 0;
+                    for (let y = 0; y < rows; y++) {
+                        for (let x = 0; x < cols; x++) {
+                            buckets.push({
+                                x: x * BUCKET_SIZE,
+                                y: y * BUCKET_SIZE,
+                                w: BUCKET_SIZE,
+                                h: BUCKET_SIZE,
+                                id: bucketIndex,
+                                opacity: 1.0,
+                                revealed: false
+                            });
+                            bucketIndex++;
+                        }
+                    }
+                    if (statBuckets) statBuckets.innerText = `0/${buckets.length}`;
+                }
+
+                window.addEventListener("resize", initGrid);
+                initGrid();
+
+                const heroRect = document.getElementById("hero");
+                heroRect.addEventListener("mousemove", (e) => {
+                    isHoveringHero = true;
+                    const rect = canvas.getBoundingClientRect();
+                    const cMouseX = e.clientX - rect.left;
+                    const cMouseY = e.clientY - rect.top;
+
+                    const bx = Math.floor(cMouseX / BUCKET_SIZE);
+                    const by = Math.floor(cMouseY / BUCKET_SIZE);
+                    const idx = by * cols + bx;
+                    if (buckets[idx]) buckets[idx].revealed = true;
+                });
+                heroRect.addEventListener("mouseleave", () => {
+                    isHoveringHero = false;
+                });
+
+                const MOUSE_REVEAL_RADIUS = 200;
+                const REVEAL_SPEED = 0.08;
+
+                function renderGrid() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    let clearedCount = 0;
+
+                    for (let i = 0; i < buckets.length; i++) {
+                        let b = buckets[i];
+
+                        if (isHoveringHero) {
+                            const rect = canvas.getBoundingClientRect();
+                            const cMouseX = mouseX - rect.left;
+                            const cMouseY = mouseY - rect.top;
+                            const cx = b.x + b.w / 2;
+                            const cy = b.y + b.h / 2;
+                            const distance = Math.hypot(cx - cMouseX, cy - cMouseY);
+
+                            if (distance < MOUSE_REVEAL_RADIUS) {
+                                b.revealed = true;
+                            }
+                        }
+
+                        if (b.revealed && b.opacity > 0) {
+                            b.opacity -= REVEAL_SPEED;
+                            if (b.opacity <= 0) b.opacity = 0;
+                        }
+
+                        if (b.opacity <= 0.05) clearedCount++;
+
+                        if (b.opacity > 0) {
+                            ctx.fillStyle = `rgba(10, 10, 10, ${b.opacity * 0.98})`;
+                            ctx.fillRect(b.x, b.y, b.w, b.h);
+
+                            ctx.strokeStyle = `rgba(141, 79, 192, ${b.opacity * 0.2})`;
+                            ctx.lineWidth = 1;
+                            ctx.strokeRect(b.x, b.y, b.w, b.h);
+
+                            if (b.opacity > 0) {
+                                ctx.fillStyle = `rgba(255, 255, 255, ${b.opacity * 0.6})`;
+                                ctx.font = "8px monospace";
+                                let pct = ((1 - b.opacity) * 100).toFixed(0);
+                                if (pct < 10) pct = pct;
+                                ctx.fillText(`${pct}%`, b.x + 4, b.y + 12);
+                            }
+                        }
+                    }
+
+                    if (statPercent && buckets.length > 0) {
+                        const pctRatio = clearedCount / buckets.length;
+                        const pct = Math.floor(pctRatio * 100);
+                        statPercent.innerText = `${pct}%`;
+                        statBuckets.innerText = `${clearedCount}/${buckets.length}`;
+
+                        // Change logic to reveal full color background progressively as buckets vanish
+                        const heroBg = document.getElementById("hero-bg");
+                        if (heroBg) {
+                            const currentGrayscale = 100 - (pctRatio * 100);
+                            const currentOpacity = 0.4 + (pctRatio * 0.6);
+                            heroBg.style.filter = `grayscale(${currentGrayscale}%)`;
+                            heroBg.style.opacity = currentOpacity.toFixed(3);
+                        }
+                    }
+
+                    requestAnimationFrame(renderGrid);
+                }
+                renderGrid();
+
+                // Auto render blocks autonomously when not hovering
+                setInterval(() => {
+                    if (!isHoveringHero && buckets.length > 0) {
+                        const hidden = buckets.filter(b => !b.revealed);
+                        for (let i = 0; i < 4; i++) {
+                            if (hidden.length > 0) {
+                                const idx = Math.floor(Math.random() * hidden.length);
+                                hidden[idx].revealed = true;
+                                hidden.splice(idx, 1);
+                            }
+                        }
+                    }
+                    timeElapsed++;
+                    if (statTime) {
+                        const m = Math.floor(timeElapsed / 60);
+                        const s = timeElapsed % 60;
+                        statTime.innerText = `00:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+                    }
+                }, 150);
+            }
+        });
+    </script>
+</body>
+
+</html>
