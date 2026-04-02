@@ -102,9 +102,82 @@
 
         /* Hide custom cursor on mobile */
         @media (max-width: 1024px) {
-            .ds-cursor-dot, .ds-cursor-ring {
+
+            .ds-cursor-dot,
+            .ds-cursor-ring {
                 display: none !important;
             }
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #050505;
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+        }
+
+        .loader-content {
+            text-align: center;
+            font-family: 'Inter', monospace;
+            max-width: 90vw;
+            padding: 0 2rem;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .loader-percent {
+            font-size: 8rem;
+            font-weight: 800;
+            line-height: 1;
+            color: white;
+            letter-spacing: -0.05em;
+            margin-bottom: 1.5rem;
+        }
+
+        .loader-status {
+            font-size: 10px;
+            font-family: 'Inter', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: rgba(255, 255, 255, 0.4);
+            line-height: 1.8;
+            max-width: 400px;
+        }
+
+        .loader-bar-container {
+            width: 60vw;
+            max-width: 800px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-top: 3rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .loader-bar-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0%;
+            background: #8d4fc0;
+            transition: width 0.4s ease-out;
+            box-shadow: 0 0 20px #8d4fc0;
+        }
+
+        #preloader.fade-out {
+            opacity: 0;
+            visibility: hidden;
         }
 
         /* Button Glow & Accent */
@@ -460,6 +533,17 @@
 </head>
 
 <body class="selection:bg-ds3Purple selection:text-black">
+    <!-- Preloader Overlay -->
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="loader-percent" id="loader-percent">00</div>
+            <div class="loader-status">Carregando a experiência do seu próximo lançamento...</div>
+            <div class="loader-bar-container">
+                <div class="loader-bar-fill" id="loader-bar"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- Custom Cursor Overlay -->
     <div class="fixed top-0 left-0 pointer-events-none ds-cursor-dot"
         style="width: 8px; height: 8px; background: #fff; border-radius: 50%; z-index: 9999; transition: transform 0.05s linear; transform: translate(0px, 0px) scale(1);">
@@ -492,7 +576,8 @@
         </div>
 
         <!-- Hamburger Button -->
-        <button id="mobile-menu-toggle" class="lg:hidden text-white focus:outline-none cursor-hover p-2 relative z-[110]">
+        <button id="mobile-menu-toggle"
+            class="lg:hidden text-white focus:outline-none cursor-hover p-2 relative z-[110]">
             <iconify-icon icon="solar:hamburger-menu-linear" id="menu-icon" class="text-3xl"></iconify-icon>
             <iconify-icon icon="solar:close-circle-linear" id="close-icon" class="text-3xl hidden"></iconify-icon>
         </button>
@@ -502,17 +587,25 @@
     <!-- Mobile Menu Overlay (Moved outside nav for reliable rendering) -->
     <div id="mobile-menu"
         class="fixed inset-0 bg-[#050505]/98 backdrop-blur-2xl z-[105] flex flex-col items-center justify-center gap-10 transition-all duration-500 opacity-0 pointer-events-none translate-y-full">
-        <a href="#hero" class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Home</a>
-        <a href="#sobre" class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Propósito</a>
-        <a href="#processo" class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Processo</a>
-        <a href="#portfolio" class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Portfolio</a>
-        <a href="#depoimentos" class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Feedback</a>
-        <a href="#servicos" class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Serviços</a>
-        <a href="#contato" class="mobile-nav-link text-3xl font-bold text-ds3Purple hover:text-white transition-colors uppercase tracking-widest mt-4">Contato</a>
+        <a href="#hero"
+            class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Home</a>
+        <a href="#sobre"
+            class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Propósito</a>
+        <a href="#processo"
+            class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Processo</a>
+        <a href="#portfolio"
+            class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Portfolio</a>
+        <a href="#depoimentos"
+            class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Feedback</a>
+        <a href="#servicos"
+            class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Serviços</a>
+        <a href="#contato"
+            class="mobile-nav-link text-3xl font-bold text-ds3Purple hover:text-white transition-colors uppercase tracking-widest mt-4">Contato</a>
     </div>
 
     <!-- SECTION 0: Hero -->
-    <section id="hero" class="relative w-full h-screen overflow-hidden isolate z-0 pt-32 lg:pt-24 cursor-hover scroll-mt-24">
+    <section id="hero"
+        class="relative w-full h-screen overflow-hidden isolate z-0 pt-32 lg:pt-24 cursor-hover scroll-mt-24">
         <!-- Background Grid GridBg -->
         <div class="absolute inset-0 grid-bg pointer-events-none z-0 mt-24"></div>
 
@@ -1539,6 +1632,41 @@
 
     <!-- SCRIPTS ENGINES -->
     <script>
+        window.RENDER_SYSTEM_READY = false;
+
+        // --- 0. Preloader Logic ---
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            const percentText = document.getElementById('loader-percent');
+            const barFill = document.getElementById('loader-bar');
+            let progress = 0;
+
+            const updateLoader = () => {
+                const interval = setInterval(() => {
+                    progress += Math.floor(Math.random() * 5) + 2;
+                    if (progress >= 100) {
+                        progress = 100;
+                        clearInterval(interval);
+
+                        setTimeout(() => {
+                            preloader.classList.add('fade-out');
+                            // Enable scroll after preloader is gone
+                            document.body.style.overflow = '';
+                            // Signal that the system is ready for effects
+                            window.RENDER_SYSTEM_READY = true;
+                        }, 500);
+                    }
+
+                    percentText.innerText = progress.toString().padStart(2, '0');
+                    if (barFill) barFill.style.width = progress + '%';
+                }, 50);
+            };
+
+            // Lock scroll during loading
+            document.body.style.overflow = 'hidden';
+            updateLoader();
+        });
+
         // --- 1. Animation On Scroll Observer ---
         (function () {
             const once = true;
@@ -1720,10 +1848,18 @@
                 });
 
                 const MOUSE_REVEAL_RADIUS = 200;
-                const REVEAL_SPEED = 0.08;
+                const REVEAL_SPEED = 0.06;
 
                 function renderGrid() {
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    if (!window.RENDER_SYSTEM_READY) {
+                        // Draw solid overlay while waiting
+                        ctx.fillStyle = '#0a0a0a';
+                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+                        requestAnimationFrame(renderGrid);
+                        return;
+                    }
+
                     let clearedCount = 0;
 
                     for (let i = 0; i < buckets.length; i++) {
@@ -1789,14 +1925,16 @@
 
                 // Auto render blocks autonomously (Enhanced for Mobile/Top-to-bottom scan)
                 setInterval(() => {
+                    if (!window.RENDER_SYSTEM_READY) return;
+
                     const isMobileWindow = window.innerWidth < 1024;
                     const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
                     // On mobile or touch devices, we always want the auto-reveal to progress
                     if ((!isHoveringHero || isMobileWindow || isTouchDevice) && buckets.length > 0) {
                         const heroH = canvas.height || 1000;
-                        // Speed: complete in ~0.8-1s if mobile/touch, ~2-3s if desktop idle
-                        const inc = (isMobileWindow || isTouchDevice) ? (heroH / 30) : (heroH / 80);
+                        // Speed: slowed down by 30% for better perceptibility
+                        const inc = (isMobileWindow || isTouchDevice) ? (heroH / 39) : (heroH / 104);
                         scanY += inc;
 
                         buckets.forEach(b => {
