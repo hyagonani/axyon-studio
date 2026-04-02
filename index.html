@@ -1479,6 +1479,7 @@
                 const statPercent = document.getElementById("stat-percent");
                 const statTime = document.getElementById("stat-time");
 
+                let scanY = 0;
                 function initGrid() {
                     const heroDiv = document.getElementById("hero");
                     const width = window.innerWidth;
@@ -1490,6 +1491,7 @@
                     cols = Math.ceil(canvas.width / BUCKET_SIZE);
                     rows = Math.ceil(canvas.height / BUCKET_SIZE);
                     buckets = [];
+                    scanY = 0; // Reset scanline on init
 
                     let bucketIndex = 0;
                     for (let y = 0; y < rows; y++) {
@@ -1596,25 +1598,35 @@
                 }
                 renderGrid();
 
-                // Auto render blocks autonomously when not hovering
+                // Auto render blocks autonomously (Enhanced for Mobile/Top-to-bottom randomness)
                 setInterval(() => {
-                    if (!isHoveringHero && buckets.length > 0) {
-                        const hidden = buckets.filter(b => !b.revealed);
-                        for (let i = 0; i < 4; i++) {
-                            if (hidden.length > 0) {
-                                const idx = Math.floor(Math.random() * hidden.length);
-                                hidden[idx].revealed = true;
-                                hidden.splice(idx, 1);
+                    const isMobile = window.innerWidth < 768;
+
+                    if ((!isHoveringHero || isMobile) && buckets.length > 0) {
+                        // Increase scanline faster on mobile, slower on desktop idle
+                        scanY += BUCKET_SIZE * (isMobile ? 0.35 : 0.2);
+                        
+                        buckets.forEach(b => {
+                            if (!b.revealed) {
+                                // If bucket is above scanY, reveal it with high probability
+                                if (b.y < scanY - BUCKET_SIZE * 2) {
+                                    if (Math.random() > 0.05) b.revealed = true;
+                                }
+                                // If bucket is at/near scanY, reveal with medium probability
+                                else if (b.y < scanY + BUCKET_SIZE) {
+                                    if (Math.random() > 0.3) b.revealed = true;
+                                }
                             }
-                        }
+                        });
                     }
+                    
                     timeElapsed++;
                     if (statTime) {
                         const m = Math.floor(timeElapsed / 60);
                         const s = timeElapsed % 60;
                         statTime.innerText = `00:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
                     }
-                }, 150);
+                }, 100);
 
                 // --- 4. Timeline Scroll Beam Control ---
                 window.addEventListener('scroll', () => {
