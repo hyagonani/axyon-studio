@@ -1821,19 +1821,20 @@
 
                 let lastWidth = window.innerWidth;
                 let scanY = 0;
+                let isInit = false;
+
                 function initGrid() {
                     const heroDiv = document.getElementById("hero");
                     const width = window.innerWidth;
-                    // Force a valid height calculation fallback
-                    let height = heroDiv ? heroDiv.clientHeight : 0;
-                    if (height <= 0) height = window.innerHeight;
+                    // Force height
+                    let height = heroDiv ? heroDiv.clientHeight : window.innerHeight;
+                    if (height < 200) height = window.innerHeight;
 
-                    // If height changes minimally on mobile, skip reset
-                    if (buckets.length > 0 && width === lastWidth && Math.abs(height - (canvas.height/(window.devicePixelRatio||1))) < 100) {
-                        return;
-                    }
+                    // Throttled re-init
+                    if (isInit && width === lastWidth && Math.abs(height - (canvas.height/(window.devicePixelRatio||1))) < 50) return;
+                    isInit = true;
 
-                    BUCKET_SIZE = (width < 1024) ? 45 : 50;
+                    BUCKET_SIZE = (width < 900) ? 40 : 50;
                     if (width !== lastWidth) scanY = 0;
                     lastWidth = width;
 
@@ -1842,7 +1843,9 @@
                     canvas.height = height * dpr;
                     canvas.style.width = width + 'px';
                     canvas.style.height = height + 'px';
-                    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                    
+                    ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset
+                    ctx.scale(dpr, dpr);
 
                     cols = Math.ceil(width / BUCKET_SIZE);
                     rows = Math.ceil(height / BUCKET_SIZE);
@@ -1949,25 +1952,17 @@
                         }
                     }
 
-                    if (statPercent && buckets.length > 0) {
+                    if (buckets.length > 0) {
                         const pctRatio = clearedCount / buckets.length;
                         const pct = Math.floor(pctRatio * 100);
-                        statPercent.innerText = `${pct}%`;
+                        if (statPercent) statPercent.innerText = `${pct}%`;
                         if (statBuckets) statBuckets.innerText = `${clearedCount}/${buckets.length}`;
 
                         const heroBg = document.getElementById("hero-bg");
                         if (heroBg) {
-                            const currentGrayscale = Math.max(0, 100 - (pctRatio * 100));
-                            const currentOpacity = 0.4 + (pctRatio * 0.6);
-                            heroBg.style.filter = `grayscale(${currentGrayscale}%)`;
-                            heroBg.style.opacity = currentOpacity;
-                        }
-                    } else if (buckets.length === 0) {
-                        // Fallback: if buckets failed to init, clear grayscale anyway
-                        const heroBg = document.getElementById("hero-bg");
-                        if (heroBg) {
-                            heroBg.style.filter = `grayscale(0%)`;
-                            heroBg.style.opacity = 0.6;
+                            const val = Math.max(0, 100 - (pctRatio * 100));
+                            heroBg.style.filter = `grayscale(${val}%)`;
+                            heroBg.style.opacity = 0.4 + (pctRatio * 0.6);
                         }
                     }
 
@@ -1983,20 +1978,15 @@
                     const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
                     // On mobile or touch devices, we always want the auto-reveal to progress
-                    if ((!isHoveringHero || isMobileWindow || isTouchDevice) && buckets.length > 0) {
-                        const heroH = canvas.height || 1000;
-                        // Speed: significantly slowed down for mobile (heroH / 120 approx)
-                        const inc = (isMobileWindow || isTouchDevice) ? (heroH / 180) : (heroH / 104);
+                    if (buckets.length > 0) {
+                        const heroH = height || 1000;
+                        const inc = (window.innerWidth < 1024) ? (heroH / 120) : (heroH / 104);
                         scanY += inc;
 
                         buckets.forEach(b => {
                             if (!b.revealed) {
-                                // Reveal if above the scanline or randomly near it
-                                if (b.y < scanY - BUCKET_SIZE) {
-                                    b.revealed = true;
-                                } else if (b.y < scanY + BUCKET_SIZE) {
-                                    if (Math.random() > 0.4) b.revealed = true;
-                                }
+                                if (b.y < scanY - BUCKET_SIZE) b.revealed = true;
+                                else if (b.y < scanY + BUCKET_SIZE && Math.random() > 0.4) b.revealed = true;
                             }
                         });
                     }
