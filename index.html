@@ -605,7 +605,7 @@
 
     <!-- SECTION 0: Hero -->
     <section id="hero"
-        class="relative w-full h-screen overflow-hidden isolate z-0 pt-32 lg:pt-24 cursor-hover scroll-mt-24 touch-none">
+        class="relative w-full h-screen overflow-hidden isolate z-0 pt-32 lg:pt-24 cursor-hover scroll-mt-24 touch-pan-y">
         <!-- Background Grid GridBg -->
         <div class="absolute inset-0 grid-bg pointer-events-none z-0 mt-24"></div>
 
@@ -618,7 +618,7 @@
         </div>
 
         <!-- LAYER 2: ELARCH QUADRADINHOS BUCKETS (z-10) -->
-        <canvas id="buckets-canvas" class="absolute inset-0 w-full h-full z-10 pointer-events-none touch-none"></canvas>
+        <canvas id="buckets-canvas" class="absolute inset-0 w-full h-full z-10 pointer-events-none"></canvas>
 
         <!-- LAYER 3: HUD Stats Interface (z-20) -->
         <div
@@ -1653,8 +1653,10 @@
                             // Enable scroll after preloader is gone
                             document.body.style.overflow = '';
                             // Signal that the system is ready for effects
-                            window.RENDER_SYSTEM_READY = true;
-                        }, 500);
+                            setTimeout(() => {
+                                window.RENDER_SYSTEM_READY = true;
+                            }, 300);
+                        }, 800);
                     }
 
                     if (percentText) percentText.innerText = progress.toString().padStart(2, '0');
@@ -1783,7 +1785,7 @@
             if (canvas) {
                 const ctx = canvas.getContext("2d", { alpha: true });
                 let buckets = [];
-                const BUCKET_SIZE = window.innerWidth < 900 ? 30 : 50;
+                const BUCKET_SIZE = window.innerWidth < 1024 ? 45 : 50;
                 let cols, rows;
                 let timeElapsed = 0;
                 let isHoveringHero = false;
@@ -1811,7 +1813,9 @@
                     const dpr = window.devicePixelRatio || 1;
                     canvas.width = width * dpr;
                     canvas.height = height * dpr;
-                    ctx.scale(dpr, dpr);
+                    canvas.style.width = width + 'px';
+                    canvas.style.height = height + 'px';
+                    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
                     cols = Math.ceil(width / BUCKET_SIZE);
                     rows = Math.ceil(height / BUCKET_SIZE);
@@ -1901,8 +1905,8 @@
                         if (b.opacity <= 0.05) clearedCount++;
 
                         if (b.opacity > 0) {
-                            ctx.fillStyle = `rgba(10, 10, 10, ${b.opacity * 0.98})`;
-                            ctx.fillRect(b.x, b.y, b.w, b.h);
+                            ctx.fillStyle = `rgba(10, 10, 10, ${b.opacity * 0.9})`;
+                            ctx.fillRect(b.x, b.y, b.w + 0.5, b.h + 0.5);
 
                             ctx.strokeStyle = `rgba(141, 79, 192, ${b.opacity * 0.2})`;
                             ctx.lineWidth = 1;
