@@ -100,6 +100,13 @@
             cursor: none;
         }
 
+        /* Hide custom cursor on mobile */
+        @media (max-width: 1024px) {
+            .ds-cursor-dot, .ds-cursor-ring {
+                display: none !important;
+            }
+        }
+
         /* Button Glow & Accent */
         .btn-primary:hover .btn-text {
             color: #000;
@@ -471,6 +478,8 @@
         <a href="#hero" class="flex items-center gap-2 cursor-hover transition-opacity hover:opacity-80">
             <img src="./public/LOGO%20AXYON.png" alt="Axyon Logo" class="h-10 md:h-12 w-auto object-contain" />
         </a>
+
+        <!-- Desktop Menu -->
         <div class="hidden lg:flex gap-6 xl:gap-8">
             <a href="#hero" class="hover:text-ds3Purple transition-colors cursor-hover">Home</a>
             <a href="#sobre" class="hover:text-ds3Purple transition-colors cursor-hover">Propósito</a>
@@ -481,10 +490,29 @@
             <a href="#servicos" class="hover:text-ds3Purple transition-colors cursor-hover">Serviços</a>
             <a href="#contato" class="hover:text-ds3Purple transition-colors cursor-hover">Contato</a>
         </div>
+
+        <!-- Hamburger Button -->
+        <button id="mobile-menu-toggle" class="lg:hidden text-white focus:outline-none cursor-hover p-2 relative z-[110]">
+            <iconify-icon icon="solar:hamburger-menu-linear" id="menu-icon" class="text-3xl"></iconify-icon>
+            <iconify-icon icon="solar:close-circle-linear" id="close-icon" class="text-3xl hidden"></iconify-icon>
+        </button>
+
     </nav>
 
+    <!-- Mobile Menu Overlay (Moved outside nav for reliable rendering) -->
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-[#050505]/98 backdrop-blur-2xl z-[105] flex flex-col items-center justify-center gap-10 transition-all duration-500 opacity-0 pointer-events-none translate-y-full">
+        <a href="#hero" class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Home</a>
+        <a href="#sobre" class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Propósito</a>
+        <a href="#processo" class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Processo</a>
+        <a href="#portfolio" class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Portfolio</a>
+        <a href="#depoimentos" class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Feedback</a>
+        <a href="#servicos" class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Serviços</a>
+        <a href="#contato" class="mobile-nav-link text-3xl font-bold text-ds3Purple hover:text-white transition-colors uppercase tracking-widest mt-4">Contato</a>
+    </div>
+
     <!-- SECTION 0: Hero -->
-    <section id="hero" class="relative w-full h-screen overflow-hidden isolate z-0 pt-24 cursor-hover scroll-mt-24">
+    <section id="hero" class="relative w-full h-screen overflow-hidden isolate z-0 pt-32 lg:pt-24 cursor-hover scroll-mt-24">
         <!-- Background Grid GridBg -->
         <div class="absolute inset-0 grid-bg pointer-events-none z-0 mt-24"></div>
 
@@ -1532,8 +1560,52 @@
             document.addEventListener("DOMContentLoaded", () => initInViewAnimations());
         })();
 
+        // --- 1.2 Mobile Menu Logic ---
+        document.addEventListener("DOMContentLoaded", () => {
+            const toggle = document.getElementById('mobile-menu-toggle');
+            const menu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            const navLinks = document.querySelectorAll('.mobile-nav-link');
+
+            const toggleMenu = () => {
+                const isClosed = menu.classList.contains('translate-y-full');
+                if (isClosed) {
+                    // Abrir
+                    menu.classList.remove('translate-y-full', 'opacity-0', 'pointer-events-none');
+                    menu.classList.add('translate-y-0', 'opacity-100');
+                    menuIcon.classList.add('hidden');
+                    closeIcon.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    // Fechar
+                    menu.classList.add('translate-y-full', 'opacity-0', 'pointer-events-none');
+                    menu.classList.remove('translate-y-0', 'opacity-100');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }
+            };
+
+            toggle.addEventListener('click', toggleMenu);
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    // Fechamento forçado ao clicar no link
+                    menu.classList.add('translate-y-full', 'opacity-0', 'pointer-events-none');
+                    menu.classList.remove('translate-y-0', 'opacity-100');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                    document.body.style.overflow = '';
+                });
+            });
+        });
+
         // --- 2. Custom Mouse Cursor logic ---
         document.addEventListener("DOMContentLoaded", () => {
+            const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+            if (isTouch && window.innerWidth < 1024) return;
+
             const dot = document.querySelector('.ds-cursor-dot');
             const ring = document.querySelector('.ds-cursor-ring');
 
