@@ -107,12 +107,23 @@
         }
 
         @keyframes beam-drop {
-            0% { transform: translateY(-100%); }
-            100% { transform: translateY(100%); }
+            0% {
+                transform: translateY(-100%);
+            }
+
+            100% {
+                transform: translateY(100%);
+            }
         }
+
         @keyframes beam-slide {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
         }
 
         /* Auto-reveal state for Section 2 Image */
@@ -122,17 +133,44 @@
             transform: scale(1.05) !important;
             transition-delay: 0.5s !important;
         }
+
         .image-reveal-active.animate .grid-bg-mask {
             opacity: 0.1 !important;
             transition-delay: 0.5s !important;
         }
+
         .image-reveal-active.animate .beam-drop-effect {
-            animation: beam-drop 3s cubic-bezier(0.4,0,0.2,1) infinite !important;
+            animation: beam-drop 3s cubic-bezier(0.4, 0, 0.2, 1) infinite !important;
             animation-delay: 0.5s !important;
         }
+
         .image-reveal-active.animate .beam-slide-effect {
-            animation: beam-slide 3s cubic-bezier(0.4,0,0.2,1) infinite !important;
+            animation: beam-slide 3s cubic-bezier(0.4, 0, 0.2, 1) infinite !important;
             animation-delay: 0.8s !important;
+        }
+
+        /* Timeline Beam */
+        .timeline-beam {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.03);
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .timeline-beam::after {
+            content: '';
+            position: absolute;
+            top: var(--beam-top, -100%);
+            left: 0;
+            width: 100%;
+            height: 30vh;
+            background: linear-gradient(to bottom, transparent, #8d4fc0, transparent);
+            transition: top 0.15s ease-out;
+            pointer-events: none;
         }
     </style>
 </head>
@@ -267,61 +305,82 @@
     </section>
 
     <!-- SECTION 1: Dobra 2 (Sobre Nós) -->
-    <section id="sobre" class="min-h-screen flex items-center py-16 px-6 lg:px-12 max-w-[90rem] mx-auto border-t border-white/5 bg-ds3Aura relative z-20 cursor-hover">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 w-full animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.2s_both]">
-            
+    <section id="sobre"
+        class="min-h-screen flex items-center py-16 px-6 lg:px-12 max-w-[90rem] mx-auto border-t border-white/5 bg-ds3Aura relative z-20 cursor-hover">
+        <div
+            class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 w-full animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.2s_both]">
+
             <!-- Left Column: Content -->
             <div class="flex flex-col justify-center gap-7">
                 <!-- Header -->
                 <div class="flex items-end gap-3 border-b border-white/5 pb-4">
-                    <h2 class="text-4xl lg:text-5xl font-medium tracking-tighter text-ghost cursor-hover uppercase">NOSSO PROPÓSITO</h2>
+                    <h2 class="text-4xl lg:text-5xl font-medium tracking-tighter text-ghost cursor-hover uppercase">
+                        NOSSO PROPÓSITO</h2>
                 </div>
 
                 <!-- Main Text -->
                 <p class="text-base lg:text-lg text-neutral-300 font-light leading-relaxed">
-                    <span class="text-white font-medium">Mais do que renders de alta fidelidade, entregamos inteligência visual estratégica.</span> Unimos visão arquitetônica e processos otimizados por IA para atuar como o braço direito da sua incorporadora. Nosso objetivo? Eliminar o retrabalho e acelerar o seu ciclo de vendas.
+                    <span class="text-white font-medium">Mais do que renders de alta fidelidade, entregamos inteligência
+                        visual estratégica.</span> Unimos visão arquitetônica e processos otimizados por IA para atuar
+                    como o braço direito da sua incorporadora. Nosso objetivo? Eliminar o retrabalho e acelerar o seu
+                    ciclo de vendas.
                 </p>
 
                 <!-- Visão -->
-                <div class="bg-neutral-900/40 border-l-2 border-ds3Purple py-4 px-6 text-sm leading-relaxed text-neutral-400">
-                    <span class="text-white font-semibold uppercase tracking-widest text-[10px] block mb-1.5">Visão</span>
+                <div
+                    class="bg-neutral-900/40 border-l-2 border-ds3Purple py-4 px-6 text-sm leading-relaxed text-neutral-400">
+                    <span
+                        class="text-white font-semibold uppercase tracking-widest text-[10px] block mb-1.5">Visão</span>
                     Ser a referência absoluta em tecnologia aplicada a lançamentos imobiliários no Brasil até 2029.
                 </div>
 
                 <!-- Nossos Valores -->
                 <div class="pt-2">
-                    <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest block mb-5">Nossos Valores</span>
+                    <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-widest block mb-5">Nossos
+                        Valores</span>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-6">
                         <!-- Value 1 -->
                         <div class="flex items-start gap-3 group cursor-hover">
-                            <iconify-icon icon="solar:shield-check-bold-duotone" class="text-ds3Purple text-lg mt-0.5 opacity-80 group-hover:opacity-100"></iconify-icon>
+                            <iconify-icon icon="solar:shield-check-bold-duotone"
+                                class="text-ds3Purple text-lg mt-0.5 opacity-80 group-hover:opacity-100"></iconify-icon>
                             <div>
-                                <h4 class="text-[13px] font-semibold text-white uppercase tracking-wider mb-0.5">Transparência Cristã</h4>
-                                <p class="text-xs text-neutral-400 font-light leading-relaxed">Seriedade e honestidade em cada acordo.</p>
+                                <h4 class="text-[13px] font-semibold text-white uppercase tracking-wider mb-0.5">
+                                    Transparência Cristã</h4>
+                                <p class="text-xs text-neutral-400 font-light leading-relaxed">Seriedade e honestidade
+                                    em cada acordo.</p>
                             </div>
                         </div>
                         <!-- Value 2 -->
                         <div class="flex items-start gap-3 group cursor-hover">
-                            <iconify-icon icon="solar:bolt-bold-duotone" class="text-ds3Purple text-lg mt-0.5 opacity-80 group-hover:opacity-100"></iconify-icon>
+                            <iconify-icon icon="solar:bolt-bold-duotone"
+                                class="text-ds3Purple text-lg mt-0.5 opacity-80 group-hover:opacity-100"></iconify-icon>
                             <div>
-                                <h4 class="text-[13px] font-semibold text-white uppercase tracking-wider mb-0.5">Agilidade Antecipada</h4>
-                                <p class="text-xs text-neutral-400 font-light leading-relaxed">Nosso padrão é entregar antes do prazo.</p>
+                                <h4 class="text-[13px] font-semibold text-white uppercase tracking-wider mb-0.5">
+                                    Agilidade Antecipada</h4>
+                                <p class="text-xs text-neutral-400 font-light leading-relaxed">Nosso padrão é entregar
+                                    antes do prazo.</p>
                             </div>
                         </div>
                         <!-- Value 3 -->
                         <div class="flex items-start gap-3 group cursor-hover">
-                            <iconify-icon icon="solar:cpu-bold-duotone" class="text-ds3Purple text-lg mt-0.5 opacity-80 group-hover:opacity-100"></iconify-icon>
+                            <iconify-icon icon="solar:cpu-bold-duotone"
+                                class="text-ds3Purple text-lg mt-0.5 opacity-80 group-hover:opacity-100"></iconify-icon>
                             <div>
-                                <h4 class="text-[13px] font-semibold text-white uppercase tracking-wider mb-0.5">Inovação com Propósito</h4>
-                                <p class="text-xs text-neutral-400 font-light leading-relaxed">IA como ferramenta para gerar lucro.</p>
+                                <h4 class="text-[13px] font-semibold text-white uppercase tracking-wider mb-0.5">
+                                    Inovação com Propósito</h4>
+                                <p class="text-xs text-neutral-400 font-light leading-relaxed">IA como ferramenta para
+                                    gerar lucro.</p>
                             </div>
                         </div>
                         <!-- Value 4 -->
                         <div class="flex items-start gap-3 group cursor-hover">
-                            <iconify-icon icon="solar:star-fall-bold-duotone" class="text-ds3Purple text-lg mt-0.5 opacity-80 group-hover:opacity-100"></iconify-icon>
+                            <iconify-icon icon="solar:star-fall-bold-duotone"
+                                class="text-ds3Purple text-lg mt-0.5 opacity-80 group-hover:opacity-100"></iconify-icon>
                             <div>
-                                <h4 class="text-[13px] font-semibold text-white uppercase tracking-wider mb-0.5">Excelência no Detalhe</h4>
-                                <p class="text-xs text-neutral-400 font-light leading-relaxed">Rigor técnico somado à sensibilidade artística.</p>
+                                <h4 class="text-[13px] font-semibold text-white uppercase tracking-wider mb-0.5">
+                                    Excelência no Detalhe</h4>
+                                <p class="text-xs text-neutral-400 font-light leading-relaxed">Rigor técnico somado à
+                                    sensibilidade artística.</p>
                             </div>
                         </div>
                     </div>
@@ -329,124 +388,324 @@
 
                 <!-- Indicadores de Autoridade -->
                 <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/5 mt-2">
-                     <!-- Metric 01 -->
+                    <!-- Metric 01 -->
                     <div class="flex flex-col group cursor-hover">
-                        <span class="text-3xl lg:text-4xl font-light text-white tracking-tighter group-hover:text-ds3Purple transition-colors duration-300 mb-1">15+</span>
-                        <span class="text-[9px] lg:text-[10px] font-semibold text-neutral-600 uppercase tracking-widest group-hover:text-white transition-colors">Anos de Expertise Técnica</span>
+                        <span
+                            class="text-3xl lg:text-4xl font-light text-white tracking-tighter group-hover:text-ds3Purple transition-colors duration-300 mb-1">15+</span>
+                        <span
+                            class="text-[9px] lg:text-[10px] font-semibold text-neutral-600 uppercase tracking-widest group-hover:text-white transition-colors">Anos
+                            de Expertise Técnica</span>
                     </div>
-                     <!-- Metric 02 -->
+                    <!-- Metric 02 -->
                     <div class="flex flex-col group cursor-hover">
-                        <span class="text-3xl lg:text-4xl font-light text-white tracking-tighter group-hover:text-ds3Purple transition-colors duration-300 mb-1">100%</span>
-                        <span class="text-[9px] lg:text-[10px] font-semibold text-neutral-600 uppercase tracking-widest group-hover:text-white transition-colors">Foco em Lançamentos</span>
+                        <span
+                            class="text-3xl lg:text-4xl font-light text-white tracking-tighter group-hover:text-ds3Purple transition-colors duration-300 mb-1">100%</span>
+                        <span
+                            class="text-[9px] lg:text-[10px] font-semibold text-neutral-600 uppercase tracking-widest group-hover:text-white transition-colors">Foco
+                            em Lançamentos</span>
                     </div>
-                     <!-- Metric 03 -->
+                    <!-- Metric 03 -->
                     <div class="flex flex-col group cursor-hover">
-                        <span class="text-3xl lg:text-4xl font-light text-white tracking-tighter group-hover:text-ds3Purple transition-colors duration-300 mb-1">Zero</span>
-                        <span class="text-[9px] lg:text-[10px] font-semibold text-neutral-600 uppercase tracking-widest group-hover:text-white transition-colors">Retrabalho no Processo</span>
+                        <span
+                            class="text-3xl lg:text-4xl font-light text-white tracking-tighter group-hover:text-ds3Purple transition-colors duration-300 mb-1">Zero</span>
+                        <span
+                            class="text-[9px] lg:text-[10px] font-semibold text-neutral-600 uppercase tracking-widest group-hover:text-white transition-colors">Retrabalho
+                            no Processo</span>
                     </div>
                 </div>
             </div>
 
             <!-- Right Column: Image -->
-            <div class="relative h-[55vh] lg:h-[80vh] min-h-[450px] w-full bg-neutral-900 border border-white/10 group overflow-hidden cursor-hover image-reveal-active animate-on-scroll">
-                 <!-- Background Grid hover mask -->
-                 <div class="absolute inset-0 grid-bg grid-bg-mask opacity-30 pointer-events-none z-10 mix-blend-overlay group-hover:opacity-10 transition-opacity duration-1000"></div>
-                 
-                 <img src="./public/2dobra.png" alt="Axyon Estúdio 3D Edifício" class="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[2000ms] ease-out z-0 relative" />
-                 
-                 <!-- Tech aesthetic overlays -->
-                 <div class="absolute bottom-5 left-5 bg-black/60 backdrop-blur-md px-3 py-1.5 border border-white/10 z-20 transition-transform duration-500 group-hover:translate-x-2">
-                     <span class="text-[9px] font-mono uppercase text-white tracking-[0.2em]">Fig.01_TOWER</span>
-                 </div>
-                 <div class="absolute top-5 right-5 flex flex-col gap-1 z-20">
-                     <div class="w-1 h-1 bg-ds3Purple rounded-full animate-pulse"></div>
-                     <div class="w-1 h-1 bg-white/30 rounded-full"></div>
-                 </div>
-                 
-                 <!-- Beam border interactions -->
-                 <div class="absolute top-0 bottom-0 left-0 w-[1px] bg-white/5 z-10 overflow-hidden">
-                     <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-ds3Purple to-transparent -translate-y-[100%] beam-drop-effect group-hover:animate-[beam-drop_3s_cubic-bezier(0.4,0,0.2,1)_infinite]"></div>
-                 </div>
-                 <div class="absolute bottom-0 left-0 right-0 h-[1px] bg-white/5 z-10 overflow-hidden">
-                     <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-ds3Purple to-transparent -translate-x-[100%] beam-slide-effect group-hover:animate-[beam-slide_3s_cubic-bezier(0.4,0,0.2,1)_infinite]"></div>
-                 </div>
+            <div
+                class="relative h-[55vh] lg:h-[80vh] min-h-[450px] w-full bg-neutral-900 border border-white/10 group overflow-hidden cursor-hover image-reveal-active animate-on-scroll">
+                <!-- Background Grid hover mask -->
+                <div
+                    class="absolute inset-0 grid-bg grid-bg-mask opacity-30 pointer-events-none z-10 mix-blend-overlay group-hover:opacity-10 transition-opacity duration-1000">
+                </div>
+
+                <img src="./public/2dobra.png" alt="Axyon Estúdio 3D Edifício"
+                    class="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[2000ms] ease-out z-0 relative" />
+
+                <!-- Tech aesthetic overlays -->
+                <div
+                    class="absolute bottom-5 left-5 bg-black/60 backdrop-blur-md px-3 py-1.5 border border-white/10 z-20 transition-transform duration-500 group-hover:translate-x-2">
+                    <span class="text-[9px] font-mono uppercase text-white tracking-[0.2em]">Fig.01_TOWER</span>
+                </div>
+                <div class="absolute top-5 right-5 flex flex-col gap-1 z-20">
+                    <div class="w-1 h-1 bg-ds3Purple rounded-full animate-pulse"></div>
+                    <div class="w-1 h-1 bg-white/30 rounded-full"></div>
+                </div>
+
+                <!-- Beam border interactions -->
+                <div class="absolute top-0 bottom-0 left-0 w-[1px] bg-white/5 z-10 overflow-hidden">
+                    <div
+                        class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-ds3Purple to-transparent -translate-y-[100%] beam-drop-effect group-hover:animate-[beam-drop_3s_cubic-bezier(0.4,0,0.2,1)_infinite]">
+                    </div>
+                </div>
+                <div class="absolute bottom-0 left-0 right-0 h-[1px] bg-white/5 z-10 overflow-hidden">
+                    <div
+                        class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-ds3Purple to-transparent -translate-x-[100%] beam-slide-effect group-hover:animate-[beam-slide_3s_cubic-bezier(0.4,0,0.2,1)_infinite]">
+                    </div>
+                </div>
             </div>
-            
+
         </div>
     </section>
 
     <!-- SECTION 2: Dobra 3 (O Time / Especialidades) -->
-    <section id="especialidades" class="py-24 px-6 lg:px-12 max-w-[90rem] mx-auto border-t border-white/5 bg-ds3Surface relative z-20 overflow-hidden cursor-hover">
+    <section id="especialidades"
+        class="py-24 px-6 lg:px-12 max-w-[90rem] mx-auto border-t border-white/5 bg-ds3Surface relative z-20 overflow-hidden cursor-hover">
         <!-- SVG Dot Pattern Background -->
-        <div class="absolute inset-0 z-0 opacity-100 pointer-events-none mix-blend-screen" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEuNSIgZmlsbD0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjIpIi8+PC9zdmc+'); mask-image: radial-gradient(circle at center, black 10%, transparent 60%); -webkit-mask-image: radial-gradient(circle at top, black 10%, transparent 80%);"></div>
-        
+        <div class="absolute inset-0 z-0 opacity-100 pointer-events-none mix-blend-screen"
+            style="background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEuNSIgZmlsbD0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjIpIi8+PC9zdmc+'); mask-image: radial-gradient(circle at center, black 10%, transparent 60%); -webkit-mask-image: radial-gradient(circle at top, black 10%, transparent 80%);">
+        </div>
+
         <div class="relative z-10 w-full">
-            
+
             <!-- Header Center -->
-            <div class="flex flex-col items-center justify-center text-center gap-4 mb-20 max-w-3xl mx-auto animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.2s_both]">
-                <span class="text-[11px] font-mono text-ds3Purple uppercase tracking-[0.25em] mb-2 border border-ds3Purple/30 px-3 py-1 rounded-full bg-ds3Purple/5">O Time</span>
-                <h2 class="text-3xl lg:text-5xl text-white font-medium tracking-tight uppercase">NOSSO ECOSSISTEMA TÉCNICO</h2>
+            <div
+                class="flex flex-col items-center justify-center text-center gap-4 mb-20 max-w-3xl mx-auto animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.2s_both]">
+                <span
+                    class="text-[11px] font-mono text-ds3Purple uppercase tracking-[0.25em] mb-2 border border-ds3Purple/30 px-3 py-1 rounded-full bg-ds3Purple/5">O
+                    Time</span>
+                <h2 class="text-3xl lg:text-5xl text-white font-medium tracking-tight uppercase">NOSSO ECOSSISTEMA
+                    TÉCNICO</h2>
                 <p class="text-base lg:text-lg text-neutral-400 font-light leading-relaxed mt-4">
-                    Uma estrutura global de especialistas dedicados a cada etapa da sua visualização, garantindo qualidade de ponta e entregas ágeis.
+                    Uma estrutura global de especialistas dedicados a cada etapa da sua visualização, garantindo
+                    qualidade de ponta e entregas ágeis.
                 </p>
             </div>
 
             <!-- Cards Grid -->
             <div class="flex flex-wrap justify-center gap-6">
                 <!-- Card 1 -->
-                <div class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] service-card relative bg-[#0A0A0A]/80 backdrop-blur-sm border border-white/5 p-8 pt-10 flex flex-col overflow-hidden group cursor-hover transition-colors duration-300 hover:bg-[#111115] hover:border-ds3Purple/40 hover:-translate-y-1 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.3s_both]">
-                    <span class="sc-num absolute top-6 right-8 text-4xl font-light text-white/5 group-hover:text-ds3Purple/10 transition-colors">01</span>
-                    <iconify-icon icon="solar:pen-new-square-bold-duotone" class="text-ds3Purple text-4xl mb-8 opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
-                    <h3 class="text-base font-semibold text-white uppercase tracking-wider mb-3">Direção de Arte & Setup</h3>
+                <div
+                    class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] service-card relative bg-[#0A0A0A]/80 backdrop-blur-sm border border-white/5 p-8 pt-10 flex flex-col overflow-hidden group cursor-hover transition-colors duration-300 hover:bg-[#111115] hover:border-ds3Purple/40 hover:-translate-y-1 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.3s_both]">
+                    <span
+                        class="sc-num absolute top-6 right-8 text-4xl font-light text-white/5 group-hover:text-ds3Purple/10 transition-colors">01</span>
+                    <iconify-icon icon="solar:pen-new-square-bold-duotone"
+                        class="text-ds3Purple text-4xl mb-8 opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                    <h3 class="text-base font-semibold text-white uppercase tracking-wider mb-3">Direção de Arte & Setup
+                    </h3>
                     <p class="text-sm text-neutral-400 font-light leading-relaxed">
                         <strong class="text-white font-medium block mb-1">O cérebro da operação.</strong>
-                        Análise minuciosa do briefing, definição da narrativa visual, paleta e controle de qualidade rigoroso para garantir o apelo comercial.
+                        Análise minuciosa do briefing, definição da narrativa visual, paleta e controle de qualidade
+                        rigoroso para garantir o apelo comercial.
                     </p>
                 </div>
 
                 <!-- Card 2 -->
-                <div class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] service-card relative bg-[#0A0A0A]/80 backdrop-blur-sm border border-white/5 p-8 pt-10 flex flex-col overflow-hidden group cursor-hover transition-colors duration-300 hover:bg-[#111115] hover:border-ds3Purple/40 hover:-translate-y-1 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.4s_both]">
-                    <span class="sc-num absolute top-6 right-8 text-4xl font-light text-white/5 group-hover:text-ds3Purple/10 transition-colors">02</span>
-                    <iconify-icon icon="solar:box-minimalistic-bold-duotone" class="text-ds3Purple text-4xl mb-8 opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
-                    <h3 class="text-base font-semibold text-white uppercase tracking-wider mb-3">Modelagem 3D Arquitetônica</h3>
+                <div
+                    class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] service-card relative bg-[#0A0A0A]/80 backdrop-blur-sm border border-white/5 p-8 pt-10 flex flex-col overflow-hidden group cursor-hover transition-colors duration-300 hover:bg-[#111115] hover:border-ds3Purple/40 hover:-translate-y-1 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.4s_both]">
+                    <span
+                        class="sc-num absolute top-6 right-8 text-4xl font-light text-white/5 group-hover:text-ds3Purple/10 transition-colors">02</span>
+                    <iconify-icon icon="solar:box-minimalistic-bold-duotone"
+                        class="text-ds3Purple text-4xl mb-8 opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                    <h3 class="text-base font-semibold text-white uppercase tracking-wider mb-3">Modelagem 3D
+                        Arquitetônica</h3>
                     <p class="text-sm text-neutral-400 font-light leading-relaxed">
                         <strong class="text-white font-medium block mb-1">Precisão milimétrica.</strong>
-                        Transformamos plantas e arquivos CAD em volumetria perfeita, respeitando cada especificação do projeto original.
+                        Transformamos plantas e arquivos CAD em volumetria perfeita, respeitando cada especificação do
+                        projeto original.
                     </p>
                 </div>
 
                 <!-- Card 3 -->
-                <div class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] service-card relative bg-[#0A0A0A]/80 backdrop-blur-sm border border-white/5 p-8 pt-10 flex flex-col overflow-hidden group cursor-hover transition-colors duration-300 hover:bg-[#111115] hover:border-ds3Purple/40 hover:-translate-y-1 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.5s_both]">
-                    <span class="sc-num absolute top-6 right-8 text-4xl font-light text-white/5 group-hover:text-ds3Purple/10 transition-colors">03</span>
-                    <iconify-icon icon="solar:sun-fog-bold-duotone" class="text-ds3Purple text-4xl mb-8 opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
-                    <h3 class="text-base font-semibold text-white uppercase tracking-wider mb-3">Lighting & Texturização</h3>
+                <div
+                    class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] service-card relative bg-[#0A0A0A]/80 backdrop-blur-sm border border-white/5 p-8 pt-10 flex flex-col overflow-hidden group cursor-hover transition-colors duration-300 hover:bg-[#111115] hover:border-ds3Purple/40 hover:-translate-y-1 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.5s_both]">
+                    <span
+                        class="sc-num absolute top-6 right-8 text-4xl font-light text-white/5 group-hover:text-ds3Purple/10 transition-colors">03</span>
+                    <iconify-icon icon="solar:sun-fog-bold-duotone"
+                        class="text-ds3Purple text-4xl mb-8 opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                    <h3 class="text-base font-semibold text-white uppercase tracking-wider mb-3">Lighting & Texturização
+                    </h3>
                     <p class="text-sm text-neutral-400 font-light leading-relaxed">
                         <strong class="text-white font-medium block mb-1">A alma da imagem.</strong>
-                        Especialistas em iluminação fotorrealista e criação de materiais (shaders) que despertam a sensação de pertencimento e conforto.
+                        Especialistas em iluminação fotorrealista e criação de materiais (shaders) que despertam a
+                        sensação de pertencimento e conforto.
                     </p>
                 </div>
 
                 <!-- Card 4 -->
-                <div class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] service-card relative bg-[#0A0A0A]/80 backdrop-blur-sm border border-white/5 p-8 pt-10 flex flex-col overflow-hidden group cursor-hover transition-colors duration-300 hover:bg-[#111115] hover:border-ds3Purple/40 hover:-translate-y-1 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.6s_both]">
-                    <span class="sc-num absolute top-6 right-8 text-4xl font-light text-white/5 group-hover:text-ds3Purple/10 transition-colors">04</span>
-                    <iconify-icon icon="solar:magic-stick-3-bold-duotone" class="text-ds3Purple text-4xl mb-8 opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
-                    <h3 class="text-base font-semibold text-white uppercase tracking-wider mb-3">Pós-Produção & Retouching</h3>
+                <div
+                    class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] service-card relative bg-[#0A0A0A]/80 backdrop-blur-sm border border-white/5 p-8 pt-10 flex flex-col overflow-hidden group cursor-hover transition-colors duration-300 hover:bg-[#111115] hover:border-ds3Purple/40 hover:-translate-y-1 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.6s_both]">
+                    <span
+                        class="sc-num absolute top-6 right-8 text-4xl font-light text-white/5 group-hover:text-ds3Purple/10 transition-colors">04</span>
+                    <iconify-icon icon="solar:magic-stick-3-bold-duotone"
+                        class="text-ds3Purple text-4xl mb-8 opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                    <h3 class="text-base font-semibold text-white uppercase tracking-wider mb-3">Pós-Produção &
+                        Retouching</h3>
                     <p class="text-sm text-neutral-400 font-light leading-relaxed">
                         <strong class="text-white font-medium block mb-1">O refinamento final.</strong>
-                        Integração impecável de paisagismo, correção de cor, recortes e detalhes minuciosos que transformam um render em uma obra de arte.
+                        Integração impecável de paisagismo, correção de cor, recortes e detalhes minuciosos que
+                        transformam um render em uma obra de arte.
                     </p>
                 </div>
 
                 <!-- Card 5 -->
-                <div class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] service-card relative bg-[#0A0A0A]/80 backdrop-blur-sm border border-white/5 p-8 pt-10 flex flex-col overflow-hidden group cursor-hover transition-colors duration-300 hover:bg-[#111115] hover:border-ds3Purple/40 hover:-translate-y-1 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.7s_both]">
-                    <span class="sc-num absolute top-6 right-8 text-4xl font-light text-white/5 group-hover:text-ds3Purple/10 transition-colors">05</span>
-                    <iconify-icon icon="solar:videocamera-record-bold-duotone" class="text-ds3Purple text-4xl mb-8 opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
-                    <h3 class="text-base font-semibold text-white uppercase tracking-wider mb-3">Motion Design & Edição</h3>
+                <div
+                    class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] service-card relative bg-[#0A0A0A]/80 backdrop-blur-sm border border-white/5 p-8 pt-10 flex flex-col overflow-hidden group cursor-hover transition-colors duration-300 hover:bg-[#111115] hover:border-ds3Purple/40 hover:-translate-y-1 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.7s_both]">
+                    <span
+                        class="sc-num absolute top-6 right-8 text-4xl font-light text-white/5 group-hover:text-ds3Purple/10 transition-colors">05</span>
+                    <iconify-icon icon="solar:videocamera-record-bold-duotone"
+                        class="text-ds3Purple text-4xl mb-8 opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                    <h3 class="text-base font-semibold text-white uppercase tracking-wider mb-3">Motion Design & Edição
+                    </h3>
                     <p class="text-sm text-neutral-400 font-light leading-relaxed">
                         <strong class="text-white font-medium block mb-1">Movimento que vende.</strong>
-                        Criação de narrativas visuais fluidas, animações de câmera e edição cinematográfica para filmes de lançamento e tours virtuais.
+                        Criação de narrativas visuais fluidas, animações de câmera e edição cinematográfica para filmes
+                        de lançamento e tours virtuais.
                     </p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Dobra 4 (Processo Axyon) -->
+    <section id="processo"
+        class="py-24 px-6 lg:px-12 max-w-[90rem] mx-auto border-t border-white/5 bg-ds3Aura relative z-20 cursor-hover overflow-hidden">
+
+        <!-- Header Center -->
+        <div
+            class="flex flex-col items-center justify-center text-center gap-4 mb-24 max-w-3xl mx-auto animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.1s_both]">
+            <span
+                class="text-[11px] font-mono text-ds3Purple uppercase tracking-[0.25em] mb-2 border border-ds3Purple/30 px-3 py-1 rounded-full bg-ds3Purple/5">Metodologia</span>
+            <h2 class="text-4xl lg:text-6xl font-medium tracking-tighter text-ghost cursor-hover uppercase">PROCESSO
+                AXYON</h2>
+            <p class="text-base lg:text-lg text-neutral-400 font-light leading-relaxed mt-4">
+                Metodologia desenvolvida para eliminar gargalos, garantir previsibilidade absoluta e entregar sempre no
+                prazo.
+            </p>
+        </div>
+
+        <!-- Timeline Container -->
+        <div class="relative w-full max-w-5xl mx-auto">
+
+            <!-- Vertical Beam Line -->
+            <div class="timeline-beam"></div>
+
+            <!-- Steps Grid -->
+            <div class="relative z-20 space-y-24 lg:space-y-32">
+
+                <!-- Step 1: Left -->
+                <div class="flex flex-col lg:flex-row items-center w-full group">
+                    <div
+                        class="lg:w-1/2 lg:pr-16 text-center lg:text-right animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.2s_both]">
+                        <h3 class="text-lg lg:text-xl font-bold text-white uppercase tracking-wider mb-3">01. Briefing e
+                            Recebimento</h3>
+                        <p class="text-sm lg:text-base text-neutral-400 font-light leading-relaxed">
+                            Coleta do material técnico, referências e alinhamento da expectativa comercial do
+                            lançamento.
+                        </p>
+                    </div>
+                    <div
+                        class="absolute left-1/2 -translate-x-1/2 w-3 h-3 bg-ds3Purple rounded-full shadow-[0_0_15px_#8d4fc0] z-30 transition-transform duration-500 scale-75 group-hover:scale-125 hidden lg:block">
+                    </div>
+                    <div class="lg:w-1/2"></div>
+                </div>
+
+                <!-- Step 2: Right -->
+                <div class="flex flex-col lg:flex-row items-center w-full group">
+                    <div class="lg:w-1/2"></div>
+                    <div
+                        class="absolute left-1/2 -translate-x-1/2 w-3 h-3 bg-ds3Purple rounded-full shadow-[0_0_15px_#8d4fc0] z-30 transition-transform duration-500 scale-75 group-hover:scale-125 hidden lg:block">
+                    </div>
+                    <div
+                        class="lg:w-1/2 lg:pl-16 text-center lg:text-left animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.3s_both]">
+                        <h3 class="text-lg lg:text-xl font-bold text-white uppercase tracking-wider mb-3">02.
+                            Compatibilização</h3>
+                        <p class="text-sm lg:text-base text-neutral-400 font-light leading-relaxed">
+                            Análise minuciosa e cruzamento de dados arquitetônicos para evitar qualquer conflito antes
+                            da produção.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 3: Left -->
+                <div class="flex flex-col lg:flex-row items-center w-full group">
+                    <div
+                        class="lg:w-1/2 lg:pr-16 text-center lg:text-right animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.4s_both]">
+                        <h3 class="text-lg lg:text-xl font-bold text-white uppercase tracking-wider mb-3">03. Modelagem
+                        </h3>
+                        <p class="text-sm lg:text-base text-neutral-400 font-light leading-relaxed">
+                            Construção volumétrica 3D precisa do empreendimento, respeitando fielmente o projeto
+                            original.
+                        </p>
+                    </div>
+                    <div
+                        class="absolute left-1/2 -translate-x-1/2 w-3 h-3 bg-ds3Purple rounded-full shadow-[0_0_15px_#8d4fc0] z-30 transition-transform duration-500 scale-75 group-hover:scale-125 hidden lg:block">
+                    </div>
+                    <div class="lg:w-1/2"></div>
+                </div>
+
+                <!-- Step 4: Right -->
+                <div class="flex flex-col lg:flex-row items-center w-full group">
+                    <div class="lg:w-1/2"></div>
+                    <div
+                        class="absolute left-1/2 -translate-x-1/2 w-3 h-3 bg-ds3Purple rounded-full shadow-[0_0_15px_#8d4fc0] z-30 transition-transform duration-500 scale-75 group-hover:scale-125 hidden lg:block">
+                    </div>
+                    <div
+                        class="lg:w-1/2 lg:pl-16 text-center lg:text-left animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.5s_both]">
+                        <h3 class="text-lg lg:text-xl font-bold text-white uppercase tracking-wider mb-3">04.
+                            Texturização e Luz</h3>
+                        <p class="text-sm lg:text-base text-neutral-400 font-light leading-relaxed">
+                            Aplicação de materiais realistas, integração com a natureza e estudo de luz para criar a
+                            atmosfera perfeita.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 5: Left -->
+                <div class="flex flex-col lg:flex-row items-center w-full group">
+                    <div
+                        class="lg:w-1/2 lg:pr-16 text-center lg:text-right animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.6s_both]">
+                        <h3 class="text-lg lg:text-xl font-bold text-white uppercase tracking-wider mb-3">05. Primeiro
+                            Tiro</h3>
+                        <p class="text-sm lg:text-base text-neutral-400 font-light leading-relaxed">
+                            Envio das primeiras prévias em baixa resolução para alinhamento de ângulos e validação de
+                            cenografia.
+                        </p>
+                    </div>
+                    <div
+                        class="absolute left-1/2 -translate-x-1/2 w-3 h-3 bg-ds3Purple rounded-full shadow-[0_0_15px_#8d4fc0] z-30 transition-transform duration-500 scale-75 group-hover:scale-125 hidden lg:block">
+                    </div>
+                    <div class="lg:w-1/2"></div>
+                </div>
+
+                <!-- Step 6: Right -->
+                <div class="flex flex-col lg:flex-row items-center w-full group">
+                    <div class="lg:w-1/2"></div>
+                    <div
+                        class="absolute left-1/2 -translate-x-1/2 w-3 h-3 bg-ds3Purple rounded-full shadow-[0_0_15px_#8d4fc0] z-30 transition-transform duration-500 scale-75 group-hover:scale-125 hidden lg:block">
+                    </div>
+                    <div
+                        class="lg:w-1/2 lg:pl-16 text-center lg:text-left animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.7s_both]">
+                        <h3 class="text-lg lg:text-xl font-bold text-white uppercase tracking-wider mb-3">06. Revisões
+                        </h3>
+                        <p class="text-sm lg:text-base text-neutral-400 font-light leading-relaxed">
+                            Rodadas de ajustes finos baseadas no seu feedback para garantir que o resultado atenda 100%
+                            da expectativa.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 7: Left -->
+                <div class="flex flex-col lg:flex-row items-center w-full group">
+                    <div
+                        class="lg:w-1/2 lg:pr-16 text-center lg:text-right animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.8s_both]">
+                        <h3 class="text-lg lg:text-xl font-bold text-white uppercase tracking-wider mb-3">07. Entrega
+                            Final</h3>
+                        <p class="text-sm lg:text-base text-neutral-400 font-light leading-relaxed">
+                            Renderização em alta resolução e pós-produção impecável, pronta para impulsionar suas
+                            campanhas.
+                        </p>
+                    </div>
+                    <div
+                        class="absolute left-1/2 -translate-x-1/2 w-3 h-3 bg-ds3Purple rounded-full shadow-[0_0_15px_#8d4fc0] z-30 transition-transform duration-500 scale-75 group-hover:scale-125 hidden lg:block">
+                    </div>
+                    <div class="lg:w-1/2"></div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -670,6 +929,25 @@
                         statTime.innerText = `00:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
                     }
                 }, 150);
+
+                // --- 4. Timeline Scroll Beam Control ---
+                window.addEventListener('scroll', () => {
+                    const section = document.getElementById('processo');
+                    if (!section) return;
+                    const rect = section.getBoundingClientRect();
+                    const vh = window.innerHeight;
+                    if (rect.top < vh && rect.bottom > 0) {
+                        // Queremos que o CENTRO do feixe (que tem 30vh de altura) 
+                        // esteja alinhado com o CENTRO do viewport (vh/2).
+                        // Logo, o TOPO do feixe deve estar em: (vh/2) - (30vh/2) = 35vh do topo do viewport.
+                        const targetTopInViewport = vh * 0.35; 
+                        const progress = (targetTopInViewport - rect.top) / rect.height;
+                        
+                        // Clamp mais amplo para permitir que o feixe entre e saia da seção
+                        const percentage = Math.max(-20, Math.min(100, progress * 100));
+                        section.style.setProperty('--beam-top', `${percentage}%`);
+                    }
+                });
             }
         });
     </script>
