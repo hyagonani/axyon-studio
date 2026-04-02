@@ -114,6 +114,26 @@
             0% { transform: translateX(-100%); }
             100% { transform: translateX(100%); }
         }
+
+        /* Auto-reveal state for Section 2 Image */
+        .image-reveal-active.animate img {
+            filter: grayscale(0) !important;
+            opacity: 1 !important;
+            transform: scale(1.05) !important;
+            transition-delay: 0.5s !important;
+        }
+        .image-reveal-active.animate .grid-bg-mask {
+            opacity: 0.1 !important;
+            transition-delay: 0.5s !important;
+        }
+        .image-reveal-active.animate .beam-drop-effect {
+            animation: beam-drop 3s cubic-bezier(0.4,0,0.2,1) infinite !important;
+            animation-delay: 0.5s !important;
+        }
+        .image-reveal-active.animate .beam-slide-effect {
+            animation: beam-slide 3s cubic-bezier(0.4,0,0.2,1) infinite !important;
+            animation-delay: 0.8s !important;
+        }
     </style>
 </head>
 
@@ -254,7 +274,7 @@
             <div class="flex flex-col justify-center gap-7">
                 <!-- Header -->
                 <div class="flex items-end gap-3 border-b border-white/5 pb-4">
-                    <h2 class="text-3xl lg:text-4xl text-white font-medium tracking-tight">NOSSO PROPÓSITO</h2>
+                    <h2 class="text-4xl lg:text-5xl font-medium tracking-tighter text-ghost cursor-hover uppercase">NOSSO PROPÓSITO</h2>
                 </div>
 
                 <!-- Main Text -->
@@ -328,9 +348,9 @@
             </div>
 
             <!-- Right Column: Image -->
-            <div class="relative h-[55vh] lg:h-[80vh] min-h-[450px] w-full bg-neutral-900 border border-white/10 group overflow-hidden cursor-hover">
+            <div class="relative h-[55vh] lg:h-[80vh] min-h-[450px] w-full bg-neutral-900 border border-white/10 group overflow-hidden cursor-hover image-reveal-active animate-on-scroll">
                  <!-- Background Grid hover mask -->
-                 <div class="absolute inset-0 grid-bg opacity-30 pointer-events-none z-10 mix-blend-overlay group-hover:opacity-10 transition-opacity duration-700"></div>
+                 <div class="absolute inset-0 grid-bg grid-bg-mask opacity-30 pointer-events-none z-10 mix-blend-overlay group-hover:opacity-10 transition-opacity duration-1000"></div>
                  
                  <img src="./public/2dobra.png" alt="Axyon Estúdio 3D Edifício" class="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[2000ms] ease-out z-0 relative" />
                  
@@ -345,13 +365,89 @@
                  
                  <!-- Beam border interactions -->
                  <div class="absolute top-0 bottom-0 left-0 w-[1px] bg-white/5 z-10 overflow-hidden">
-                     <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-ds3Purple to-transparent -translate-y-[100%] group-hover:animate-[beam-drop_3s_cubic-bezier(0.4,0,0.2,1)_infinite]"></div>
+                     <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-ds3Purple to-transparent -translate-y-[100%] beam-drop-effect group-hover:animate-[beam-drop_3s_cubic-bezier(0.4,0,0.2,1)_infinite]"></div>
                  </div>
                  <div class="absolute bottom-0 left-0 right-0 h-[1px] bg-white/5 z-10 overflow-hidden">
-                     <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-ds3Purple to-transparent -translate-x-[100%] group-hover:animate-[beam-slide_3s_cubic-bezier(0.4,0,0.2,1)_infinite]"></div>
+                     <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-ds3Purple to-transparent -translate-x-[100%] beam-slide-effect group-hover:animate-[beam-slide_3s_cubic-bezier(0.4,0,0.2,1)_infinite]"></div>
                  </div>
             </div>
             
+        </div>
+    </section>
+
+    <!-- SECTION 2: Dobra 3 (O Time / Especialidades) -->
+    <section id="especialidades" class="py-24 px-6 lg:px-12 max-w-[90rem] mx-auto border-t border-white/5 bg-ds3Surface relative z-20 overflow-hidden cursor-hover">
+        <!-- SVG Dot Pattern Background -->
+        <div class="absolute inset-0 z-0 opacity-100 pointer-events-none mix-blend-screen" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEuNSIgZmlsbD0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjIpIi8+PC9zdmc+'); mask-image: radial-gradient(circle at center, black 10%, transparent 60%); -webkit-mask-image: radial-gradient(circle at top, black 10%, transparent 80%);"></div>
+        
+        <div class="relative z-10 w-full">
+            
+            <!-- Header Center -->
+            <div class="flex flex-col items-center justify-center text-center gap-4 mb-20 max-w-3xl mx-auto animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.2s_both]">
+                <span class="text-[11px] font-mono text-ds3Purple uppercase tracking-[0.25em] mb-2 border border-ds3Purple/30 px-3 py-1 rounded-full bg-ds3Purple/5">O Time</span>
+                <h2 class="text-3xl lg:text-5xl text-white font-medium tracking-tight uppercase">NOSSO ECOSSISTEMA TÉCNICO</h2>
+                <p class="text-base lg:text-lg text-neutral-400 font-light leading-relaxed mt-4">
+                    Uma estrutura global de especialistas dedicados a cada etapa da sua visualização, garantindo qualidade de ponta e entregas ágeis.
+                </p>
+            </div>
+
+            <!-- Cards Grid -->
+            <div class="flex flex-wrap justify-center gap-6">
+                <!-- Card 1 -->
+                <div class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] service-card relative bg-[#0A0A0A]/80 backdrop-blur-sm border border-white/5 p-8 pt-10 flex flex-col overflow-hidden group cursor-hover transition-colors duration-300 hover:bg-[#111115] hover:border-ds3Purple/40 hover:-translate-y-1 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.3s_both]">
+                    <span class="sc-num absolute top-6 right-8 text-4xl font-light text-white/5 group-hover:text-ds3Purple/10 transition-colors">01</span>
+                    <iconify-icon icon="solar:pen-new-square-bold-duotone" class="text-ds3Purple text-4xl mb-8 opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                    <h3 class="text-base font-semibold text-white uppercase tracking-wider mb-3">Direção de Arte & Setup</h3>
+                    <p class="text-sm text-neutral-400 font-light leading-relaxed">
+                        <strong class="text-white font-medium block mb-1">O cérebro da operação.</strong>
+                        Análise minuciosa do briefing, definição da narrativa visual, paleta e controle de qualidade rigoroso para garantir o apelo comercial.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] service-card relative bg-[#0A0A0A]/80 backdrop-blur-sm border border-white/5 p-8 pt-10 flex flex-col overflow-hidden group cursor-hover transition-colors duration-300 hover:bg-[#111115] hover:border-ds3Purple/40 hover:-translate-y-1 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.4s_both]">
+                    <span class="sc-num absolute top-6 right-8 text-4xl font-light text-white/5 group-hover:text-ds3Purple/10 transition-colors">02</span>
+                    <iconify-icon icon="solar:box-minimalistic-bold-duotone" class="text-ds3Purple text-4xl mb-8 opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                    <h3 class="text-base font-semibold text-white uppercase tracking-wider mb-3">Modelagem 3D Arquitetônica</h3>
+                    <p class="text-sm text-neutral-400 font-light leading-relaxed">
+                        <strong class="text-white font-medium block mb-1">Precisão milimétrica.</strong>
+                        Transformamos plantas e arquivos CAD em volumetria perfeita, respeitando cada especificação do projeto original.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] service-card relative bg-[#0A0A0A]/80 backdrop-blur-sm border border-white/5 p-8 pt-10 flex flex-col overflow-hidden group cursor-hover transition-colors duration-300 hover:bg-[#111115] hover:border-ds3Purple/40 hover:-translate-y-1 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.5s_both]">
+                    <span class="sc-num absolute top-6 right-8 text-4xl font-light text-white/5 group-hover:text-ds3Purple/10 transition-colors">03</span>
+                    <iconify-icon icon="solar:sun-fog-bold-duotone" class="text-ds3Purple text-4xl mb-8 opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                    <h3 class="text-base font-semibold text-white uppercase tracking-wider mb-3">Lighting & Texturização</h3>
+                    <p class="text-sm text-neutral-400 font-light leading-relaxed">
+                        <strong class="text-white font-medium block mb-1">A alma da imagem.</strong>
+                        Especialistas em iluminação fotorrealista e criação de materiais (shaders) que despertam a sensação de pertencimento e conforto.
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] service-card relative bg-[#0A0A0A]/80 backdrop-blur-sm border border-white/5 p-8 pt-10 flex flex-col overflow-hidden group cursor-hover transition-colors duration-300 hover:bg-[#111115] hover:border-ds3Purple/40 hover:-translate-y-1 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.6s_both]">
+                    <span class="sc-num absolute top-6 right-8 text-4xl font-light text-white/5 group-hover:text-ds3Purple/10 transition-colors">04</span>
+                    <iconify-icon icon="solar:magic-stick-3-bold-duotone" class="text-ds3Purple text-4xl mb-8 opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                    <h3 class="text-base font-semibold text-white uppercase tracking-wider mb-3">Pós-Produção & Retouching</h3>
+                    <p class="text-sm text-neutral-400 font-light leading-relaxed">
+                        <strong class="text-white font-medium block mb-1">O refinamento final.</strong>
+                        Integração impecável de paisagismo, correção de cor, recortes e detalhes minuciosos que transformam um render em uma obra de arte.
+                    </p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] service-card relative bg-[#0A0A0A]/80 backdrop-blur-sm border border-white/5 p-8 pt-10 flex flex-col overflow-hidden group cursor-hover transition-colors duration-300 hover:bg-[#111115] hover:border-ds3Purple/40 hover:-translate-y-1 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.7s_both]">
+                    <span class="sc-num absolute top-6 right-8 text-4xl font-light text-white/5 group-hover:text-ds3Purple/10 transition-colors">05</span>
+                    <iconify-icon icon="solar:videocamera-record-bold-duotone" class="text-ds3Purple text-4xl mb-8 opacity-80 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                    <h3 class="text-base font-semibold text-white uppercase tracking-wider mb-3">Motion Design & Edição</h3>
+                    <p class="text-sm text-neutral-400 font-light leading-relaxed">
+                        <strong class="text-white font-medium block mb-1">Movimento que vende.</strong>
+                        Criação de narrativas visuais fluidas, animações de câmera e edição cinematográfica para filmes de lançamento e tours virtuais.
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 
