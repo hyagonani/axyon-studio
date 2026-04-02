@@ -1635,7 +1635,7 @@
         window.RENDER_SYSTEM_READY = false;
 
         // --- 0. Preloader Logic ---
-        window.addEventListener('load', () => {
+        document.addEventListener('DOMContentLoaded', () => {
             const preloader = document.getElementById('preloader');
             const percentText = document.getElementById('loader-percent');
             const barFill = document.getElementById('loader-bar');
@@ -1657,7 +1657,7 @@
                         }, 500);
                     }
 
-                    percentText.innerText = progress.toString().padStart(2, '0');
+                    if (percentText) percentText.innerText = progress.toString().padStart(2, '0');
                     if (barFill) barFill.style.width = progress + '%';
                 }, 50);
             };
@@ -1792,19 +1792,27 @@
                 const statPercent = document.getElementById("stat-percent");
                 const statTime = document.getElementById("stat-time");
 
+                let lastWidth = window.innerWidth;
                 let scanY = 0;
                 function initGrid() {
                     const heroDiv = document.getElementById("hero");
                     const width = window.innerWidth;
                     const height = heroDiv ? heroDiv.clientHeight : window.innerHeight;
 
+                    // If height changes due to mobile address bar, don't reset buckets
+                    if (buckets.length > 0 && width === lastWidth && Math.abs(height - canvas.height) < 150) {
+                        return;
+                    }
+
+                    if (width !== lastWidth) {
+                        scanY = 0; // Reset only if orientation changed
+                    }
                     canvas.width = width;
                     canvas.height = height;
 
                     cols = Math.ceil(canvas.width / BUCKET_SIZE);
                     rows = Math.ceil(canvas.height / BUCKET_SIZE);
                     buckets = [];
-                    scanY = 0; // Reset scanline on init
 
                     let bucketIndex = 0;
                     for (let y = 0; y < rows; y++) {
@@ -1822,6 +1830,8 @@
                         }
                     }
                     if (statBuckets) statBuckets.innerText = `0/${buckets.length}`;
+                    
+                    lastWidth = width;
                 }
 
                 window.addEventListener("resize", initGrid);
@@ -1845,8 +1855,8 @@
                     isHoveringHero = false;
                 });
 
-                const MOUSE_REVEAL_RADIUS = 200;
-                const REVEAL_SPEED = 0.06;
+                const MOUSE_REVEAL_RADIUS = (window.innerWidth < 1024) ? 140 : 200;
+                const REVEAL_SPEED = (window.innerWidth < 1024) ? 0.08 : 0.06;
 
                 function renderGrid() {
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
