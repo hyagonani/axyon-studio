@@ -305,8 +305,13 @@
         }
 
         @keyframes logoScroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-33.333%); }
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-33.333%);
+            }
         }
 
         .logo-item {
@@ -517,7 +522,7 @@
             <h1
                 class="text-5xl lg:text-[4.5rem] leading-[1.05] uppercase font-medium text-white tracking-tighter mb-8 cursor-hover pointer-events-auto max-w-4xl animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.2s_both]">
                 O <span class="text-ghost">Futuro</span> do Seu Lançamento Materializado <span
-                    class="text-ghost">Hoje.</span>
+                    class="text-ghost">Hoje</span>
             </h1>
 
             <!-- Sub-headline -->
@@ -1105,13 +1110,16 @@
     </section>
 
     <!-- SECTION 4.6: Depoimentos (Testimonials) -->
-    <section id="depoimentos" class="relative bg-[#050505] py-32 px-6 lg:px-16 overflow-hidden cursor-hover scroll-mt-24">
+    <section id="depoimentos"
+        class="relative bg-[#050505] py-32 px-6 lg:px-16 overflow-hidden cursor-hover scroll-mt-24">
         <div class="absolute inset-0 grid-bg pointer-events-none opacity-15"></div>
 
         <!-- Header -->
         <div class="relative z-10 text-center mb-16 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.1s_both]">
-            <span class="text-[11px] font-mono text-ds3Purple uppercase tracking-[0.25em] mb-4 inline-block border border-ds3Purple/30 px-3 py-1 rounded-full bg-ds3Purple/5">Feedback</span>
-            <h2 class="text-4xl lg:text-5xl text-white font-medium tracking-tighter uppercase mt-6">O QUE DIZEM<br>NOSSOS PARCEIROS</h2>
+            <span
+                class="text-[11px] font-mono text-ds3Purple uppercase tracking-[0.25em] mb-4 inline-block border border-ds3Purple/30 px-3 py-1 rounded-full bg-ds3Purple/5">Feedback</span>
+            <h2 class="text-4xl lg:text-5xl text-white font-medium tracking-tighter uppercase mt-6">O QUE
+                DIZEM<br>NOSSOS PARCEIROS</h2>
         </div>
 
         <!-- Logos Carousel (inside testimonials) -->
@@ -1142,71 +1150,122 @@
                 </div>
             </div>
             <!-- Side fades -->
-            <div class="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none"></div>
-            <div class="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none"></div>
+            <div
+                class="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-[#050505] to-transparent z-10 pointer-events-none">
+            </div>
+            <div
+                class="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-[#050505] to-transparent z-10 pointer-events-none">
+            </div>
         </div>
 
         <!-- Testimonial Cards -->
         <div class="relative z-10 max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
 
             <!-- Card 1 -->
-            <div class="relative p-8 lg:p-10 border border-white/5 bg-[#0a0a0a] group hover:border-ds3Purple/20 transition-all duration-500 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.2s_both]">
+            <div
+                class="relative p-8 lg:p-10 border border-white/5 bg-[#0a0a0a] group hover:border-ds3Purple/20 transition-all duration-500 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.2s_both]">
                 <!-- Corner brackets -->
-                <div class="absolute top-0 left-0 w-4 h-4 border-t border-l border-ds3Purple/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-ds3Purple/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div
+                    class="absolute top-0 left-0 w-4 h-4 border-t border-l border-ds3Purple/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                </div>
+                <div
+                    class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-ds3Purple/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                </div>
 
                 <!-- 5 Stars -->
                 <div class="flex gap-1 mb-6">
-                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
                 </div>
 
                 <!-- Quote -->
                 <p class="text-white/70 text-sm lg:text-base font-light leading-[1.8] italic mb-8">
-                    "A Axyon entregou antes do prazo estipulado e o rigor técnico das imagens ajudou nossa equipe de corretores a bater a meta de vendas no fim de semana de lançamento. Parceria estratégica real."
+                    "A Axyon entregou antes do prazo estipulado e o rigor técnico das imagens ajudou nossa equipe de
+                    corretores a bater a meta de vendas no fim de semana de lançamento. Parceria estratégica real."
                 </p>
 
                 <!-- Author -->
                 <div class="flex flex-col gap-1 border-t border-white/5 pt-6">
                     <span class="text-white text-sm font-semibold uppercase tracking-wider">Carlos Mendonça</span>
-                    <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.2em]">Diretor Comercial · Incorporadora Vértice</span>
+                    <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.2em]">Diretor Comercial ·
+                        Incorporadora Vértice</span>
                 </div>
 
                 <!-- Ghost number -->
-                <span class="absolute top-6 right-8 text-[80px] font-black text-white/[0.02] leading-none select-none pointer-events-none">01</span>
+                <span
+                    class="absolute top-6 right-8 text-[80px] font-black text-white/[0.02] leading-none select-none pointer-events-none">01</span>
             </div>
 
             <!-- Card 2 -->
-            <div class="relative p-8 lg:p-10 border border-white/5 bg-[#0a0a0a] group hover:border-ds3Purple/20 transition-all duration-500 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.4s_both]">
+            <div
+                class="relative p-8 lg:p-10 border border-white/5 bg-[#0a0a0a] group hover:border-ds3Purple/20 transition-all duration-500 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.4s_both]">
                 <!-- Corner brackets -->
-                <div class="absolute top-0 left-0 w-4 h-4 border-t border-l border-ds3Purple/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-ds3Purple/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div
+                    class="absolute top-0 left-0 w-4 h-4 border-t border-l border-ds3Purple/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                </div>
+                <div
+                    class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-ds3Purple/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                </div>
 
                 <!-- 5 Stars -->
                 <div class="flex gap-1 mb-6">
-                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-4 h-4 text-ds3Purple" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
                 </div>
 
                 <!-- Quote -->
                 <p class="text-white/70 text-sm lg:text-base font-light leading-[1.8] italic mb-8">
-                    "O nível de detalhamento e realismo das perspectivas superou nossas expectativas. A qualidade do material foi decisiva para fechar contratos com investidores internacionais antes mesmo da obra iniciar."
+                    "O nível de detalhamento e realismo das perspectivas superou nossas expectativas. A qualidade do
+                    material foi decisiva para fechar contratos com investidores internacionais antes mesmo da obra
+                    iniciar."
                 </p>
 
                 <!-- Author -->
                 <div class="flex flex-col gap-1 border-t border-white/5 pt-6">
                     <span class="text-white text-sm font-semibold uppercase tracking-wider">Beatriz Almeida</span>
-                    <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.2em]">CEO · Construtora Opus Prime</span>
+                    <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.2em]">CEO · Construtora
+                        Opus Prime</span>
                 </div>
 
                 <!-- Ghost number -->
-                <span class="absolute top-6 right-8 text-[80px] font-black text-white/[0.02] leading-none select-none pointer-events-none">02</span>
+                <span
+                    class="absolute top-6 right-8 text-[80px] font-black text-white/[0.02] leading-none select-none pointer-events-none">02</span>
             </div>
 
         </div>
@@ -1218,91 +1277,124 @@
         <div class="absolute inset-0 grid-bg pointer-events-none opacity-30"></div>
 
         <!-- Header -->
-        <div class="relative z-10 max-w-5xl mx-auto mb-20 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.1s_both]">
-            <span class="text-[11px] font-mono text-ds3Purple uppercase tracking-[0.25em] mb-4 block border border-ds3Purple/30 px-3 py-1 rounded-full bg-ds3Purple/5 w-fit">Nossos Serviços</span>
-            <h2 class="text-4xl lg:text-5xl text-white font-medium tracking-tighter uppercase mt-4">SOLUÇÕES VISUAIS<br>ESTRATÉGICAS</h2>
+        <div
+            class="relative z-10 max-w-5xl mx-auto mb-20 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.1s_both]">
+            <span
+                class="text-[11px] font-mono text-ds3Purple uppercase tracking-[0.25em] mb-4 block border border-ds3Purple/30 px-3 py-1 rounded-full bg-ds3Purple/5 w-fit">Nossos
+                Serviços</span>
+            <h2 class="text-4xl lg:text-5xl text-white font-medium tracking-tighter uppercase mt-4">SOLUÇÕES
+                VISUAIS<br>ESTRATÉGICAS</h2>
         </div>
 
         <!-- Cards Container — Horizontal scroll with vertical rectangles -->
-        <div class="relative z-10 flex gap-5 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide" style="-ms-overflow-style:none;scrollbar-width:none;">
-            <style>.scrollbar-hide::-webkit-scrollbar{display:none;}</style>
+        <div class="relative z-10 flex gap-5 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide"
+            style="-ms-overflow-style:none;scrollbar-width:none;">
+            <style>
+                .scrollbar-hide::-webkit-scrollbar {
+                    display: none;
+                }
+            </style>
 
             <!-- Card 1: Setup de Modelagem -->
-            <div class="servico-card group snap-start animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.15s_both]">
+            <div
+                class="servico-card group snap-start animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.15s_both]">
                 <div class="servico-card-inner">
                     <img src="./public/portfolio/img (5).png" alt="" class="servico-bg" loading="lazy" decoding="async">
                     <span class="servico-number">01</span>
                     <div class="servico-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-8 h-8">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
+                            stroke="currentColor" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
                         </svg>
                     </div>
                     <h3 class="servico-title">Setup de<br>Modelagem</h3>
-                    <p class="servico-desc">Construção digital precisa do empreendimento com fidelidade volumétrica e materialidade técnica.</p>
+                    <p class="servico-desc">Construção digital precisa do empreendimento com fidelidade volumétrica e
+                        materialidade técnica.</p>
                     <div class="servico-line"></div>
                 </div>
             </div>
 
             <!-- Card 2: Stills High-End -->
-            <div class="servico-card group snap-start animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.3s_both]">
+            <div
+                class="servico-card group snap-start animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.3s_both]">
                 <div class="servico-card-inner">
-                    <img src="./public/portfolio/img (12).png" alt="" class="servico-bg" loading="lazy" decoding="async">
+                    <img src="./public/portfolio/img (12).png" alt="" class="servico-bg" loading="lazy"
+                        decoding="async">
                     <span class="servico-number">02</span>
                     <div class="servico-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-8 h-8">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0 0 22.5 18.75V5.25A2.25 2.25 0 0 0 20.25 3H3.75A2.25 2.25 0 0 0 1.5 5.25v13.5A2.25 2.25 0 0 0 3.75 21Z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
+                            stroke="currentColor" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0 0 22.5 18.75V5.25A2.25 2.25 0 0 0 20.25 3H3.75A2.25 2.25 0 0 0 1.5 5.25v13.5A2.25 2.25 0 0 0 3.75 21Z" />
                         </svg>
                     </div>
                     <h3 class="servico-title">Stills<br>High-End</h3>
-                    <p class="servico-desc">Imagens estáticas de alta definição com iluminação cinematográfica e pós-produção impecável.</p>
+                    <p class="servico-desc">Imagens estáticas de alta definição com iluminação cinematográfica e
+                        pós-produção impecável.</p>
                     <div class="servico-line"></div>
                 </div>
             </div>
 
             <!-- Card 3: Planta Humanizada -->
-            <div class="servico-card group snap-start animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.45s_both]">
+            <div
+                class="servico-card group snap-start animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.45s_both]">
                 <div class="servico-card-inner">
-                    <img src="./public/portfolio/img (21).png" alt="" class="servico-bg" loading="lazy" decoding="async">
+                    <img src="./public/portfolio/img (21).png" alt="" class="servico-bg" loading="lazy"
+                        decoding="async">
                     <span class="servico-number">03</span>
                     <div class="servico-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-8 h-8">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25a2.25 2.25 0 0 1-2.25-2.25v-2.25Z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
+                            stroke="currentColor" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25a2.25 2.25 0 0 1-2.25-2.25v-2.25Z" />
                         </svg>
                     </div>
                     <h3 class="servico-title">Planta<br>Humanizada</h3>
-                    <p class="servico-desc">Representação técnica com acabamentos, mobiliário e vegetação que traduzem o projeto em experiência real.</p>
+                    <p class="servico-desc">Representação técnica com acabamentos, mobiliário e vegetação que traduzem o
+                        projeto em experiência real.</p>
                     <div class="servico-line"></div>
                 </div>
             </div>
 
             <!-- Card 4: VR Tour 360° -->
-            <div class="servico-card group snap-start animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.6s_both]">
+            <div
+                class="servico-card group snap-start animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.6s_both]">
                 <div class="servico-card-inner">
-                    <img src="./public/portfolio/img (27).png" alt="" class="servico-bg" loading="lazy" decoding="async">
+                    <img src="./public/portfolio/img (27).png" alt="" class="servico-bg" loading="lazy"
+                        decoding="async">
                     <span class="servico-number">04</span>
                     <div class="servico-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-8 h-8">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5a17.92 17.92 0 0 1-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
+                            stroke="currentColor" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5a17.92 17.92 0 0 1-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
                         </svg>
                     </div>
                     <h3 class="servico-title">VR Tour<br>360°</h3>
-                    <p class="servico-desc">Experiência imersiva interativa que permite explorar cada ambiente com total liberdade e realismo.</p>
+                    <p class="servico-desc">Experiência imersiva interativa que permite explorar cada ambiente com total
+                        liberdade e realismo.</p>
                     <div class="servico-line"></div>
                 </div>
             </div>
 
             <!-- Card 5: Filme de Lançamento -->
-            <div class="servico-card group snap-start animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.75s_both]">
+            <div
+                class="servico-card group snap-start animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.75s_both]">
                 <div class="servico-card-inner">
-                    <img src="./public/portfolio/img (33).png" alt="" class="servico-bg" loading="lazy" decoding="async">
+                    <img src="./public/portfolio/img (33).png" alt="" class="servico-bg" loading="lazy"
+                        decoding="async">
                     <span class="servico-number">05</span>
                     <div class="servico-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-8 h-8">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
+                            stroke="currentColor" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
                         </svg>
                     </div>
                     <h3 class="servico-title">Filme de<br>Lançamento</h3>
-                    <p class="servico-desc">Animação cinematográfica com câmeras dinâmicas e storytelling visual que eleva o lançamento imobiliário.</p>
+                    <p class="servico-desc">Animação cinematográfica com câmeras dinâmicas e storytelling visual que
+                        eleva o lançamento imobiliário.</p>
                     <div class="servico-line"></div>
                 </div>
             </div>
@@ -1319,15 +1411,18 @@
         <div class="relative z-10 max-w-2xl mx-auto">
             <!-- Header -->
             <div class="text-center mb-16 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.1s_both]">
-                <span class="text-[11px] font-mono text-ds3Purple uppercase tracking-[0.25em] mb-4 inline-block border border-ds3Purple/30 px-3 py-1 rounded-full bg-ds3Purple/5">Contato</span>
-                <h2 class="text-4xl lg:text-5xl text-white font-medium tracking-tighter uppercase mt-6">VAMOS ANTECIPAR<br>O SEU SUCESSO?</h2>
+                <span
+                    class="text-[11px] font-mono text-ds3Purple uppercase tracking-[0.25em] mb-4 inline-block border border-ds3Purple/30 px-3 py-1 rounded-full bg-ds3Purple/5">Contato</span>
+                <h2 class="text-4xl lg:text-5xl text-white font-medium tracking-tighter uppercase mt-6">VAMOS
+                    ANTECIPAR<br>O SEU SUCESSO?</h2>
                 <p class="text-sm text-neutral-500 font-light leading-relaxed mt-6 font-mono">
                     Preencha o formulário e nossa equipe entrará em contato em até 24h.
                 </p>
             </div>
 
             <!-- Form Box -->
-            <div class="relative p-8 lg:p-12 border border-white/5 bg-[#0a0a0a] animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.3s_both]">
+            <div
+                class="relative p-8 lg:p-12 border border-white/5 bg-[#0a0a0a] animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.3s_both]">
                 <!-- Corner brackets -->
                 <div class="absolute top-0 left-0 w-4 h-4 border-t border-l border-ds3Purple/40"></div>
                 <div class="absolute top-0 right-0 w-4 h-4 border-t border-r border-ds3Purple/40"></div>
@@ -1364,7 +1459,8 @@
 
                     <!-- Mensagem -->
                     <div class="flex flex-col gap-2">
-                        <label class="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.2em]">Mensagem</label>
+                        <label
+                            class="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.2em]">Mensagem</label>
                         <div class="border-b border-white/10 pb-3 focus-within:border-ds3Purple/50 transition-colors">
                             <textarea rows="4" placeholder="Descreva seu projeto, prazos e necessidades..."
                                 class="bg-transparent border-none outline-none text-white text-sm w-full placeholder:text-neutral-700 font-light resize-none cursor-hover"></textarea>
@@ -1376,13 +1472,23 @@
                         <button type="submit"
                             class="group relative inline-flex justify-center items-center px-10 py-4 border border-neutral-800 hover:border-ds3Purple transition-all duration-300 cursor-hover">
                             <!-- Corner accents -->
-                            <div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-ds3Purple opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-1 -translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0"></div>
-                            <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-ds3Purple opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0"></div>
+                            <div
+                                class="absolute top-0 left-0 w-2 h-2 border-t border-l border-ds3Purple opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-1 -translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0">
+                            </div>
+                            <div
+                                class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-ds3Purple opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0">
+                            </div>
                             <!-- Dot grid hover bg -->
-                            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMTQxLCA3OSwgMTkyLCAwLjIpIi8+PC9zdmc+')] transition-opacity duration-300"></div>
-                            <span class="text-white font-medium uppercase tracking-wider text-sm relative z-10">Solicitar Orçamento</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-3 text-ds3Purple relative z-10">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                            <div
+                                class="absolute inset-0 opacity-0 group-hover:opacity-100 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMTQxLCA3OSwgMTkyLCAwLjIpIi8+PC9zdmc+')] transition-opacity duration-300">
+                            </div>
+                            <span
+                                class="text-white font-medium uppercase tracking-wider text-sm relative z-10">Solicitar
+                                Orçamento</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-5 h-5 ml-3 text-ds3Purple relative z-10">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
                             </svg>
                         </button>
                     </div>
@@ -1598,35 +1704,39 @@
                 }
                 renderGrid();
 
-                // Auto render blocks autonomously (Enhanced for Mobile/Top-to-bottom randomness)
+                // Auto render blocks autonomously (Enhanced for Mobile/Top-to-bottom laziness/speed)
                 setInterval(() => {
                     const isMobile = window.innerWidth < 768;
+                    const heroH = canvas.height || 1000;
 
                     if ((!isHoveringHero || isMobile) && buckets.length > 0) {
-                        // Increase scanline faster on mobile, slower on desktop idle
-                        scanY += BUCKET_SIZE * (isMobile ? 0.35 : 0.2);
-                        
+                        // Target 1s on mobile (1000ms / 30ms = 33 ticks)
+                        // Desktop idle slower (~3-4s)
+                        const inc = isMobile ? (heroH / 30) : (BUCKET_SIZE * 0.15);
+                        scanY += inc;
+
                         buckets.forEach(b => {
                             if (!b.revealed) {
-                                // If bucket is above scanY, reveal it with high probability
+                                // If way above scanY, reveal immediately
                                 if (b.y < scanY - BUCKET_SIZE * 2) {
-                                    if (Math.random() > 0.05) b.revealed = true;
+                                    b.revealed = true;
                                 }
-                                // If bucket is at/near scanY, reveal with medium probability
+                                // In the scanline zone, reveal with randomness
                                 else if (b.y < scanY + BUCKET_SIZE) {
-                                    if (Math.random() > 0.3) b.revealed = true;
+                                    const prob = isMobile ? 0.6 : 0.3;
+                                    if (Math.random() > (1 - prob)) b.revealed = true;
                                 }
                             }
                         });
                     }
-                    
+
                     timeElapsed++;
                     if (statTime) {
                         const m = Math.floor(timeElapsed / 60);
                         const s = timeElapsed % 60;
                         statTime.innerText = `00:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
                     }
-                }, 100);
+                }, 30);
 
                 // --- 4. Timeline Scroll Beam Control ---
                 window.addEventListener('scroll', () => {
