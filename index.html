@@ -605,20 +605,20 @@
 
     <!-- SECTION 0: Hero -->
     <section id="hero"
-        class="relative w-full h-screen overflow-hidden isolate z-0 pt-32 lg:pt-24 cursor-hover scroll-mt-24">
+        class="relative w-full h-screen overflow-hidden isolate z-0 pt-32 lg:pt-24 cursor-hover scroll-mt-24 touch-none">
         <!-- Background Grid GridBg -->
         <div class="absolute inset-0 grid-bg pointer-events-none z-0 mt-24"></div>
 
         <!-- LAYER 1: BG Image for Canvas (z-0) -->
         <div id="hero-bg"
-            class="absolute inset-0 w-full h-full z-0 bg-[url('./public/HERO.png')] bg-cover bg-center bg-no-repeat"
-            style="mix-blend-mode: overlay; opacity: 0.4; filter: grayscale(100%);"></div>
+            class="absolute inset-0 w-full h-full z-0 bg-[url('./public/HERO.png')] bg-cover bg-center bg-no-repeat lg:mix-blend-overlay opacity-40 grayscale">
+        </div>
         <div
             class="absolute inset-0 w-full h-full z-[1] pointer-events-none bg-gradient-to-b from-black/80 to-transparent">
         </div>
 
         <!-- LAYER 2: ELARCH QUADRADINHOS BUCKETS (z-10) -->
-        <canvas id="buckets-canvas" class="absolute inset-0 w-full h-full z-10 pointer-events-none"></canvas>
+        <canvas id="buckets-canvas" class="absolute inset-0 w-full h-full z-10 pointer-events-none touch-none"></canvas>
 
         <!-- LAYER 3: HUD Stats Interface (z-20) -->
         <div
@@ -1807,11 +1807,14 @@
                     if (width !== lastWidth) {
                         scanY = 0; // Reset only if orientation changed
                     }
-                    canvas.width = width;
-                    canvas.height = height;
+                    // Handle Device Pixel Ratio for mobile sharpness and performance
+                    const dpr = window.devicePixelRatio || 1;
+                    canvas.width = width * dpr;
+                    canvas.height = height * dpr;
+                    ctx.scale(dpr, dpr);
 
-                    cols = Math.ceil(canvas.width / BUCKET_SIZE);
-                    rows = Math.ceil(canvas.height / BUCKET_SIZE);
+                    cols = Math.ceil(width / BUCKET_SIZE);
+                    rows = Math.ceil(height / BUCKET_SIZE);
                     buckets = [];
 
                     let bucketIndex = 0;
@@ -1833,6 +1836,10 @@
                     
                     lastWidth = width;
                 }
+                
+                // Fallback attempt for slow height calculation
+                setTimeout(initGrid, 100);
+                setTimeout(initGrid, 500);
 
                 window.addEventListener("resize", initGrid);
                 initGrid();
@@ -1901,7 +1908,7 @@
                             ctx.lineWidth = 1;
                             ctx.strokeRect(b.x, b.y, b.w, b.h);
 
-                            if (b.opacity > 0) {
+                            if (b.opacity > 0 && window.innerWidth >= 1024) {
                                 ctx.fillStyle = `rgba(255, 255, 255, ${b.opacity * 0.6})`;
                                 ctx.font = "8px monospace";
                                 let pct = ((1 - b.opacity) * 100).toFixed(0);
