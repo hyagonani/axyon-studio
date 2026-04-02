@@ -1649,13 +1649,13 @@
                         clearInterval(interval);
 
                         setTimeout(() => {
-                            preloader.classList.add('fade-out');
+                            if (preloader) preloader.classList.add('fade-out');
                             // Enable scroll after preloader is gone
                             document.body.style.overflow = '';
-                            // Signal that the system is ready for effects
-                            setTimeout(() => {
-                                window.RENDER_SYSTEM_READY = true;
-                            }, 300);
+                        }, 500);
+                        // Delay system start to ensure smooth fade
+                        setTimeout(() => {
+                            window.RENDER_SYSTEM_READY = true;
                         }, 800);
                     }
 
@@ -1785,7 +1785,7 @@
             if (canvas) {
                 const ctx = canvas.getContext("2d", { alpha: true });
                 let buckets = [];
-                const BUCKET_SIZE = window.innerWidth < 1024 ? 45 : 50;
+                let BUCKET_SIZE = 50;
                 let cols, rows;
                 let timeElapsed = 0;
                 let isHoveringHero = false;
@@ -1799,17 +1799,19 @@
                 function initGrid() {
                     const heroDiv = document.getElementById("hero");
                     const width = window.innerWidth;
-                    const height = heroDiv ? heroDiv.clientHeight : window.innerHeight;
+                    // Force a valid height calculation fallback
+                    let height = heroDiv ? heroDiv.clientHeight : 0;
+                    if (height <= 0) height = window.innerHeight;
 
-                    // If height changes due to mobile address bar, don't reset buckets
-                    if (buckets.length > 0 && width === lastWidth && Math.abs(height - canvas.height) < 150) {
+                    // If height changes minimally on mobile, skip reset
+                    if (buckets.length > 0 && width === lastWidth && Math.abs(height - (canvas.height/(window.devicePixelRatio||1))) < 100) {
                         return;
                     }
 
-                    if (width !== lastWidth) {
-                        scanY = 0; // Reset only if orientation changed
-                    }
-                    // Handle Device Pixel Ratio for mobile sharpness and performance
+                    BUCKET_SIZE = (width < 1024) ? 45 : 50;
+                    if (width !== lastWidth) scanY = 0;
+                    lastWidth = width;
+
                     const dpr = window.devicePixelRatio || 1;
                     canvas.width = width * dpr;
                     canvas.height = height * dpr;
@@ -1870,7 +1872,8 @@
                 const REVEAL_SPEED = (window.innerWidth < 1024) ? 0.08 : 0.06;
 
                 function renderGrid() {
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    // Use CSS pixels for clearRect since transform is active
+                    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight + 1000);
                     if (!window.RENDER_SYSTEM_READY) {
                         // Draw solid overlay while waiting
                         ctx.fillStyle = '#0a0a0a';
@@ -1925,15 +1928,14 @@
                         const pctRatio = clearedCount / buckets.length;
                         const pct = Math.floor(pctRatio * 100);
                         statPercent.innerText = `${pct}%`;
-                        statBuckets.innerText = `${clearedCount}/${buckets.length}`;
+                        if (statBuckets) statBuckets.innerText = `${clearedCount}/${buckets.length}`;
 
-                        // Change logic to reveal full color background progressively as buckets vanish
                         const heroBg = document.getElementById("hero-bg");
                         if (heroBg) {
                             const currentGrayscale = 100 - (pctRatio * 100);
                             const currentOpacity = 0.4 + (pctRatio * 0.6);
                             heroBg.style.filter = `grayscale(${currentGrayscale}%)`;
-                            heroBg.style.opacity = currentOpacity.toFixed(3);
+                            heroBg.style.opacity = currentOpacity;
                         }
                     }
 
