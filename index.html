@@ -618,7 +618,7 @@
         </div>
 
         <!-- LAYER 2: ELARCH QUADRADINHOS BUCKETS (z-10) -->
-        <canvas id="buckets-canvas" class="absolute inset-0 w-full h-full z-10 pointer-events-none mt-24"></canvas>
+        <canvas id="buckets-canvas" class="absolute inset-0 w-full h-full z-10 pointer-events-none"></canvas>
 
         <!-- LAYER 3: HUD Stats Interface (z-20) -->
         <div
@@ -632,7 +632,7 @@
         </div>
 
         <!-- LAYER 4: Main Text / CTA -->
-        <div class="absolute inset-0 z-20 flex flex-col justify-center px-6 lg:px-24 pointer-events-none">
+        <div class="absolute inset-0 z-20 flex flex-col justify-start lg:justify-center pt-48 lg:pt-24 px-6 lg:px-24 pointer-events-none">
             <!-- Eyebrow Text -->
             <span
                 class="text-sm font-mono text-neutral-400 uppercase tracking-[0.2em] mb-6 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.1s_both] cursor-hover pointer-events-auto">
@@ -1742,7 +1742,7 @@
             let ringX = mouseX;
             let ringY = mouseY;
 
-            document.addEventListener("mousemove", (e) => {
+            document.addEventListener("pointermove", (e) => {
                 mouseX = e.clientX;
                 mouseY = e.clientY;
                 if (dot) dot.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
@@ -1829,10 +1829,8 @@
 
                 const heroRect = document.getElementById("hero");
                 heroRect.addEventListener("pointermove", (e) => {
-                    // Only flag actual mouse movement for hovering state
-                    if (e.pointerType === 'mouse') {
-                        isHoveringHero = true;
-                    }
+                    // Trigger for both mouse and touch
+                    isHoveringHero = true;
 
                     const rect = canvas.getBoundingClientRect();
                     const cMouseX = e.clientX - rect.left;
@@ -1897,7 +1895,6 @@
                                 ctx.fillStyle = `rgba(255, 255, 255, ${b.opacity * 0.6})`;
                                 ctx.font = "8px monospace";
                                 let pct = ((1 - b.opacity) * 100).toFixed(0);
-                                if (pct < 10) pct = pct;
                                 ctx.fillText(`${pct}%`, b.x + 4, b.y + 12);
                             }
                         }
@@ -1933,8 +1930,8 @@
                     // On mobile or touch devices, we always want the auto-reveal to progress
                     if ((!isHoveringHero || isMobileWindow || isTouchDevice) && buckets.length > 0) {
                         const heroH = canvas.height || 1000;
-                        // Speed: slowed down by 30% for better perceptibility
-                        const inc = (isMobileWindow || isTouchDevice) ? (heroH / 39) : (heroH / 104);
+                        // Speed: significantly slowed down for mobile (heroH / 120 approx)
+                        const inc = (isMobileWindow || isTouchDevice) ? (heroH / 180) : (heroH / 104);
                         scanY += inc;
 
                         buckets.forEach(b => {
