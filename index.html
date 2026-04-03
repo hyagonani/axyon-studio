@@ -1261,7 +1261,7 @@
             <div id="card-planta-humanizada"
                 class="servico-card group snap-start animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.45s_both]">
                 <div class="servico-card-inner">
-                    <img src="./public/humanizada.webp" alt="" class="servico-bg" loading="lazy"
+                    <img src="./public/humanizada-capa.webp" alt="" class="servico-bg" loading="lazy"
                         decoding="async">
                     <span class="servico-number">03</span>
                     <div class="servico-icon">
@@ -2379,6 +2379,21 @@
                         if (currentTime - lastClickTime < 400) {
                             e.preventDefault();
                             e.stopPropagation();
+                            
+                            // Check cookie consent
+                            if (localStorage.getItem('axyon_cookie_consent') !== 'true') {
+                                const cookieBanner = document.getElementById('cookie-banner');
+                                if (cookieBanner) {
+                                    cookieBanner.classList.remove('translate-y-full');
+                                    cookieBanner.classList.add('border-ds3Purple', 'shadow-[0_0_30px_rgba(141,79,192,0.3)]');
+                                    setTimeout(() => {
+                                        cookieBanner.classList.remove('border-ds3Purple', 'shadow-[0_0_30px_rgba(141,79,192,0.3)]');
+                                    }, 1500);
+                                }
+                                alert('Por favor, aceite os termos de cookies na barra inferior para habilitar o player de vídeo.');
+                                return;
+                            }
+
                             videoIframe.src = "https://drive.google.com/file/d/1XeA9cm-Q_vl6qNCXq_oa4sxQAa5ujehh/preview";
                             videoModal.classList.remove('hidden');
                             videoModal.style.display = 'flex';
@@ -2439,7 +2454,7 @@
         </div>
     </div>
 
-    <!-- Video Modal (Shorts) -->
+    <!-- Video Modal (Vertical / Shorts) -->
     <div id="video-modal"
         class="fixed inset-0 z-[10010] bg-black/95 hidden flex-col items-center justify-center backdrop-blur-sm transition-all duration-300" style="opacity: 0; display: none;"
         onclick="if(event.target === this) closeVideoModal()">
@@ -2447,14 +2462,50 @@
             onclick="closeVideoModal()">
             <iconify-icon icon="ph:x-bold" width="32"></iconify-icon>
         </button>
-        <div class="relative w-full max-w-[400px] h-[80vh] px-4 pointer-events-none">
-            <iframe id="video-iframe" class="w-full h-full rounded-xl shadow-[0_0_50px_rgba(141,79,192,0.3)] pointer-events-auto"
+        <div class="relative h-[85vh] max-h-[85vh] max-w-[90vw] aspect-[9/16] pointer-events-none mx-auto flex justify-center items-center">
+            <iframe id="video-iframe" class="w-full h-full rounded-xl shadow-[0_0_50px_rgba(141,79,192,0.3)] pointer-events-auto bg-black"
                 src="" title="Google Drive Video Player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
         </div>
     </div>
+    <!-- Cookie Banner -->
+    <div id="cookie-banner" class="fixed bottom-0 left-0 w-full bg-[#050505] border-t border-white/10 z-[11000] p-6 lg:p-8 transform translate-y-full transition-all duration-700 flex flex-col md:flex-row items-center justify-between gap-6 shadow-[0_-20px_50px_rgba(0,0,0,0.8)]">
+        <div class="flex-1 max-w-4xl">
+            <h4 class="text-white text-sm font-semibold uppercase tracking-wider mb-2 flex items-center gap-2">
+                <iconify-icon icon="solar:cookie-bold-duotone" class="text-ds3Purple text-lg"></iconify-icon>
+                Privacidade & Cookies
+            </h4>
+            <p class="text-neutral-400 text-sm font-light leading-relaxed">
+                Utilizamos cookies de terceiros para garantir o carregamento correto de vídeos externos em alta performance e melhorar sua experiência no ecossistema Axyon. 
+            </p>
+        </div>
+        <div class="flex items-center gap-4 w-full md:w-auto">
+            <button onclick="acceptCookies()" class="w-full md:w-auto px-8 py-4 bg-transparent border border-ds3Purple text-white text-sm font-semibold uppercase tracking-wider hover:bg-ds3Purple transition-colors cursor-hover">
+                Aceitar e Continuar
+            </button>
+        </div>
+    </div>
 
+    <!-- Cookie Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cookieBanner = document.getElementById('cookie-banner');
+            const hasAccepted = localStorage.getItem('axyon_cookie_consent');
+            
+            if (!hasAccepted) {
+                // Show banner after a slight delay
+                setTimeout(() => {
+                    if (cookieBanner) cookieBanner.classList.remove('translate-y-full');
+                }, 2500);
+            }
+
+            window.acceptCookies = () => {
+                localStorage.setItem('axyon_cookie_consent', 'true');
+                if (cookieBanner) cookieBanner.classList.add('translate-y-full');
+                // Opt: Check if they tried to click play before, we can automatically open it
+            };
+        });
+    </script>
 </body>
-
 </html>
