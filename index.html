@@ -636,9 +636,9 @@
             <a href="#sobre" class="hover:text-ds3Purple transition-colors cursor-hover">Propósito</a>
             <a href="#especialidades" class="hover:text-ds3Purple transition-colors cursor-hover">Time</a>
             <a href="#processo" class="hover:text-ds3Purple transition-colors cursor-hover">Processo</a>
-            <a href="#portfolio" class="hover:text-ds3Purple transition-colors cursor-hover">Portfolio</a>
-            <a href="#depoimentos" class="hover:text-ds3Purple transition-colors cursor-hover">Depoimentos</a>
             <a href="#servicos" class="hover:text-ds3Purple transition-colors cursor-hover">Serviços</a>
+            <a href="#depoimentos" class="hover:text-ds3Purple transition-colors cursor-hover">Depoimentos</a>
+            <a href="#portfolio" class="hover:text-ds3Purple transition-colors cursor-hover">Portfolio</a>
             <a href="#contato" class="hover:text-ds3Purple transition-colors cursor-hover">Contato</a>
         </div>
 
@@ -660,12 +660,12 @@
             class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Propósito</a>
         <a href="#processo"
             class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Processo</a>
-        <a href="#portfolio"
-            class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Portfolio</a>
-        <a href="#depoimentos"
-            class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Feedback</a>
         <a href="#servicos"
             class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Serviços</a>
+        <a href="#depoimentos"
+            class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Feedback</a>
+        <a href="#portfolio"
+            class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Portfolio</a>
         <a href="#contato"
             class="mobile-nav-link text-3xl font-bold text-ds3Purple hover:text-white transition-colors uppercase tracking-widest mt-4">Contato</a>
     </div>
@@ -1175,6 +1175,138 @@
         </div>
     </section>
 
+    <!-- SECTION 5: Serviços (Vertical Cards Horizontal Layout) -->
+    <section id="servicos" class="relative bg-[#050505] py-32 px-6 lg:px-16 overflow-hidden cursor-hover scroll-mt-24">
+        <!-- Background grid subtle -->
+        <div class="absolute inset-0 grid-bg pointer-events-none opacity-30"></div>
+
+        <!-- Header -->
+        <div
+            class="relative z-10 max-w-5xl mx-auto mb-20 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.1s_both]">
+            <span
+                class="text-[11px] font-mono text-ds3Purple uppercase tracking-[0.25em] mb-4 block border border-ds3Purple/30 px-3 py-1 rounded-full bg-ds3Purple/5 w-fit">Nossos
+                Serviços</span>
+            <h2 class="text-4xl lg:text-5xl text-white font-medium tracking-tighter uppercase mt-4">SOLUÇÕES
+                VISUAIS<br>ESTRATÉGICAS</h2>
+        </div>
+
+        <!-- Cards Container — Horizontal scroll with vertical rectangles -->
+        <div class="relative z-10 flex gap-5 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide"
+            style="-ms-overflow-style:none;scrollbar-width:none;">
+            <style>
+                .scrollbar-hide::-webkit-scrollbar {
+                    display: none;
+                }
+            </style>
+
+            <!-- Card 1: Setup de Modelagem -->
+            <div
+                class="servico-card group snap-start animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.15s_both]">
+                <div class="servico-card-inner">
+                    <img src="./public/portfolio/optmized/img (5).webp" alt="" class="servico-bg" loading="lazy"
+                        decoding="async">
+                    <span class="servico-number">01</span>
+                    <div class="servico-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
+                            stroke="currentColor" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+                        </svg>
+                    </div>
+                    <h3 class="servico-title">Setup de<br>Modelagem</h3>
+                    <p class="servico-desc">Construção digital precisa do empreendimento com fidelidade volumétrica e
+                        materialidade técnica.</p>
+                    <div class="servico-line"></div>
+                </div>
+            </div>
+
+            <!-- Card 2: Stills High-End -->
+            <div
+                class="servico-card group snap-start animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.3s_both]">
+                <div class="servico-card-inner">
+                    <img src="./public/portfolio/optmized/img (12).webp" alt="" class="servico-bg" loading="lazy"
+                        decoding="async">
+                    <span class="servico-number">02</span>
+                    <div class="servico-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
+                            stroke="currentColor" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0 0 22.5 18.75V5.25A2.25 2.25 0 0 0 20.25 3H3.75A2.25 2.25 0 0 0 1.5 5.25v13.5A2.25 2.25 0 0 0 3.75 21Z" />
+                        </svg>
+                    </div>
+                    <h3 class="servico-title">Stills<br>High-End</h3>
+                    <p class="servico-desc">Imagens estáticas de alta definição com iluminação cinematográfica e
+                        pós-produção impecável.</p>
+                    <div class="servico-line"></div>
+                </div>
+            </div>
+
+            <!-- Card 3: Planta Humanizada -->
+            <div
+                class="servico-card group snap-start animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.45s_both]">
+                <div class="servico-card-inner">
+                    <img src="./public/portfolio/optmized/img (21).webp" alt="" class="servico-bg" loading="lazy"
+                        decoding="async">
+                    <span class="servico-number">03</span>
+                    <div class="servico-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
+                            stroke="currentColor" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25a2.25 2.25 0 0 1-2.25-2.25v-2.25Z" />
+                        </svg>
+                    </div>
+                    <h3 class="servico-title">Planta<br>Humanizada</h3>
+                    <p class="servico-desc">Representação técnica com acabamentos, mobiliário e vegetação que traduzem o
+                        projeto em experiência real.</p>
+                    <div class="servico-line"></div>
+                </div>
+            </div>
+
+            <!-- Card 4: VR Tour 360° -->
+            <div
+                class="servico-card group snap-start animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.6s_both]">
+                <div class="servico-card-inner">
+                    <img src="./public/portfolio/optmized/img (27).webp" alt="" class="servico-bg" loading="lazy"
+                        decoding="async">
+                    <span class="servico-number">04</span>
+                    <div class="servico-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
+                            stroke="currentColor" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5a17.92 17.92 0 0 1-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
+                        </svg>
+                    </div>
+                    <h3 class="servico-title">VR Tour<br>360°</h3>
+                    <p class="servico-desc">Experiência imersiva interativa que permite explorar cada ambiente com total
+                        liberdade e realismo.</p>
+                    <div class="servico-line"></div>
+                </div>
+            </div>
+
+            <!-- Card 5: Filme de Lançamento -->
+            <div
+                class="servico-card group snap-start animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.75s_both]">
+                <div class="servico-card-inner">
+                    <img src="./public/portfolio/optmized/img (33).webp" alt="" class="servico-bg" loading="lazy"
+                        decoding="async">
+                    <span class="servico-number">05</span>
+                    <div class="servico-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
+                            stroke="currentColor" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
+                        </svg>
+                    </div>
+                    <h3 class="servico-title">Filme de<br>Lançamento</h3>
+                    <p class="servico-desc">Animação cinematográfica com câmeras dinâmicas e storytelling visual que
+                        eleva o lançamento imobiliário.</p>
+                    <div class="servico-line"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <!-- SECTION 4.6: Depoimentos (Testimonials) -->
     <section id="depoimentos"
         class="relative bg-[#050505] py-32 px-6 lg:px-16 overflow-hidden cursor-hover scroll-mt-24">
@@ -1338,138 +1470,6 @@
                 <!-- Ghost number -->
                 <span
                     class="absolute top-6 right-8 text-[80px] font-black text-white/[0.02] leading-none select-none pointer-events-none">02</span>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- SECTION 5: Serviços (Vertical Cards Horizontal Layout) -->
-    <section id="servicos" class="relative bg-[#050505] py-32 px-6 lg:px-16 overflow-hidden cursor-hover scroll-mt-24">
-        <!-- Background grid subtle -->
-        <div class="absolute inset-0 grid-bg pointer-events-none opacity-30"></div>
-
-        <!-- Header -->
-        <div
-            class="relative z-10 max-w-5xl mx-auto mb-20 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.1s_both]">
-            <span
-                class="text-[11px] font-mono text-ds3Purple uppercase tracking-[0.25em] mb-4 block border border-ds3Purple/30 px-3 py-1 rounded-full bg-ds3Purple/5 w-fit">Nossos
-                Serviços</span>
-            <h2 class="text-4xl lg:text-5xl text-white font-medium tracking-tighter uppercase mt-4">SOLUÇÕES
-                VISUAIS<br>ESTRATÉGICAS</h2>
-        </div>
-
-        <!-- Cards Container — Horizontal scroll with vertical rectangles -->
-        <div class="relative z-10 flex gap-5 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide"
-            style="-ms-overflow-style:none;scrollbar-width:none;">
-            <style>
-                .scrollbar-hide::-webkit-scrollbar {
-                    display: none;
-                }
-            </style>
-
-            <!-- Card 1: Setup de Modelagem -->
-            <div
-                class="servico-card group snap-start animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.15s_both]">
-                <div class="servico-card-inner">
-                    <img src="./public/portfolio/optmized/img (5).webp" alt="" class="servico-bg" loading="lazy"
-                        decoding="async">
-                    <span class="servico-number">01</span>
-                    <div class="servico-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
-                            stroke="currentColor" class="w-8 h-8">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
-                        </svg>
-                    </div>
-                    <h3 class="servico-title">Setup de<br>Modelagem</h3>
-                    <p class="servico-desc">Construção digital precisa do empreendimento com fidelidade volumétrica e
-                        materialidade técnica.</p>
-                    <div class="servico-line"></div>
-                </div>
-            </div>
-
-            <!-- Card 2: Stills High-End -->
-            <div
-                class="servico-card group snap-start animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.3s_both]">
-                <div class="servico-card-inner">
-                    <img src="./public/portfolio/optmized/img (12).webp" alt="" class="servico-bg" loading="lazy"
-                        decoding="async">
-                    <span class="servico-number">02</span>
-                    <div class="servico-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
-                            stroke="currentColor" class="w-8 h-8">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0 0 22.5 18.75V5.25A2.25 2.25 0 0 0 20.25 3H3.75A2.25 2.25 0 0 0 1.5 5.25v13.5A2.25 2.25 0 0 0 3.75 21Z" />
-                        </svg>
-                    </div>
-                    <h3 class="servico-title">Stills<br>High-End</h3>
-                    <p class="servico-desc">Imagens estáticas de alta definição com iluminação cinematográfica e
-                        pós-produção impecável.</p>
-                    <div class="servico-line"></div>
-                </div>
-            </div>
-
-            <!-- Card 3: Planta Humanizada -->
-            <div
-                class="servico-card group snap-start animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.45s_both]">
-                <div class="servico-card-inner">
-                    <img src="./public/portfolio/optmized/img (21).webp" alt="" class="servico-bg" loading="lazy"
-                        decoding="async">
-                    <span class="servico-number">03</span>
-                    <div class="servico-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
-                            stroke="currentColor" class="w-8 h-8">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25a2.25 2.25 0 0 1-2.25-2.25v-2.25Z" />
-                        </svg>
-                    </div>
-                    <h3 class="servico-title">Planta<br>Humanizada</h3>
-                    <p class="servico-desc">Representação técnica com acabamentos, mobiliário e vegetação que traduzem o
-                        projeto em experiência real.</p>
-                    <div class="servico-line"></div>
-                </div>
-            </div>
-
-            <!-- Card 4: VR Tour 360° -->
-            <div
-                class="servico-card group snap-start animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.6s_both]">
-                <div class="servico-card-inner">
-                    <img src="./public/portfolio/optmized/img (27).webp" alt="" class="servico-bg" loading="lazy"
-                        decoding="async">
-                    <span class="servico-number">04</span>
-                    <div class="servico-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
-                            stroke="currentColor" class="w-8 h-8">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5a17.92 17.92 0 0 1-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
-                        </svg>
-                    </div>
-                    <h3 class="servico-title">VR Tour<br>360°</h3>
-                    <p class="servico-desc">Experiência imersiva interativa que permite explorar cada ambiente com total
-                        liberdade e realismo.</p>
-                    <div class="servico-line"></div>
-                </div>
-            </div>
-
-            <!-- Card 5: Filme de Lançamento -->
-            <div
-                class="servico-card group snap-start animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.75s_both]">
-                <div class="servico-card-inner">
-                    <img src="./public/portfolio/optmized/img (33).webp" alt="" class="servico-bg" loading="lazy"
-                        decoding="async">
-                    <span class="servico-number">05</span>
-                    <div class="servico-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
-                            stroke="currentColor" class="w-8 h-8">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
-                        </svg>
-                    </div>
-                    <h3 class="servico-title">Filme de<br>Lançamento</h3>
-                    <p class="servico-desc">Animação cinematográfica com câmeras dinâmicas e storytelling visual que
-                        eleva o lançamento imobiliário.</p>
-                    <div class="servico-line"></div>
-                </div>
             </div>
 
         </div>
