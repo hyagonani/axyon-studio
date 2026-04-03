@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Axyon - Visualização Arquitetônica Estratégica</title>
+    <link rel="icon" type="image/jpeg" href="./public/favicon-update.png" />
 
     <!-- External Scripts for Standalone functionality -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -114,6 +115,7 @@
 
         /* Hide custom cursor only on actual touch devices without a fine pointer (mouse) */
         @media (hover: none) and (pointer: coarse) {
+
             .ds-cursor-dot,
             .ds-cursor-ring {
                 display: none !important;
@@ -264,7 +266,8 @@
             background: linear-gradient(to bottom, transparent, #8d4fc0, transparent);
             transition: top 0.1s linear;
             pointer-events: none;
-            transform: translateZ(0); /* Hardware accel for iOS */
+            transform: translateZ(0);
+            /* Hardware accel for iOS */
             -webkit-transform: translateZ(0);
         }
 
@@ -657,9 +660,9 @@
     <!-- Mobile Menu Overlay (Moved outside nav for reliable rendering) -->
     <div id="mobile-menu"
         class="fixed inset-0 bg-[#050505]/98 backdrop-blur-2xl z-[150] flex flex-col items-center justify-center gap-8 transition-all duration-500 opacity-0 pointer-events-none translate-y-full">
-        
+
         <!-- Close Button inside Menu -->
-        <button id="mobile-menu-close" 
+        <button id="mobile-menu-close"
             class="absolute top-8 right-8 text-white focus:outline-none cursor-hover p-2 transition-transform hover:scale-110 active:scale-95">
             <iconify-icon icon="solar:close-circle-linear" class="text-4xl"></iconify-icon>
         </button>
@@ -712,7 +715,8 @@
         </div>
 
         <!-- LAYER 4: Main Text / CTA -->
-        <div class="relative z-20 flex flex-col justify-center flex-grow pt-32 pb-16 lg:pt-0 lg:pb-0 px-6 lg:px-24 pointer-events-none w-full">
+        <div
+            class="relative z-20 flex flex-col justify-center flex-grow pt-32 pb-16 lg:pt-0 lg:pb-0 px-6 lg:px-24 pointer-events-none w-full">
             <!-- Eyebrow Text -->
             <span
                 class="text-sm font-mono text-neutral-400 uppercase tracking-[0.2em] mb-6 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.1s_both] cursor-hover pointer-events-auto">
@@ -1231,7 +1235,9 @@
                     <p class="servico-desc">Construção digital precisa do empreendimento com fidelidade volumétrica e
                         materialidade técnica.</p>
                     <div class="servico-line"></div>
-                    <span class="block text-[8px] sm:text-[9px] text-white/30 font-mono tracking-[0.2em] uppercase mt-4 text-center transition-colors group-hover:text-ds3Purple/70">de dois cliques para ver mais</span>
+                    <span
+                        class="block text-[8px] sm:text-[9px] text-white/30 font-mono tracking-[0.2em] uppercase mt-4 text-center transition-colors group-hover:text-ds3Purple/70">de
+                        dois cliques para ver mais</span>
                 </div>
             </div>
 
@@ -1253,7 +1259,9 @@
                     <p class="servico-desc">Imagens estáticas de alta definição com iluminação cinematográfica e
                         pós-produção impecável.</p>
                     <div class="servico-line"></div>
-                    <span class="block text-[8px] sm:text-[9px] text-white/30 font-mono tracking-[0.2em] uppercase mt-4 text-center transition-colors group-hover:text-ds3Purple/70">de dois cliques para ver mais</span>
+                    <span
+                        class="block text-[8px] sm:text-[9px] text-white/30 font-mono tracking-[0.2em] uppercase mt-4 text-center transition-colors group-hover:text-ds3Purple/70">de
+                        dois cliques para ver mais</span>
                 </div>
             </div>
 
@@ -1261,8 +1269,7 @@
             <div id="card-planta-humanizada"
                 class="servico-card group snap-start animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.45s_both]">
                 <div class="servico-card-inner">
-                    <img src="./public/humanizada-capa.webp" alt="" class="servico-bg" loading="lazy"
-                        decoding="async">
+                    <img src="./public/humanizada-capa.webp" alt="" class="servico-bg" loading="lazy" decoding="async">
                     <span class="servico-number">03</span>
                     <div class="servico-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
@@ -1275,7 +1282,9 @@
                     <p class="servico-desc">Representação técnica com acabamentos, mobiliário e vegetação que traduzem o
                         projeto em experiência real.</p>
                     <div class="servico-line"></div>
-                    <span class="block text-[8px] sm:text-[9px] text-white/30 font-mono tracking-[0.2em] uppercase mt-4 text-center transition-colors group-hover:text-ds3Purple/70">de dois cliques para ver mais</span>
+                    <span
+                        class="block text-[8px] sm:text-[9px] text-white/30 font-mono tracking-[0.2em] uppercase mt-4 text-center transition-colors group-hover:text-ds3Purple/70">de
+                        dois cliques para ver mais</span>
                 </div>
             </div>
 
@@ -1297,7 +1306,9 @@
                     <p class="servico-desc">Experiência imersiva interativa que permite explorar cada ambiente com total
                         liberdade e realismo.</p>
                     <div class="servico-line"></div>
-                    <span class="block text-[8px] sm:text-[9px] text-white/30 font-mono tracking-[0.2em] uppercase mt-4 text-center transition-colors group-hover:text-ds3Purple/70">de dois cliques para ver mais</span>
+                    <span
+                        class="block text-[8px] sm:text-[9px] text-white/30 font-mono tracking-[0.2em] uppercase mt-4 text-center transition-colors group-hover:text-ds3Purple/70">de
+                        dois cliques para ver mais</span>
                 </div>
             </div>
 
@@ -1319,7 +1330,9 @@
                     <p class="servico-desc">Animação cinematográfica com câmeras dinâmicas e storytelling visual que
                         eleva o lançamento imobiliário.</p>
                     <div class="servico-line"></div>
-                    <span class="block text-[8px] sm:text-[9px] text-white/30 font-mono tracking-[0.2em] uppercase mt-4 text-center transition-colors group-hover:text-ds3Purple/70">de dois cliques para ver mais</span>
+                    <span
+                        class="block text-[8px] sm:text-[9px] text-white/30 font-mono tracking-[0.2em] uppercase mt-4 text-center transition-colors group-hover:text-ds3Purple/70">de
+                        dois cliques para ver mais</span>
                 </div>
             </div>
 
@@ -1720,7 +1733,7 @@
         }
 
         // --- 0. Preloader Logic (Real monitoring) ---
-        (function() {
+        (function () {
             const preloader = document.getElementById('preloader');
             const percentText = document.getElementById('loader-percent');
             const barFill = document.getElementById('loader-bar');
@@ -1762,15 +1775,15 @@
                 setTimeout(() => {
                     if (preloader) preloader.classList.add('fade-out');
                     document.body.style.overflow = '';
-                    setTimeout(() => { 
-                        window.RENDER_SYSTEM_READY = true; 
+                    setTimeout(() => {
+                        window.RENDER_SYSTEM_READY = true;
                         if (window.initGrid) window.initGrid();
                     }, 500);
                 }, 600);
             });
-            
+
             // Fallback for very slow networks
-            setTimeout(() => { 
+            setTimeout(() => {
                 if (progress < 100) { progress = 100; updateLoaderUI(100); }
             }, 8000);
         })();
@@ -1843,51 +1856,51 @@
         onReady(() => {
             let mouseX = window.innerWidth / 2;
             let mouseY = window.innerHeight / 2;
-            
+
             const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
             if (!(isTouch && window.innerWidth < 1024)) {
 
-            const dot = document.querySelector('.ds-cursor-dot');
-            const ring = document.querySelector('.ds-cursor-ring');
+                const dot = document.querySelector('.ds-cursor-dot');
+                const ring = document.querySelector('.ds-cursor-ring');
 
-            let ringX = mouseX;
-            let ringY = mouseY;
+                let ringX = mouseX;
+                let ringY = mouseY;
 
-            document.addEventListener("pointermove", (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-                if (dot) dot.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
-            });
-
-            const animateCursor = () => {
-                ringX += (mouseX - ringX) * 0.15;
-                ringY += (mouseY - ringY) * 0.15;
-                if (ring) ring.style.transform = `translate(${ringX - 16}px, ${ringY - 16}px)`;
-                requestAnimationFrame(animateCursor);
-            };
-            animateCursor();
-
-            // Hover effects
-            document.querySelectorAll("a, button, .cursor-hover, input").forEach(el => {
-                el.addEventListener("mouseenter", () => {
-                    if (ring) {
-                        ring.style.width = "56px";
-                        ring.style.height = "56px";
-                        ring.style.transform = `translate(${ringX - 28}px, ${ringY - 28}px)`;
-                        ring.style.backgroundColor = "rgba(255,255,255,1)";
-                        ring.style.mixBlendMode = "difference";
-                    }
+                document.addEventListener("pointermove", (e) => {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                    if (dot) dot.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
                 });
-                el.addEventListener("mouseleave", () => {
-                    if (ring) {
-                        ring.style.width = "32px";
-                        ring.style.height = "32px";
-                        ring.style.transform = `translate(${ringX - 16}px, ${ringY - 16}px)`;
-                        ring.style.backgroundColor = "transparent";
-                        ring.style.mixBlendMode = "normal";
-                    }
+
+                const animateCursor = () => {
+                    ringX += (mouseX - ringX) * 0.15;
+                    ringY += (mouseY - ringY) * 0.15;
+                    if (ring) ring.style.transform = `translate(${ringX - 16}px, ${ringY - 16}px)`;
+                    requestAnimationFrame(animateCursor);
+                };
+                animateCursor();
+
+                // Hover effects
+                document.querySelectorAll("a, button, .cursor-hover, input").forEach(el => {
+                    el.addEventListener("mouseenter", () => {
+                        if (ring) {
+                            ring.style.width = "56px";
+                            ring.style.height = "56px";
+                            ring.style.transform = `translate(${ringX - 28}px, ${ringY - 28}px)`;
+                            ring.style.backgroundColor = "rgba(255,255,255,1)";
+                            ring.style.mixBlendMode = "difference";
+                        }
+                    });
+                    el.addEventListener("mouseleave", () => {
+                        if (ring) {
+                            ring.style.width = "32px";
+                            ring.style.height = "32px";
+                            ring.style.transform = `translate(${ringX - 16}px, ${ringY - 16}px)`;
+                            ring.style.backgroundColor = "transparent";
+                            ring.style.mixBlendMode = "normal";
+                        }
+                    });
                 });
-            });
             } // End cursor active conditional block
 
             // --- 3. Rendering Grid Buckets Effect ---
@@ -1916,503 +1929,503 @@
 
                 if (!isMobileView) {
 
-                const statBuckets = document.getElementById("stat-buckets");
-                const statPercent = document.getElementById("stat-percent");
-                const statTime = document.getElementById("stat-time");
+                    const statBuckets = document.getElementById("stat-buckets");
+                    const statPercent = document.getElementById("stat-percent");
+                    const statTime = document.getElementById("stat-time");
 
-                let lastWidth = window.innerWidth;
-                let scanY = 0;
-                let isInit = false;
+                    let lastWidth = window.innerWidth;
+                    let scanY = 0;
+                    let isInit = false;
 
-                window.initGrid = function() {
-                    const heroDiv = document.getElementById("hero");
-                    const width = window.innerWidth;
-                    // Safari Mobile clientHeight fallback
-                    let height = heroDiv ? (heroDiv.offsetHeight || heroDiv.clientHeight) : window.innerHeight;
-                    if (height < 200) height = window.innerHeight;
+                    window.initGrid = function () {
+                        const heroDiv = document.getElementById("hero");
+                        const width = window.innerWidth;
+                        // Safari Mobile clientHeight fallback
+                        let height = heroDiv ? (heroDiv.offsetHeight || heroDiv.clientHeight) : window.innerHeight;
+                        if (height < 200) height = window.innerHeight;
 
-                    // Throttled re-init but allow first time
-                    if (isInit && width === lastWidth && Math.abs(height - (canvas.height/(window.devicePixelRatio||1))) < 20) return;
-                    isInit = true;
+                        // Throttled re-init but allow first time
+                        if (isInit && width === lastWidth && Math.abs(height - (canvas.height / (window.devicePixelRatio || 1))) < 20) return;
+                        isInit = true;
 
-                    BUCKET_SIZE = (width < 900) ? 45 : 50;
-                    if (width !== lastWidth) scanY = 0;
-                    lastWidth = width;
+                        BUCKET_SIZE = (width < 900) ? 45 : 50;
+                        if (width !== lastWidth) scanY = 0;
+                        lastWidth = width;
 
-                    // Cap DPR on mobile for stability
-                    const isMobile = width < 1024;
-                    const dpr = isMobile ? 1 : (window.devicePixelRatio || 1);
-                    
-                    canvas.width = width * dpr;
-                    canvas.height = height * dpr;
-                    canvas.style.width = width + 'px';
-                    canvas.style.height = height + 'px';
-                    
-                    ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset
-                    ctx.scale(dpr, dpr);
+                        // Cap DPR on mobile for stability
+                        const isMobile = width < 1024;
+                        const dpr = isMobile ? 1 : (window.devicePixelRatio || 1);
 
-                    cols = Math.ceil(width / BUCKET_SIZE);
-                    rows = Math.ceil(height / BUCKET_SIZE);
-                    buckets = [];
+                        canvas.width = width * dpr;
+                        canvas.height = height * dpr;
+                        canvas.style.width = width + 'px';
+                        canvas.style.height = height + 'px';
 
-                    let bucketIndex = 0;
-                    for (let y = 0; y < rows; y++) {
-                        for (let x = 0; x < cols; x++) {
-                            buckets.push({
-                                x: x * BUCKET_SIZE,
-                                y: y * BUCKET_SIZE,
-                                w: BUCKET_SIZE,
-                                h: BUCKET_SIZE,
-                                id: bucketIndex,
-                                opacity: 1.0,
-                                revealed: false
-                            });
-                            bucketIndex++;
+                        ctx.setTransform(1, 0, 0, 1, 0, 0); // Reset
+                        ctx.scale(dpr, dpr);
+
+                        cols = Math.ceil(width / BUCKET_SIZE);
+                        rows = Math.ceil(height / BUCKET_SIZE);
+                        buckets = [];
+
+                        let bucketIndex = 0;
+                        for (let y = 0; y < rows; y++) {
+                            for (let x = 0; x < cols; x++) {
+                                buckets.push({
+                                    x: x * BUCKET_SIZE,
+                                    y: y * BUCKET_SIZE,
+                                    w: BUCKET_SIZE,
+                                    h: BUCKET_SIZE,
+                                    id: bucketIndex,
+                                    opacity: 1.0,
+                                    revealed: false
+                                });
+                                bucketIndex++;
+                            }
                         }
+                        if (statBuckets) statBuckets.innerText = `0/${buckets.length}`;
+
+                        lastWidth = width;
                     }
-                    if (statBuckets) statBuckets.innerText = `0/${buckets.length}`;
-                    
-                    lastWidth = width;
-                }
-                
-                // Fallback attempt for slow height calculation
-                setTimeout(initGrid, 100);
-                setTimeout(initGrid, 500);
 
-                window.addEventListener("resize", initGrid);
-                initGrid();
+                    // Fallback attempt for slow height calculation
+                    setTimeout(initGrid, 100);
+                    setTimeout(initGrid, 500);
 
-                const heroRect = document.getElementById("hero");
-                heroRect.addEventListener("pointermove", (e) => {
-                    // Trigger for both mouse and touch
-                    isHoveringHero = true;
+                    window.addEventListener("resize", initGrid);
+                    initGrid();
 
-                    const rect = canvas.getBoundingClientRect();
-                    const cMouseX = e.clientX - rect.left;
-                    const cMouseY = e.clientY - rect.top;
+                    const heroRect = document.getElementById("hero");
+                    heroRect.addEventListener("pointermove", (e) => {
+                        // Trigger for both mouse and touch
+                        isHoveringHero = true;
 
-                    const bx = Math.floor(cMouseX / BUCKET_SIZE);
-                    const by = Math.floor(cMouseY / BUCKET_SIZE);
-                    const idx = by * cols + bx;
-                    if (buckets[idx]) buckets[idx].revealed = true;
-                });
-                heroRect.addEventListener("pointerleave", () => {
-                    isHoveringHero = false;
-                });
+                        const rect = canvas.getBoundingClientRect();
+                        const cMouseX = e.clientX - rect.left;
+                        const cMouseY = e.clientY - rect.top;
 
-                const MOUSE_REVEAL_RADIUS = (window.innerWidth < 1024) ? 140 : 200;
-                const REVEAL_SPEED = (window.innerWidth < 1024) ? 0.08 : 0.06;
+                        const bx = Math.floor(cMouseX / BUCKET_SIZE);
+                        const by = Math.floor(cMouseY / BUCKET_SIZE);
+                        const idx = by * cols + bx;
+                        if (buckets[idx]) buckets[idx].revealed = true;
+                    });
+                    heroRect.addEventListener("pointerleave", () => {
+                        isHoveringHero = false;
+                    });
 
-                function renderGrid() {
-                    // Use CSS pixels for clearRect since transform is active
-                    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight + 1000);
-                    if (!window.RENDER_SYSTEM_READY) {
-                        ctx.fillStyle = '#050505';
-                        ctx.fillRect(0, 0, window.innerWidth, window.innerHeight + 500);
+                    const MOUSE_REVEAL_RADIUS = (window.innerWidth < 1024) ? 140 : 200;
+                    const REVEAL_SPEED = (window.innerWidth < 1024) ? 0.08 : 0.06;
+
+                    function renderGrid() {
+                        // Use CSS pixels for clearRect since transform is active
+                        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight + 1000);
+                        if (!window.RENDER_SYSTEM_READY) {
+                            ctx.fillStyle = '#050505';
+                            ctx.fillRect(0, 0, window.innerWidth, window.innerHeight + 500);
+                            requestAnimationFrame(renderGrid);
+                            return;
+                        }
+
+                        let clearedCount = 0;
+
+                        for (let i = 0; i < buckets.length; i++) {
+                            let b = buckets[i];
+
+                            if (isHoveringHero) {
+                                const rect = canvas.getBoundingClientRect();
+                                const cMouseX = mouseX - rect.left;
+                                const cMouseY = mouseY - rect.top;
+                                const cx = b.x + b.w / 2;
+                                const cy = b.y + b.h / 2;
+                                const distance = Math.hypot(cx - cMouseX, cy - cMouseY);
+
+                                if (distance < MOUSE_REVEAL_RADIUS) {
+                                    b.revealed = true;
+                                }
+                            }
+
+                            if (b.revealed && b.opacity > 0) {
+                                b.opacity -= REVEAL_SPEED;
+                                if (b.opacity <= 0) b.opacity = 0;
+                            }
+
+                            if (b.opacity <= 0.05) clearedCount++;
+
+                            if (b.opacity > 0) {
+                                ctx.fillStyle = `rgba(10, 10, 10, ${b.opacity * 0.9})`;
+                                ctx.fillRect(b.x, b.y, b.w + 0.5, b.h + 0.5);
+
+                                ctx.strokeStyle = `rgba(141, 79, 192, ${b.opacity * 0.2})`;
+                                ctx.lineWidth = 1;
+                                ctx.strokeRect(b.x, b.y, b.w, b.h);
+
+                                if (b.opacity > 0 && window.innerWidth >= 1024) {
+                                    ctx.fillStyle = `rgba(255, 255, 255, ${b.opacity * 0.6})`;
+                                    ctx.font = "8px monospace";
+                                    let pct = ((1 - b.opacity) * 100).toFixed(0);
+                                    ctx.fillText(`${pct}%`, b.x + 4, b.y + 12);
+                                }
+                            }
+                        }
+
+                        if (buckets.length > 0) {
+                            const pctRatio = clearedCount / buckets.length;
+                            const pct = Math.floor(pctRatio * 100);
+                            if (statPercent) statPercent.innerText = `${pct}%`;
+                            if (statBuckets) statBuckets.innerText = `${clearedCount}/${buckets.length}`;
+
+                            const heroBg = document.getElementById("hero-bg");
+                            if (heroBg) {
+                                const val = Math.max(0, 100 - (pctRatio * 100));
+                                heroBg.style.filter = `grayscale(${val}%) brightness(0.7)`;
+                                heroBg.style.opacity = 0.7 + (pctRatio * 0.3);
+                            }
+                        }
+
                         requestAnimationFrame(renderGrid);
-                        return;
                     }
+                    renderGrid();
 
-                    let clearedCount = 0;
+                    // Auto render blocks autonomously (Enhanced for Mobile/Top-to-bottom scan)
+                    setInterval(() => {
+                        if (!window.RENDER_SYSTEM_READY) return;
 
-                    for (let i = 0; i < buckets.length; i++) {
-                        let b = buckets[i];
+                        const isMobileWindow = window.innerWidth < 1024;
+                        const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
-                        if (isHoveringHero) {
-                            const rect = canvas.getBoundingClientRect();
-                            const cMouseX = mouseX - rect.left;
-                            const cMouseY = mouseY - rect.top;
-                            const cx = b.x + b.w / 2;
-                            const cy = b.y + b.h / 2;
-                            const distance = Math.hypot(cx - cMouseX, cy - cMouseY);
+                        // Double speed on mobile to ensure it finishes
+                        if (buckets.length > 0) {
+                            const hDiv = document.getElementById("hero");
+                            const heroH = hDiv ? (hDiv.offsetHeight || hDiv.clientHeight) : window.innerHeight;
+                            const inc = (window.innerWidth < 1024) ? (heroH / 60) : (heroH / 104);
+                            scanY += inc;
 
-                            if (distance < MOUSE_REVEAL_RADIUS) {
-                                b.revealed = true;
-                            }
+                            buckets.forEach(b => {
+                                if (!b.revealed) {
+                                    if (b.y < scanY - BUCKET_SIZE) b.revealed = true;
+                                    else if (b.y < scanY + BUCKET_SIZE && Math.random() > 0.45) b.revealed = true;
+                                }
+                            });
                         }
 
-                        if (b.revealed && b.opacity > 0) {
-                            b.opacity -= REVEAL_SPEED;
-                            if (b.opacity <= 0) b.opacity = 0;
+                        timeElapsed++;
+                        if (statTime) {
+                            const m = Math.floor(timeElapsed / 60);
+                            const s = timeElapsed % 60;
+                            statTime.innerText = `00:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
                         }
-
-                        if (b.opacity <= 0.05) clearedCount++;
-
-                        if (b.opacity > 0) {
-                            ctx.fillStyle = `rgba(10, 10, 10, ${b.opacity * 0.9})`;
-                            ctx.fillRect(b.x, b.y, b.w + 0.5, b.h + 0.5);
-
-                            ctx.strokeStyle = `rgba(141, 79, 192, ${b.opacity * 0.2})`;
-                            ctx.lineWidth = 1;
-                            ctx.strokeRect(b.x, b.y, b.w, b.h);
-
-                            if (b.opacity > 0 && window.innerWidth >= 1024) {
-                                ctx.fillStyle = `rgba(255, 255, 255, ${b.opacity * 0.6})`;
-                                ctx.font = "8px monospace";
-                                let pct = ((1 - b.opacity) * 100).toFixed(0);
-                                ctx.fillText(`${pct}%`, b.x + 4, b.y + 12);
-                            }
-                        }
-                    }
-
-                    if (buckets.length > 0) {
-                        const pctRatio = clearedCount / buckets.length;
-                        const pct = Math.floor(pctRatio * 100);
-                        if (statPercent) statPercent.innerText = `${pct}%`;
-                        if (statBuckets) statBuckets.innerText = `${clearedCount}/${buckets.length}`;
-
-                        const heroBg = document.getElementById("hero-bg");
-                        if (heroBg) {
-                            const val = Math.max(0, 100 - (pctRatio * 100));
-                            heroBg.style.filter = `grayscale(${val}%) brightness(0.7)`;
-                            heroBg.style.opacity = 0.7 + (pctRatio * 0.3);
-                        }
-                    }
-
-                    requestAnimationFrame(renderGrid);
-                }
-                renderGrid();
-
-                // Auto render blocks autonomously (Enhanced for Mobile/Top-to-bottom scan)
-                setInterval(() => {
-                    if (!window.RENDER_SYSTEM_READY) return;
-
-                    const isMobileWindow = window.innerWidth < 1024;
-                    const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
-
-                    // Double speed on mobile to ensure it finishes
-                    if (buckets.length > 0) {
-                        const hDiv = document.getElementById("hero");
-                        const heroH = hDiv ? (hDiv.offsetHeight || hDiv.clientHeight) : window.innerHeight;
-                        const inc = (window.innerWidth < 1024) ? (heroH / 60) : (heroH / 104);
-                        scanY += inc;
-
-                        buckets.forEach(b => {
-                            if (!b.revealed) {
-                                if (b.y < scanY - BUCKET_SIZE) b.revealed = true;
-                                else if (b.y < scanY + BUCKET_SIZE && Math.random() > 0.45) b.revealed = true;
-                            }
-                        });
-                    }
-
-                    timeElapsed++;
-                    if (statTime) {
-                        const m = Math.floor(timeElapsed / 60);
-                        const s = timeElapsed % 60;
-                        statTime.innerText = `00:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
-                    }
-                }, 30);
+                    }, 30);
                 } // End if (!isMobileView)
             } // End if (canvas)
 
-                // --- 4. Timeline Scroll Beam Control ---
-                window.addEventListener('scroll', () => {
-                    const section = document.getElementById('processo');
-                    const beamLight = document.querySelector('.timeline-beam-glow');
-                    if (!section) return;
-                    const rect = section.getBoundingClientRect();
-                    const vh = window.innerHeight;
-                    if (rect.top < vh && rect.bottom > 0) {
-                        const targetTopInViewport = vh * 0.35;
-                        const progress = (targetTopInViewport - rect.top) / rect.height;
-                        const percentage = Math.max(-20, Math.min(100, progress * 100));
-                        section.style.setProperty('--beam-top', `${percentage}%`);
-                        if(beamLight) beamLight.style.top = `${percentage}%`; // iOS Safari override trigger
+            // --- 4. Timeline Scroll Beam Control ---
+            window.addEventListener('scroll', () => {
+                const section = document.getElementById('processo');
+                const beamLight = document.querySelector('.timeline-beam-glow');
+                if (!section) return;
+                const rect = section.getBoundingClientRect();
+                const vh = window.innerHeight;
+                if (rect.top < vh && rect.bottom > 0) {
+                    const targetTopInViewport = vh * 0.35;
+                    const progress = (targetTopInViewport - rect.top) / rect.height;
+                    const percentage = Math.max(-20, Math.min(100, progress * 100));
+                    section.style.setProperty('--beam-top', `${percentage}%`);
+                    if (beamLight) beamLight.style.top = `${percentage}%`; // iOS Safari override trigger
+                }
+            });
+
+            // --- 5. Portfolio Mouse-Move Parallax Logic ---
+            const portfolio = document.getElementById('portfolio');
+            if (portfolio) {
+                portfolio.addEventListener('mousemove', (e) => {
+                    const { width, height, left, top } = portfolio.getBoundingClientRect();
+                    const x = ((e.clientX - left) / width) - 0.5;
+                    const y = ((e.clientY - top) / height) - 0.5;
+                    portfolio.style.setProperty('--px', x.toFixed(3));
+                    portfolio.style.setProperty('--py', y.toFixed(3));
+                });
+            }
+
+            // --- 6. Logo Carousel Drag Logic ---
+            const carousel = document.getElementById('logo-carousel');
+            if (carousel) {
+                const track = carousel.querySelector('.logo-carousel-track');
+                let isDragging = false;
+                let startX = 0;
+                let scrollStart = 0;
+
+                carousel.addEventListener('mousedown', (e) => {
+                    isDragging = true;
+                    startX = e.pageX;
+                    scrollStart = carousel.scrollLeft;
+                    carousel.classList.add('dragging');
+                });
+
+                document.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    e.preventDefault();
+                    const dx = e.pageX - startX;
+                    carousel.scrollLeft = scrollStart - dx;
+                });
+
+                document.addEventListener('mouseup', () => {
+                    isDragging = false;
+                    carousel.classList.remove('dragging');
+                });
+
+                // Touch support
+                carousel.addEventListener('touchstart', (e) => {
+                    isDragging = true;
+                    startX = e.touches[0].pageX;
+                    scrollStart = carousel.scrollLeft;
+                    carousel.classList.add('dragging');
+                }, { passive: true });
+
+                carousel.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    const dx = e.touches[0].pageX - startX;
+                    carousel.scrollLeft = scrollStart - dx;
+                }, { passive: true });
+
+                carousel.addEventListener('touchend', () => {
+                    isDragging = false;
+                    carousel.classList.remove('dragging');
+                });
+            }
+            // --- 7. Smooth Scroll Anchor Handler ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#' || targetId === '#hero') {
+                        e.preventDefault();
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                        return;
+                    }
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        const offset = 96; // Matching scroll-mt-24 (6rem)
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
                     }
                 });
+            });
+            // --- 8. Lightbox Gallery Logic ---
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCurrent = document.getElementById('lightbox-current');
+            const lightboxTotal = document.getElementById('lightbox-total');
+            const lightboxLoader = document.getElementById('lightbox-loader');
 
-                // --- 5. Portfolio Mouse-Move Parallax Logic ---
-                const portfolio = document.getElementById('portfolio');
-                if (portfolio) {
-                    portfolio.addEventListener('mousemove', (e) => {
-                        const { width, height, left, top } = portfolio.getBoundingClientRect();
-                        const x = ((e.clientX - left) / width) - 0.5;
-                        const y = ((e.clientY - top) / height) - 0.5;
-                        portfolio.style.setProperty('--px', x.toFixed(3));
-                        portfolio.style.setProperty('--py', y.toFixed(3));
-                    });
-                }
+            let defaultGalleryImages = [];
+            let currentGallery = [];
+            let currentIndex = 0;
 
-                // --- 6. Logo Carousel Drag Logic ---
-                const carousel = document.getElementById('logo-carousel');
-                if (carousel) {
-                    const track = carousel.querySelector('.logo-carousel-track');
-                    let isDragging = false;
-                    let startX = 0;
-                    let scrollStart = 0;
+            function updateGalleryState() {
+                if (currentGallery.length === 0) return;
 
-                    carousel.addEventListener('mousedown', (e) => {
-                        isDragging = true;
-                        startX = e.pageX;
-                        scrollStart = carousel.scrollLeft;
-                        carousel.classList.add('dragging');
-                    });
+                lightboxLoader.classList.remove('hidden');
+                const imgUrl = currentGallery[currentIndex].src;
 
-                    document.addEventListener('mousemove', (e) => {
-                        if (!isDragging) return;
-                        e.preventDefault();
-                        const dx = e.pageX - startX;
-                        carousel.scrollLeft = scrollStart - dx;
-                    });
+                // Preload next/prev
+                const nextImg = new Image();
+                const prevImg = new Image();
+                nextImg.src = currentGallery[(currentIndex + 1) % currentGallery.length].src;
+                prevImg.src = currentGallery[(currentIndex - 1 + currentGallery.length) % currentGallery.length].src;
 
-                    document.addEventListener('mouseup', () => {
-                        isDragging = false;
-                        carousel.classList.remove('dragging');
-                    });
+                lightboxImg.classList.add('opacity-0', 'scale-95');
 
-                    // Touch support
-                    carousel.addEventListener('touchstart', (e) => {
-                        isDragging = true;
-                        startX = e.touches[0].pageX;
-                        scrollStart = carousel.scrollLeft;
-                        carousel.classList.add('dragging');
-                    }, { passive: true });
+                const tempImg = new Image();
+                tempImg.src = imgUrl;
+                tempImg.onload = () => {
+                    lightboxImg.src = imgUrl;
+                    lightboxImg.classList.remove('opacity-0', 'scale-95');
+                    lightboxLoader.classList.add('hidden');
+                    lightboxCurrent.innerText = (currentIndex + 1).toString().padStart(2, '0');
+                };
+            }
 
-                    carousel.addEventListener('touchmove', (e) => {
-                        if (!isDragging) return;
-                        const dx = e.touches[0].pageX - startX;
-                        carousel.scrollLeft = scrollStart - dx;
-                    }, { passive: true });
+            window.openLightbox = (index, customGallery = null) => {
+                currentGallery = customGallery ? customGallery : defaultGalleryImages;
+                currentIndex = index;
+                lightbox.classList.remove('hidden');
+                setTimeout(() => lightbox.classList.add('active'), 10);
+                lightboxTotal.innerText = currentGallery.length.toString().padStart(2, '0');
+                updateGalleryState();
+                document.body.style.overflow = 'hidden';
+            };
 
-                    carousel.addEventListener('touchend', () => {
-                        isDragging = false;
-                        carousel.classList.remove('dragging');
-                    });
-                }
-                // --- 7. Smooth Scroll Anchor Handler ---
-                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                    anchor.addEventListener('click', function (e) {
-                        const targetId = this.getAttribute('href');
-                        if (targetId === '#' || targetId === '#hero') {
-                            e.preventDefault();
-                            window.scrollTo({
-                                top: 0,
-                                behavior: 'smooth'
-                            });
-                            return;
-                        }
-                        const targetElement = document.querySelector(targetId);
-                        if (targetElement) {
-                            e.preventDefault();
-                            const offset = 96; // Matching scroll-mt-24 (6rem)
-                            const elementPosition = targetElement.getBoundingClientRect().top;
-                            const offsetPosition = elementPosition + window.pageYOffset - offset;
+            window.closeLightbox = () => {
+                lightbox.classList.remove('active');
+                setTimeout(() => lightbox.classList.add('hidden'), 300);
+                document.body.style.overflow = '';
+            };
 
-                            window.scrollTo({
-                                top: offsetPosition,
-                                behavior: 'smooth'
-                            });
-                        }
-                    });
+            window.nextLightbox = (e) => {
+                if (e) e.stopPropagation();
+                currentIndex = (currentIndex + 1) % currentGallery.length;
+                updateGalleryState();
+            };
+
+            window.prevLightbox = (e) => {
+                if (e) e.stopPropagation();
+                currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+                updateGalleryState();
+            };
+
+            // Initialize gallery items
+            const portfolioItems = document.querySelectorAll('.portfolio-card');
+            const portfolioImgs = document.querySelectorAll('#portfolio img');
+            defaultGalleryImages = Array.from(portfolioImgs);
+
+            // Use the card as the click target for better mobile hit area
+            portfolioItems.forEach((card, idx) => {
+                const handleOpen = (e) => {
+                    e.preventDefault();
+                    openLightbox(idx);
+                };
+                card.addEventListener('click', handleOpen);
+            });
+
+            // Custom Gallery Sets
+            const humanizadaGallery = [
+                { src: './public/humanizadas/Humanizada_Nomes.webp' },
+                { src: './public/humanizadas/Humanizada 01.webp' },
+                { src: './public/humanizadas/Humanizada AP.webp' },
+                { src: './public/humanizadas/humanizada.webp' }
+            ];
+
+            // Trigger portfolio lightbox from propósito section image
+            const propositoImg = document.getElementById('proposito-img');
+            if (propositoImg) {
+                propositoImg.addEventListener('click', () => {
+                    window.openLightbox(0);
                 });
-                // --- 8. Lightbox Gallery Logic ---
-                const lightbox = document.getElementById('lightbox');
-                const lightboxImg = document.getElementById('lightbox-img');
-                const lightboxCurrent = document.getElementById('lightbox-current');
-                const lightboxTotal = document.getElementById('lightbox-total');
-                const lightboxLoader = document.getElementById('lightbox-loader');
-                
-                let defaultGalleryImages = [];
-                let currentGallery = [];
-                let currentIndex = 0;
+            }
 
-                function updateGalleryState() {
-                    if (currentGallery.length === 0) return;
-                    
-                    lightboxLoader.classList.remove('hidden');
-                    const imgUrl = currentGallery[currentIndex].src;
-                    
-                    // Preload next/prev
-                    const nextImg = new Image();
-                    const prevImg = new Image();
-                    nextImg.src = currentGallery[(currentIndex + 1) % currentGallery.length].src;
-                    prevImg.src = currentGallery[(currentIndex - 1 + currentGallery.length) % currentGallery.length].src;
-
-                    lightboxImg.classList.add('opacity-0', 'scale-95');
-                    
-                    const tempImg = new Image();
-                    tempImg.src = imgUrl;
-                    tempImg.onload = () => {
-                        lightboxImg.src = imgUrl;
-                        lightboxImg.classList.remove('opacity-0', 'scale-95');
-                        lightboxLoader.classList.add('hidden');
-                        lightboxCurrent.innerText = (currentIndex + 1).toString().padStart(2, '0');
-                    };
+            // Close on backdrop click
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox || e.target.id === 'lightbox-img-container') {
+                    closeLightbox();
                 }
+            });
 
-                window.openLightbox = (index, customGallery = null) => {
-                    currentGallery = customGallery ? customGallery : defaultGalleryImages;
-                    currentIndex = index;
-                    lightbox.classList.remove('hidden');
-                    setTimeout(() => lightbox.classList.add('active'), 10);
-                    lightboxTotal.innerText = currentGallery.length.toString().padStart(2, '0');
-                    updateGalleryState();
-                    document.body.style.overflow = 'hidden';
-                };
+            // Keyboard support
+            document.addEventListener('keydown', (e) => {
+                if (lightbox.classList.contains('hidden')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight') nextLightbox();
+                if (e.key === 'ArrowLeft') prevLightbox();
+            });
 
-                window.closeLightbox = () => {
-                    lightbox.classList.remove('active');
-                    setTimeout(() => lightbox.classList.add('hidden'), 300);
-                    document.body.style.overflow = '';
-                };
-
-                window.nextLightbox = (e) => {
-                    if (e) e.stopPropagation();
-                    currentIndex = (currentIndex + 1) % currentGallery.length;
-                    updateGalleryState();
-                };
-
-                window.prevLightbox = (e) => {
-                    if (e) e.stopPropagation();
-                    currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
-                    updateGalleryState();
-                };
-
-                // Initialize gallery items
-                const portfolioItems = document.querySelectorAll('.portfolio-card');
-                const portfolioImgs = document.querySelectorAll('#portfolio img');
-                defaultGalleryImages = Array.from(portfolioImgs);
-                
-                // Use the card as the click target for better mobile hit area
-                portfolioItems.forEach((card, idx) => {
-                    const handleOpen = (e) => {
-                        e.preventDefault();
-                        openLightbox(idx);
-                    };
-                    card.addEventListener('click', handleOpen);
-                });
-
-                // Custom Gallery Sets
-                const humanizadaGallery = [
-                    { src: './public/humanizadas/Humanizada_Nomes.webp' },
-                    { src: './public/humanizadas/Humanizada 01.webp' },
-                    { src: './public/humanizadas/Humanizada AP.webp' },
-                    { src: './public/humanizadas/humanizada.webp' }
-                ];
-
-                // Trigger portfolio lightbox from propósito section image
-                const propositoImg = document.getElementById('proposito-img');
-                if (propositoImg) {
-                    propositoImg.addEventListener('click', () => {
-                        window.openLightbox(0); 
-                    });
-                }
-
-                // Close on backdrop click
-                lightbox.addEventListener('click', (e) => {
-                    if (e.target === lightbox || e.target.id === 'lightbox-img-container') {
-                        closeLightbox();
+            // --- 9. Mobile Services Cards Interaction ---
+            const servicoCards = document.querySelectorAll('.servico-card');
+            servicoCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const isMobileWindow = window.innerWidth < 1024;
+                    if (isMobileWindow) {
+                        servicoCards.forEach(c => c.classList.remove('is-active'));
+                        card.classList.add('is-active');
+                        card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
                     }
                 });
+            });
 
-                // Keyboard support
-                document.addEventListener('keydown', (e) => {
-                    if (lightbox.classList.contains('hidden')) return;
-                    if (e.key === 'Escape') closeLightbox();
-                    if (e.key === 'ArrowRight') nextLightbox();
-                    if (e.key === 'ArrowLeft') prevLightbox();
-                });
+            // --- 10. Video & Custom Cards Modal Handler ---
+            const filmeCard = document.getElementById('card-filme-lancamento');
+            const videoModal = document.getElementById('video-modal');
+            const videoIframe = document.getElementById('video-iframe');
+            const videoPlayIcon = document.getElementById('video-play-icon');
+            const videoOverlay = document.getElementById('video-play-overlay');
 
-                // --- 9. Mobile Services Cards Interaction ---
-                const servicoCards = document.querySelectorAll('.servico-card');
-                servicoCards.forEach(card => {
-                    card.addEventListener('click', () => {
-                        const isMobileWindow = window.innerWidth < 1024;
-                        if (isMobileWindow) {
-                            servicoCards.forEach(c => c.classList.remove('is-active'));
-                            card.classList.add('is-active');
-                            card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-                        }
-                    });
-                });
+            const plantaCard = document.getElementById('card-planta-humanizada');
+            const setupCard = document.getElementById('card-setup-modelagem');
+            const stillsCard = document.getElementById('card-stills-highend');
 
-                // --- 10. Video & Custom Cards Modal Handler ---
-                const filmeCard = document.getElementById('card-filme-lancamento');
-                const videoModal = document.getElementById('video-modal');
-                const videoIframe = document.getElementById('video-iframe');
-                const videoPlayIcon = document.getElementById('video-play-icon');
-                const videoOverlay = document.getElementById('video-play-overlay');
-                
-                const plantaCard = document.getElementById('card-planta-humanizada');
-                const setupCard = document.getElementById('card-setup-modelagem');
-                const stillsCard = document.getElementById('card-stills-highend');
+            const scrollToPortfolio = (e, lastClickRef) => {
+                const currentTime = new Date().getTime();
+                if (currentTime - lastClickRef.time < 400) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const portSection = document.getElementById('portfolio');
+                    if (portSection) portSection.scrollIntoView({ behavior: 'smooth' });
+                }
+                lastClickRef.time = currentTime;
+            };
 
-                const scrollToPortfolio = (e, lastClickRef) => {
+            if (setupCard) {
+                let ref = { time: 0 };
+                setupCard.addEventListener('click', (e) => scrollToPortfolio(e, ref));
+            }
+
+            if (stillsCard) {
+                let ref = { time: 0 };
+                stillsCard.addEventListener('click', (e) => scrollToPortfolio(e, ref));
+            }
+
+            if (plantaCard) {
+                let lastPlantaClick = 0;
+                plantaCard.addEventListener('click', (e) => {
                     const currentTime = new Date().getTime();
-                    if (currentTime - lastClickRef.time < 400) {
+                    if (currentTime - lastPlantaClick < 400) {
                         e.preventDefault();
                         e.stopPropagation();
-                        const portSection = document.getElementById('portfolio');
-                        if (portSection) portSection.scrollIntoView({ behavior: 'smooth' });
+                        window.openLightbox(0, humanizadaGallery);
                     }
-                    lastClickRef.time = currentTime;
-                };
+                    lastPlantaClick = currentTime;
+                });
+            }
 
-                if (setupCard) {
-                    let ref = { time: 0 };
-                    setupCard.addEventListener('click', (e) => scrollToPortfolio(e, ref));
-                }
+            if (filmeCard && videoModal && videoIframe) {
+                let lastClickTime = 0;
 
-                if (stillsCard) {
-                    let ref = { time: 0 };
-                    stillsCard.addEventListener('click', (e) => scrollToPortfolio(e, ref));
-                }
+                filmeCard.addEventListener('click', (e) => {
+                    const currentTime = new Date().getTime();
+                    if (currentTime - lastClickTime < 400) {
+                        e.preventDefault();
+                        e.stopPropagation();
 
-                if (plantaCard) {
-                    let lastPlantaClick = 0;
-                    plantaCard.addEventListener('click', (e) => {
-                        const currentTime = new Date().getTime();
-                        if (currentTime - lastPlantaClick < 400) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            window.openLightbox(0, humanizadaGallery);
-                        }
-                        lastPlantaClick = currentTime;
-                    });
-                }
-
-                if (filmeCard && videoModal && videoIframe) {
-                    let lastClickTime = 0;
-
-                    filmeCard.addEventListener('click', (e) => {
-                        const currentTime = new Date().getTime();
-                        if (currentTime - lastClickTime < 400) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            
-                            // Check cookie consent
-                            if (localStorage.getItem('axyon_cookie_consent') !== 'true') {
-                                const cookieBanner = document.getElementById('cookie-banner');
-                                if (cookieBanner) {
-                                    cookieBanner.classList.remove('translate-y-full');
-                                    cookieBanner.classList.add('border-ds3Purple', 'shadow-[0_0_30px_rgba(141,79,192,0.3)]');
-                                    setTimeout(() => {
-                                        cookieBanner.classList.remove('border-ds3Purple', 'shadow-[0_0_30px_rgba(141,79,192,0.3)]');
-                                    }, 1500);
-                                }
-                                alert('Por favor, aceite os termos de cookies na barra inferior para habilitar o player de vídeo.');
-                                return;
+                        // Check cookie consent
+                        if (localStorage.getItem('axyon_cookie_consent') !== 'true') {
+                            const cookieBanner = document.getElementById('cookie-banner');
+                            if (cookieBanner) {
+                                cookieBanner.classList.remove('translate-y-full');
+                                cookieBanner.classList.add('border-ds3Purple', 'shadow-[0_0_30px_rgba(141,79,192,0.3)]');
+                                setTimeout(() => {
+                                    cookieBanner.classList.remove('border-ds3Purple', 'shadow-[0_0_30px_rgba(141,79,192,0.3)]');
+                                }, 1500);
                             }
-
-                            videoIframe.src = "https://drive.google.com/file/d/1XeA9cm-Q_vl6qNCXq_oa4sxQAa5ujehh/preview";
-                            videoModal.classList.remove('hidden');
-                            videoModal.style.display = 'flex';
-                            setTimeout(() => videoModal.style.opacity = '1', 10);
-                            document.body.style.overflow = 'hidden';
+                            alert('Por favor, aceite os termos de cookies na barra inferior para habilitar o player de vídeo.');
+                            return;
                         }
-                        lastClickTime = currentTime;
-                    });
 
-                    window.closeVideoModal = () => {
-                        videoModal.style.opacity = '0';
-                        setTimeout(() => {
-                            videoModal.classList.add('hidden');
-                            videoModal.style.display = 'none';
-                            videoIframe.src = "";
-                            document.body.style.overflow = '';
-                        }, 300);
-                    };
-                }
+                        videoIframe.src = "https://drive.google.com/file/d/1XeA9cm-Q_vl6qNCXq_oa4sxQAa5ujehh/preview";
+                        videoModal.classList.remove('hidden');
+                        videoModal.style.display = 'flex';
+                        setTimeout(() => videoModal.style.opacity = '1', 10);
+                        document.body.style.overflow = 'hidden';
+                    }
+                    lastClickTime = currentTime;
+                });
+
+                window.closeVideoModal = () => {
+                    videoModal.style.opacity = '0';
+                    setTimeout(() => {
+                        videoModal.classList.add('hidden');
+                        videoModal.style.display = 'none';
+                        videoIframe.src = "";
+                        document.body.style.overflow = '';
+                    }, 300);
+                };
+            }
         });
     </script>
 
@@ -2420,7 +2433,8 @@
     <div id="lightbox"
         class="fixed inset-0 z-[10005] bg-black/95 hidden flex-col items-center justify-center backdrop-blur-sm transition-all duration-300 opacity-0">
         <!-- Close -->
-        <button class="absolute top-8 right-8 text-white/50 hover:text-white transition-colors p-2 z-[10006] cursor-hover"
+        <button
+            class="absolute top-8 right-8 text-white/50 hover:text-white transition-colors p-2 z-[10006] cursor-hover"
             onclick="closeLightbox()">
             <iconify-icon icon="ph:x-bold" width="32"></iconify-icon>
         </button>
@@ -2438,10 +2452,11 @@
         </button>
 
         <!-- Image Container -->
-        <div id="lightbox-img-container" class="relative max-w-[95vw] max-h-[85vh] flex items-center justify-center p-4">
+        <div id="lightbox-img-container"
+            class="relative max-w-[95vw] max-h-[85vh] flex items-center justify-center p-4">
             <img id="lightbox-img" src="" alt="Gallery Image"
                 class="max-w-full max-h-full object-contain shadow-2xl transition-all duration-300 scale-95 opacity-0" />
-            
+
             <!-- Loader -->
             <div id="lightbox-loader" class="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <div class="w-10 h-10 border-2 border-ds3Purple/20 border-t-ds3Purple rounded-full animate-spin"></div>
@@ -2456,32 +2471,38 @@
 
     <!-- Video Modal (Vertical / Shorts) -->
     <div id="video-modal"
-        class="fixed inset-0 z-[10010] bg-black/95 hidden flex-col items-center justify-center backdrop-blur-sm transition-all duration-300" style="opacity: 0; display: none;"
-        onclick="if(event.target === this) closeVideoModal()">
-        <button class="absolute top-8 right-8 text-white/50 hover:text-white transition-colors p-2 z-[10011] cursor-hover"
+        class="fixed inset-0 z-[10010] bg-black/95 hidden flex-col items-center justify-center backdrop-blur-sm transition-all duration-300"
+        style="opacity: 0; display: none;" onclick="if(event.target === this) closeVideoModal()">
+        <button
+            class="absolute top-8 right-8 text-white/50 hover:text-white transition-colors p-2 z-[10011] cursor-hover"
             onclick="closeVideoModal()">
             <iconify-icon icon="ph:x-bold" width="32"></iconify-icon>
         </button>
-        <div class="relative h-[85vh] max-h-[85vh] max-w-[90vw] aspect-[9/16] pointer-events-none mx-auto flex justify-center items-center">
-            <iframe id="video-iframe" class="w-full h-full rounded-xl shadow-[0_0_50px_rgba(141,79,192,0.3)] pointer-events-auto bg-black"
+        <div
+            class="relative h-[85vh] max-h-[85vh] max-w-[90vw] aspect-[9/16] pointer-events-none mx-auto flex justify-center items-center">
+            <iframe id="video-iframe"
+                class="w-full h-full rounded-xl shadow-[0_0_50px_rgba(141,79,192,0.3)] pointer-events-auto bg-black"
                 src="" title="Google Drive Video Player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
         </div>
     </div>
     <!-- Cookie Banner -->
-    <div id="cookie-banner" class="fixed bottom-0 left-0 w-full bg-[#050505] border-t border-white/10 z-[11000] p-6 lg:p-8 transform translate-y-full transition-all duration-700 flex flex-col md:flex-row items-center justify-between gap-6 shadow-[0_-20px_50px_rgba(0,0,0,0.8)]">
+    <div id="cookie-banner"
+        class="fixed bottom-0 left-0 w-full bg-[#050505] border-t border-white/10 z-[11000] p-6 lg:p-8 transform translate-y-full transition-all duration-700 flex flex-col md:flex-row items-center justify-between gap-6 shadow-[0_-20px_50px_rgba(0,0,0,0.8)]">
         <div class="flex-1 max-w-4xl">
             <h4 class="text-white text-sm font-semibold uppercase tracking-wider mb-2 flex items-center gap-2">
                 <iconify-icon icon="solar:cookie-bold-duotone" class="text-ds3Purple text-lg"></iconify-icon>
                 Privacidade & Cookies
             </h4>
             <p class="text-neutral-400 text-sm font-light leading-relaxed">
-                Utilizamos cookies de terceiros para garantir o carregamento correto de vídeos externos em alta performance e melhorar sua experiência no ecossistema Axyon. 
+                Utilizamos cookies de terceiros para garantir o carregamento correto de vídeos externos em alta
+                performance e melhorar sua experiência no ecossistema Axyon.
             </p>
         </div>
         <div class="flex items-center gap-4 w-full md:w-auto">
-            <button onclick="acceptCookies()" class="w-full md:w-auto px-8 py-4 bg-transparent border border-ds3Purple text-white text-sm font-semibold uppercase tracking-wider hover:bg-ds3Purple transition-colors cursor-hover">
+            <button onclick="acceptCookies()"
+                class="w-full md:w-auto px-8 py-4 bg-transparent border border-ds3Purple text-white text-sm font-semibold uppercase tracking-wider hover:bg-ds3Purple transition-colors cursor-hover">
                 Aceitar e Continuar
             </button>
         </div>
@@ -2492,7 +2513,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const cookieBanner = document.getElementById('cookie-banner');
             const hasAccepted = localStorage.getItem('axyon_cookie_consent');
-            
+
             if (!hasAccepted) {
                 // Show banner after a slight delay
                 setTimeout(() => {
@@ -2503,9 +2524,17 @@
             window.acceptCookies = () => {
                 localStorage.setItem('axyon_cookie_consent', 'true');
                 if (cookieBanner) cookieBanner.classList.add('translate-y-full');
-                // Opt: Check if they tried to click play before, we can automatically open it
             };
         });
     </script>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5566992422860?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20preciso%20de%20um%20or%C3%A7amento%20para%20meu%20projeto."
+        target="_blank" rel="noopener noreferrer"
+        class="fixed bottom-6 lg:bottom-10 right-6 lg:right-10 z-[11500] bg-[#25D366] text-white p-4 rounded-full shadow-[0_4px_14px_rgba(37,211,102,0.5)] hover:scale-110 hover:shadow-[0_6px_20px_rgba(37,211,102,0.6)] transition-all duration-300 flex items-center justify-center cursor-hover group">
+        <iconify-icon icon="mdi:whatsapp"
+            class="text-3xl group-hover:rotate-12 transition-transform duration-300"></iconify-icon>
+    </a>
 </body>
+
 </html>
