@@ -2372,33 +2372,15 @@
                 if (filmeCard && videoModal && videoIframe) {
                     let lastClickTime = 0;
 
-                    videoIframe.addEventListener('click', () => {
-                        if (videoIframe.paused) {
-                            videoIframe.play();
-                            videoPlayIcon.setAttribute('icon', 'ph:pause-fill');
-                            videoOverlay.style.opacity = '0';
-                        } else {
-                            videoIframe.pause();
-                            videoPlayIcon.setAttribute('icon', 'ph:play-fill');
-                            videoOverlay.style.opacity = '1';
-                        }
-                    });
-
                     filmeCard.addEventListener('click', (e) => {
                         const currentTime = new Date().getTime();
-                        if (currentTime - lastClickTime < 400) { // Duplo clique (<400ms)
+                        if (currentTime - lastClickTime < 400) {
                             e.preventDefault();
                             e.stopPropagation();
-                            // Puxando o vídeo nativamente da própria pasta do projeto para evitar qualquer bloqueio
-                            videoIframe.src = "./public/filme-lancamento.mp4";
+                            videoIframe.src = "https://drive.google.com/file/d/1XeA9cm-Q_vl6qNCXq_oa4sxQAa5ujehh/preview";
                             videoModal.classList.remove('hidden');
                             videoModal.style.display = 'flex';
-                            setTimeout(() => {
-                                videoModal.style.opacity = '1';
-                                videoIframe.play();
-                                videoPlayIcon.setAttribute('icon', 'ph:pause-fill');
-                                videoOverlay.style.opacity = '0';
-                            }, 10);
+                            setTimeout(() => videoModal.style.opacity = '1', 10);
                             document.body.style.overflow = 'hidden';
                         }
                         lastClickTime = currentTime;
@@ -2406,7 +2388,6 @@
 
                     window.closeVideoModal = () => {
                         videoModal.style.opacity = '0';
-                        videoIframe.pause();
                         setTimeout(() => {
                             videoModal.classList.add('hidden');
                             videoModal.style.display = 'none';
@@ -2464,15 +2445,11 @@
             onclick="closeVideoModal()">
             <iconify-icon icon="ph:x-bold" width="32"></iconify-icon>
         </button>
-        <div class="relative w-full max-w-[400px] h-[80vh] px-4 pointer-events-none flex items-center justify-center">
-            <video id="video-iframe" class="w-full h-full rounded-xl object-contain lg:object-cover shadow-[0_0_50px_rgba(141,79,192,0.3)] pointer-events-auto cursor-pointer"
-                src="" playsinline></video>
-            
-            <div id="video-play-overlay" class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 transition-opacity duration-300">
-                 <div class="w-16 h-16 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center text-white shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-                      <iconify-icon id="video-play-icon" icon="ph:play-fill" width="32"></iconify-icon>
-                 </div>
-            </div>
+        <div class="relative w-full max-w-[400px] h-[80vh] px-4 pointer-events-none">
+            <iframe id="video-iframe" class="w-full h-full rounded-xl shadow-[0_0_50px_rgba(141,79,192,0.3)] pointer-events-auto"
+                src="" title="Google Drive Video Player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
         </div>
     </div>
 
