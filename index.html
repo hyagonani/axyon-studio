@@ -255,16 +255,17 @@
             z-index: 10;
         }
 
-        .timeline-beam::after {
-            content: '';
+        .timeline-beam-glow {
             position: absolute;
             top: var(--beam-top, -100%);
             left: 0;
             width: 100%;
             height: 30vh;
             background: linear-gradient(to bottom, transparent, #8d4fc0, transparent);
-            transition: top 0.15s ease-out;
+            transition: top 0.1s linear;
             pointer-events: none;
+            transform: translateZ(0); /* Hardware accel for iOS */
+            -webkit-transform: translateZ(0);
         }
 
         /* Portfolio Interactive Grid */
@@ -459,7 +460,8 @@
             z-index: 0;
         }
 
-        .servico-card:hover .servico-bg {
+        .servico-card:hover .servico-bg,
+        .servico-card.is-active .servico-bg {
             opacity: 0.2;
             filter: grayscale(0%);
             transform: scale(1.1);
@@ -480,7 +482,8 @@
             overflow: hidden;
         }
 
-        .servico-card:hover .servico-card-inner {
+        .servico-card:hover .servico-card-inner,
+        .servico-card.is-active .servico-card-inner {
             background: rgba(141, 79, 192, 0.04);
             border-color: rgba(141, 79, 192, 0.3);
             transform: translateY(-8px);
@@ -653,21 +656,30 @@
 
     <!-- Mobile Menu Overlay (Moved outside nav for reliable rendering) -->
     <div id="mobile-menu"
-        class="fixed inset-0 bg-[#050505]/98 backdrop-blur-2xl z-[105] flex flex-col items-center justify-center gap-10 transition-all duration-500 opacity-0 pointer-events-none translate-y-full">
+        class="fixed inset-0 bg-[#050505]/98 backdrop-blur-2xl z-[150] flex flex-col items-center justify-center gap-8 transition-all duration-500 opacity-0 pointer-events-none translate-y-full">
+        
+        <!-- Close Button inside Menu -->
+        <button id="mobile-menu-close" 
+            class="absolute top-8 right-8 text-white focus:outline-none cursor-hover p-2 transition-transform hover:scale-110 active:scale-95">
+            <iconify-icon icon="solar:close-circle-linear" class="text-4xl"></iconify-icon>
+        </button>
+
         <a href="#hero"
-            class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Home</a>
+            class="mobile-nav-link text-xl font-mono text-white/70 hover:text-ds3Purple transition-colors uppercase tracking-widest">Home</a>
         <a href="#sobre"
-            class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Propósito</a>
+            class="mobile-nav-link text-xl font-mono text-white/70 hover:text-ds3Purple transition-colors uppercase tracking-widest">Propósito</a>
         <a href="#processo"
-            class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Processo</a>
+            class="mobile-nav-link text-xl font-mono text-white/70 hover:text-ds3Purple transition-colors uppercase tracking-widest">Processo</a>
+        <a href="#especialidades"
+            class="mobile-nav-link text-xl font-mono text-white/70 hover:text-ds3Purple transition-colors uppercase tracking-widest">Time</a>
         <a href="#servicos"
-            class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Serviços</a>
+            class="mobile-nav-link text-xl font-mono text-white/70 hover:text-ds3Purple transition-colors uppercase tracking-widest">Serviços</a>
         <a href="#depoimentos"
-            class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Feedback</a>
+            class="mobile-nav-link text-xl font-mono text-white/70 hover:text-ds3Purple transition-colors uppercase tracking-widest">Feedback</a>
         <a href="#portfolio"
-            class="mobile-nav-link text-3xl font-medium text-white hover:text-ds3Purple transition-colors uppercase tracking-widest">Portfolio</a>
+            class="mobile-nav-link text-xl font-mono text-white/70 hover:text-ds3Purple transition-colors uppercase tracking-widest">Portfolio</a>
         <a href="#contato"
-            class="mobile-nav-link text-3xl font-bold text-ds3Purple hover:text-white transition-colors uppercase tracking-widest mt-4">Contato</a>
+            class="mobile-nav-link text-xl font-mono font-bold text-ds3Purple hover:text-white transition-colors uppercase tracking-widest mt-4">Contato</a>
     </div>
 
     <!-- SECTION 0: Hero -->
@@ -725,8 +737,8 @@
             <div
                 class="flex flex-col sm:flex-row items-start sm:items-center gap-6 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.6s_both] pointer-events-auto cursor-hover">
                 <!-- Botão Primário (Glow Edge & Hover) -->
-                <a class="group relative isolate inline-flex items-center justify-center gap-3 rounded-none bg-ds3Surface/70 backdrop-blur-md px-6 py-4 text-sm font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:shadow-[0_0_40px_-5px_rgba(141,79,192,0.7)] cursor-hover"
-                    href="#contato" style="--spread: 90deg; --shimmer-color: #8d4fc0;">
+                <a class="group relative isolate inline-flex items-center justify-center gap-3 rounded-none bg-[#050505]/90 px-6 py-4 text-sm font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:shadow-[0_0_40px_-5px_rgba(141,79,192,0.7)] cursor-hover w-fit"
+                    href="#contato" style="--spread: 90deg; --shimmer-color: #8d4fc0; transform: translateZ(0);">
 
                     <!-- Borda Animação Masked so não passa no meio -->
                     <div class="absolute inset-0 rounded-none p-[1px] -z-20 group-hover:opacity-0 transition-opacity duration-300"
@@ -752,8 +764,8 @@
                 </a>
 
                 <!-- Botão Secundário -->
-                <a class="btn-secondary group relative inline-flex justify-center items-center p-4 border border-white/20 bg-ds3Surface/30 backdrop-blur-sm rounded-none transition-all duration-300"
-                    href="#processo">
+                <a class="btn-secondary group relative inline-flex justify-center items-center p-4 border border-white/20 bg-[#050505]/50 rounded-none transition-all duration-300 w-fit"
+                    href="#processo" style="transform: translateZ(0);">
                     <button
                         class="btn flex items-center gap-3 bg-transparent text-white font-medium uppercase tracking-wider text-sm relative z-10 cursor-hover">
                         Conhecer o Processo
@@ -931,7 +943,7 @@
             <div
                 class="flex flex-col items-center justify-center text-center gap-4 mb-20 max-w-3xl mx-auto animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.2s_both]">
                 <span
-                    class="text-[11px] font-mono text-ds3Purple uppercase tracking-[0.25em] mb-2 border border-ds3Purple/30 px-3 py-1 rounded-full bg-ds3Purple/5">O
+                    class="text-sm font-mono text-ds3Purple uppercase tracking-[0.25em] mb-2 border border-ds3Purple/50 px-5 py-1.5 rounded-full bg-ds3Purple/5">O
                     Time</span>
                 <h2 class="text-3xl lg:text-5xl text-white font-medium tracking-tight uppercase">NOSSO ECOSSISTEMA
                     TÉCNICO</h2>
@@ -1047,7 +1059,9 @@
         <div class="relative w-full max-w-5xl mx-auto">
 
             <!-- Vertical Beam Line -->
-            <div class="timeline-beam"></div>
+            <div class="timeline-beam">
+                <div class="timeline-beam-glow"></div>
+            </div>
 
             <!-- Steps Grid -->
             <div class="relative z-20 space-y-24 lg:space-y-32">
@@ -1200,7 +1214,7 @@
             </style>
 
             <!-- Card 1: Setup de Modelagem -->
-            <div
+            <div id="card-setup-modelagem"
                 class="servico-card group snap-start animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.15s_both]">
                 <div class="servico-card-inner">
                     <img src="./public/portfolio/optmized/img (5).webp" alt="" class="servico-bg" loading="lazy"
@@ -1217,11 +1231,12 @@
                     <p class="servico-desc">Construção digital precisa do empreendimento com fidelidade volumétrica e
                         materialidade técnica.</p>
                     <div class="servico-line"></div>
+                    <span class="block text-[8px] sm:text-[9px] text-white/30 font-mono tracking-[0.2em] uppercase mt-4 text-center transition-colors group-hover:text-ds3Purple/70">de dois cliques para ver mais</span>
                 </div>
             </div>
 
             <!-- Card 2: Stills High-End -->
-            <div
+            <div id="card-stills-highend"
                 class="servico-card group snap-start animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.3s_both]">
                 <div class="servico-card-inner">
                     <img src="./public/portfolio/optmized/img (12).webp" alt="" class="servico-bg" loading="lazy"
@@ -1238,14 +1253,15 @@
                     <p class="servico-desc">Imagens estáticas de alta definição com iluminação cinematográfica e
                         pós-produção impecável.</p>
                     <div class="servico-line"></div>
+                    <span class="block text-[8px] sm:text-[9px] text-white/30 font-mono tracking-[0.2em] uppercase mt-4 text-center transition-colors group-hover:text-ds3Purple/70">de dois cliques para ver mais</span>
                 </div>
             </div>
 
             <!-- Card 3: Planta Humanizada -->
-            <div
+            <div id="card-planta-humanizada"
                 class="servico-card group snap-start animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.45s_both]">
                 <div class="servico-card-inner">
-                    <img src="./public/portfolio/optmized/img (21).webp" alt="" class="servico-bg" loading="lazy"
+                    <img src="./public/humanizada.webp" alt="" class="servico-bg" loading="lazy"
                         decoding="async">
                     <span class="servico-number">03</span>
                     <div class="servico-icon">
@@ -1259,6 +1275,7 @@
                     <p class="servico-desc">Representação técnica com acabamentos, mobiliário e vegetação que traduzem o
                         projeto em experiência real.</p>
                     <div class="servico-line"></div>
+                    <span class="block text-[8px] sm:text-[9px] text-white/30 font-mono tracking-[0.2em] uppercase mt-4 text-center transition-colors group-hover:text-ds3Purple/70">de dois cliques para ver mais</span>
                 </div>
             </div>
 
@@ -1280,11 +1297,12 @@
                     <p class="servico-desc">Experiência imersiva interativa que permite explorar cada ambiente com total
                         liberdade e realismo.</p>
                     <div class="servico-line"></div>
+                    <span class="block text-[8px] sm:text-[9px] text-white/30 font-mono tracking-[0.2em] uppercase mt-4 text-center transition-colors group-hover:text-ds3Purple/70">de dois cliques para ver mais</span>
                 </div>
             </div>
 
             <!-- Card 5: Filme de Lançamento -->
-            <div
+            <div id="card-filme-lancamento"
                 class="servico-card group snap-start animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.75s_both]">
                 <div class="servico-card-inner">
                     <img src="./public/portfolio/optmized/img (33).webp" alt="" class="servico-bg" loading="lazy"
@@ -1301,6 +1319,7 @@
                     <p class="servico-desc">Animação cinematográfica com câmeras dinâmicas e storytelling visual que
                         eleva o lançamento imobiliário.</p>
                     <div class="servico-line"></div>
+                    <span class="block text-[8px] sm:text-[9px] text-white/30 font-mono tracking-[0.2em] uppercase mt-4 text-center transition-colors group-hover:text-ds3Purple/70">de dois cliques para ver mais</span>
                 </div>
             </div>
 
@@ -1781,6 +1800,7 @@
         onReady(() => {
             const toggle = document.getElementById('mobile-menu-toggle');
             const menu = document.getElementById('mobile-menu');
+            const menuCloseBtn = document.getElementById('mobile-menu-close');
             const menuIcon = document.getElementById('menu-icon');
             const closeIcon = document.getElementById('close-icon');
             const navLinks = document.querySelectorAll('.mobile-nav-link');
@@ -1791,20 +1811,21 @@
                     // Abrir
                     menu.classList.remove('translate-y-full', 'opacity-0', 'pointer-events-none');
                     menu.classList.add('translate-y-0', 'opacity-100');
-                    menuIcon.classList.add('hidden');
-                    closeIcon.classList.remove('hidden');
+                    if (menuIcon) menuIcon.classList.add('hidden');
+                    if (closeIcon) closeIcon.classList.remove('hidden');
                     document.body.style.overflow = 'hidden';
                 } else {
                     // Fechar
                     menu.classList.add('translate-y-full', 'opacity-0', 'pointer-events-none');
                     menu.classList.remove('translate-y-0', 'opacity-100');
-                    menuIcon.classList.remove('hidden');
-                    closeIcon.classList.add('hidden');
+                    if (menuIcon) menuIcon.classList.remove('hidden');
+                    if (closeIcon) closeIcon.classList.add('hidden');
                     document.body.style.overflow = '';
                 }
             };
 
-            toggle.addEventListener('click', toggleMenu);
+            if (toggle) toggle.addEventListener('click', toggleMenu);
+            if (menuCloseBtn) menuCloseBtn.addEventListener('click', toggleMenu);
 
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
@@ -2085,19 +2106,16 @@
                 // --- 4. Timeline Scroll Beam Control ---
                 window.addEventListener('scroll', () => {
                     const section = document.getElementById('processo');
+                    const beamLight = document.querySelector('.timeline-beam-glow');
                     if (!section) return;
                     const rect = section.getBoundingClientRect();
                     const vh = window.innerHeight;
                     if (rect.top < vh && rect.bottom > 0) {
-                        // Queremos que o CENTRO do feixe (que tem 30vh de altura) 
-                        // esteja alinhado com o CENTRO do viewport (vh/2).
-                        // Logo, o TOPO do feixe deve estar em: (vh/2) - (30vh/2) = 35vh do topo do viewport.
                         const targetTopInViewport = vh * 0.35;
                         const progress = (targetTopInViewport - rect.top) / rect.height;
-
-                        // Clamp mais amplo para permitir que o feixe entre e saia da seção
                         const percentage = Math.max(-20, Math.min(100, progress * 100));
                         section.style.setProperty('--beam-top', `${percentage}%`);
+                        if(beamLight) beamLight.style.top = `${percentage}%`; // iOS Safari override trigger
                     }
                 });
 
@@ -2192,20 +2210,21 @@
                 const lightboxTotal = document.getElementById('lightbox-total');
                 const lightboxLoader = document.getElementById('lightbox-loader');
                 
-                let galleryImages = [];
+                let defaultGalleryImages = [];
+                let currentGallery = [];
                 let currentIndex = 0;
 
                 function updateGalleryState() {
-                    if (galleryImages.length === 0) return;
+                    if (currentGallery.length === 0) return;
                     
                     lightboxLoader.classList.remove('hidden');
-                    const imgUrl = galleryImages[currentIndex].src;
+                    const imgUrl = currentGallery[currentIndex].src;
                     
                     // Preload next/prev
                     const nextImg = new Image();
                     const prevImg = new Image();
-                    nextImg.src = galleryImages[(currentIndex + 1) % galleryImages.length].src;
-                    prevImg.src = galleryImages[(currentIndex - 1 + galleryImages.length) % galleryImages.length].src;
+                    nextImg.src = currentGallery[(currentIndex + 1) % currentGallery.length].src;
+                    prevImg.src = currentGallery[(currentIndex - 1 + currentGallery.length) % currentGallery.length].src;
 
                     lightboxImg.classList.add('opacity-0', 'scale-95');
                     
@@ -2219,11 +2238,12 @@
                     };
                 }
 
-                window.openLightbox = (index) => {
+                window.openLightbox = (index, customGallery = null) => {
+                    currentGallery = customGallery ? customGallery : defaultGalleryImages;
                     currentIndex = index;
                     lightbox.classList.remove('hidden');
                     setTimeout(() => lightbox.classList.add('active'), 10);
-                    lightboxTotal.innerText = galleryImages.length.toString().padStart(2, '0');
+                    lightboxTotal.innerText = currentGallery.length.toString().padStart(2, '0');
                     updateGalleryState();
                     document.body.style.overflow = 'hidden';
                 };
@@ -2236,20 +2256,20 @@
 
                 window.nextLightbox = (e) => {
                     if (e) e.stopPropagation();
-                    currentIndex = (currentIndex + 1) % galleryImages.length;
+                    currentIndex = (currentIndex + 1) % currentGallery.length;
                     updateGalleryState();
                 };
 
                 window.prevLightbox = (e) => {
                     if (e) e.stopPropagation();
-                    currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+                    currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
                     updateGalleryState();
                 };
 
                 // Initialize gallery items
                 const portfolioItems = document.querySelectorAll('.portfolio-card');
                 const portfolioImgs = document.querySelectorAll('#portfolio img');
-                galleryImages = Array.from(portfolioImgs);
+                defaultGalleryImages = Array.from(portfolioImgs);
                 
                 // Use the card as the click target for better mobile hit area
                 portfolioItems.forEach((card, idx) => {
@@ -2259,6 +2279,14 @@
                     };
                     card.addEventListener('click', handleOpen);
                 });
+
+                // Custom Gallery Sets
+                const humanizadaGallery = [
+                    { src: './public/humanizadas/Humanizada_Nomes.webp' },
+                    { src: './public/humanizadas/Humanizada 01.webp' },
+                    { src: './public/humanizadas/Humanizada AP.webp' },
+                    { src: './public/humanizadas/humanizada.webp' }
+                ];
 
                 // Trigger portfolio lightbox from propósito section image
                 const propositoImg = document.getElementById('proposito-img');
@@ -2282,6 +2310,111 @@
                     if (e.key === 'ArrowRight') nextLightbox();
                     if (e.key === 'ArrowLeft') prevLightbox();
                 });
+
+                // --- 9. Mobile Services Cards Interaction ---
+                const servicoCards = document.querySelectorAll('.servico-card');
+                servicoCards.forEach(card => {
+                    card.addEventListener('click', () => {
+                        const isMobileWindow = window.innerWidth < 1024;
+                        if (isMobileWindow) {
+                            servicoCards.forEach(c => c.classList.remove('is-active'));
+                            card.classList.add('is-active');
+                            card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                        }
+                    });
+                });
+
+                // --- 10. Video & Custom Cards Modal Handler ---
+                const filmeCard = document.getElementById('card-filme-lancamento');
+                const videoModal = document.getElementById('video-modal');
+                const videoIframe = document.getElementById('video-iframe');
+                const videoPlayIcon = document.getElementById('video-play-icon');
+                const videoOverlay = document.getElementById('video-play-overlay');
+                
+                const plantaCard = document.getElementById('card-planta-humanizada');
+                const setupCard = document.getElementById('card-setup-modelagem');
+                const stillsCard = document.getElementById('card-stills-highend');
+
+                const scrollToPortfolio = (e, lastClickRef) => {
+                    const currentTime = new Date().getTime();
+                    if (currentTime - lastClickRef.time < 400) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const portSection = document.getElementById('portfolio');
+                        if (portSection) portSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                    lastClickRef.time = currentTime;
+                };
+
+                if (setupCard) {
+                    let ref = { time: 0 };
+                    setupCard.addEventListener('click', (e) => scrollToPortfolio(e, ref));
+                }
+
+                if (stillsCard) {
+                    let ref = { time: 0 };
+                    stillsCard.addEventListener('click', (e) => scrollToPortfolio(e, ref));
+                }
+
+                if (plantaCard) {
+                    let lastPlantaClick = 0;
+                    plantaCard.addEventListener('click', (e) => {
+                        const currentTime = new Date().getTime();
+                        if (currentTime - lastPlantaClick < 400) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            window.openLightbox(0, humanizadaGallery);
+                        }
+                        lastPlantaClick = currentTime;
+                    });
+                }
+
+                if (filmeCard && videoModal && videoIframe) {
+                    let lastClickTime = 0;
+
+                    videoIframe.addEventListener('click', () => {
+                        if (videoIframe.paused) {
+                            videoIframe.play();
+                            videoPlayIcon.setAttribute('icon', 'ph:pause-fill');
+                            videoOverlay.style.opacity = '0';
+                        } else {
+                            videoIframe.pause();
+                            videoPlayIcon.setAttribute('icon', 'ph:play-fill');
+                            videoOverlay.style.opacity = '1';
+                        }
+                    });
+
+                    filmeCard.addEventListener('click', (e) => {
+                        const currentTime = new Date().getTime();
+                        if (currentTime - lastClickTime < 400) { // Duplo clique (<400ms)
+                            e.preventDefault();
+                            e.stopPropagation();
+                            // Puxando o vídeo nativamente da própria pasta do projeto para evitar qualquer bloqueio
+                            videoIframe.src = "./public/filme-lancamento.mp4";
+                            videoModal.classList.remove('hidden');
+                            videoModal.style.display = 'flex';
+                            setTimeout(() => {
+                                videoModal.style.opacity = '1';
+                                videoIframe.play();
+                                videoPlayIcon.setAttribute('icon', 'ph:pause-fill');
+                                videoOverlay.style.opacity = '0';
+                            }, 10);
+                            document.body.style.overflow = 'hidden';
+                        }
+                        lastClickTime = currentTime;
+                    });
+
+                    window.closeVideoModal = () => {
+                        videoModal.style.opacity = '0';
+                        videoIframe.pause();
+                        setTimeout(() => {
+                            videoModal.classList.add('hidden');
+                            videoModal.style.display = 'none';
+                            videoIframe.src = "";
+                            document.body.style.overflow = '';
+                        }, 300);
+                    };
+                }
         });
     </script>
 
@@ -2320,6 +2453,26 @@
         <!-- Counter -->
         <div class="absolute bottom-8 text-white/40 font-mono text-[10px] tracking-widest uppercase">
             <span id="lightbox-current" class="text-white">01</span> / <span id="lightbox-total">00</span>
+        </div>
+    </div>
+
+    <!-- Video Modal (Shorts) -->
+    <div id="video-modal"
+        class="fixed inset-0 z-[10010] bg-black/95 hidden flex-col items-center justify-center backdrop-blur-sm transition-all duration-300" style="opacity: 0; display: none;"
+        onclick="if(event.target === this) closeVideoModal()">
+        <button class="absolute top-8 right-8 text-white/50 hover:text-white transition-colors p-2 z-[10011] cursor-hover"
+            onclick="closeVideoModal()">
+            <iconify-icon icon="ph:x-bold" width="32"></iconify-icon>
+        </button>
+        <div class="relative w-full max-w-[400px] h-[80vh] px-4 pointer-events-none flex items-center justify-center">
+            <video id="video-iframe" class="w-full h-full rounded-xl object-contain lg:object-cover shadow-[0_0_50px_rgba(141,79,192,0.3)] pointer-events-auto cursor-pointer"
+                src="" playsinline></video>
+            
+            <div id="video-play-overlay" class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 transition-opacity duration-300">
+                 <div class="w-16 h-16 bg-black/50 backdrop-blur-md rounded-full flex items-center justify-center text-white shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                      <iconify-icon id="video-play-icon" icon="ph:play-fill" width="32"></iconify-icon>
+                 </div>
+            </div>
         </div>
     </div>
 
