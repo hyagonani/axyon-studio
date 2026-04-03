@@ -1984,7 +1984,8 @@
 
                     // Double speed on mobile to ensure it finishes
                     if (buckets.length > 0) {
-                        const heroH = height || 1000;
+                        const hDiv = document.getElementById("hero");
+                        const heroH = hDiv ? (hDiv.offsetHeight || hDiv.clientHeight) : window.innerHeight;
                         const inc = (window.innerWidth < 1024) ? (heroH / 60) : (heroH / 104);
                         scanY += inc;
 
