@@ -49,14 +49,26 @@
             overflow-x: hidden;
         }
 
+        @font-face {
+            font-family: 'AstromaxOutline';
+            src: url('./assets/Astromax Outline.otf') format('opentype');
+        }
+
+        @font-face {
+            font-family: 'AstromaxRegular';
+            src: url('./assets/Astromax Regular.otf') format('opentype');
+        }
+
         /* Typography Highlights */
         .text-ghost {
+            font-family: 'AstromaxOutline', sans-serif;
             color: transparent;
             -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4);
             transition: all 0.4s ease;
         }
 
         .text-ghost:hover {
+            font-family: 'AstromaxRegular', sans-serif;
             -webkit-text-stroke: 1px #8d4fc0;
             color: #8d4fc0;
             text-shadow: 0 0 20px rgba(141, 79, 192, 0.3);
@@ -100,9 +112,8 @@
             cursor: none;
         }
 
-        /* Hide custom cursor on mobile */
-        @media (max-width: 1024px) {
-
+        /* Hide custom cursor only on actual touch devices without a fine pointer (mouse) */
+        @media (hover: none) and (pointer: coarse) {
             .ds-cursor-dot,
             .ds-cursor-ring {
                 display: none !important;
@@ -528,6 +539,53 @@
             width: 100%;
             background: linear-gradient(90deg, #8d4fc0, transparent);
         }
+
+        /* Social Proof Footer Contrast */
+        .footer-social-proof {
+            color: #f5f5f5 !important;
+            /* Bright 30% increase vs neutral-400 */
+        }
+
+        /* Lightbox Gallery */
+        #lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        #lightbox-img {
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        #lightbox.active #lightbox-img {
+            transform: scale(1);
+        }
+
+        .lightbox-nav-btn {
+            background: rgba(10, 10, 10, 0.4);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+        }
+
+        .lightbox-nav-btn:hover {
+            border-color: #8d4fc0;
+            background: rgba(141, 79, 192, 0.1);
+        }
+
+        .portfolio-card img {
+            cursor: pointer;
+            transition: filter 0.4s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .portfolio-card:hover img {
+            filter: brightness(1.1) contrast(1.1);
+        }
     </style>
 
 </head>
@@ -560,7 +618,7 @@
     <nav
         class="fixed top-0 left-0 w-full z-[100] bg-black/80 backdrop-blur-md border-b border-white/10 px-6 py-6 flex justify-between items-center text-xs font-mono uppercase tracking-widest text-neutral-500 cursor-hover">
         <a href="#hero" class="flex items-center gap-2 cursor-hover transition-opacity hover:opacity-80">
-            <img src="./public/LOGO%20AXYON.png" alt="Axyon Logo" class="h-10 md:h-12 w-auto object-contain" />
+            <img src="./public/LOGO%20AXYON.png" alt="Axyon Logo" class="h-12 md:h-[58px] w-auto object-contain" />
         </a>
 
         <!-- Desktop Menu -->
@@ -611,8 +669,8 @@
 
         <!-- LAYER 1: BG Image for Canvas (z-0) -->
         <div id="hero-bg"
-            class="absolute inset-0 w-full h-full z-0 bg-[url('./public/portfolio/optmized/img%20(1).webp')] bg-cover bg-center bg-no-repeat lg:mix-blend-overlay opacity-40"
-            style="filter: grayscale(100%);">
+            class="absolute inset-0 w-full h-full z-0 bg-[url('./public/new-hero.webp')] bg-cover bg-center bg-no-repeat lg:mix-blend-overlay opacity-70"
+            style="filter: brightness(0.7);">
         </div>
         <div
             class="absolute inset-0 w-full h-full z-[1] pointer-events-none bg-gradient-to-b from-black/80 to-transparent">
@@ -623,7 +681,7 @@
 
         <!-- LAYER 3: HUD Stats Interface (z-20) -->
         <div
-            class="absolute top-[120px] right-[60px] z-[25] text-right font-mono hidden md:block select-none cursor-hover">
+            class="absolute top-[120px] right-[60px] z-[25] text-right font-mono hidden lg:block select-none cursor-hover">
             <div class="text-[10px] font-semibold tracking-[0.2em] mb-1"><span class="text-white/40">RENDERING
                 </span><span id="stat-percent" class="text-white/90">0%</span></div>
             <div class="text-[10px] font-semibold tracking-[0.2em] mb-1"><span class="text-white/40">BUCKETS
@@ -642,9 +700,9 @@
 
             <!-- Headline -->
             <h1
-                class="text-5xl lg:text-[4.5rem] leading-[1.05] uppercase font-medium text-white tracking-tighter mb-8 cursor-hover pointer-events-auto max-w-4xl animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.2s_both]">
-                O <span class="text-ghost">Futuro</span> do Seu Lançamento Materializado <span
-                    class="text-ghost">Hoje.</span>
+                class="text-5xl lg:text-[4.5rem] leading-[1.05] uppercase font-medium text-white tracking-tighter mb-8 cursor-hover pointer-events-auto max-w-5xl animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.2s_both]">
+                Inteligência <span class="text-ghost">Visual</span> que Acelera <span
+                    class="text-ghost">Resultados</span>
             </h1>
 
             <!-- Sub-headline -->
@@ -658,7 +716,7 @@
             <div
                 class="flex flex-col sm:flex-row items-start sm:items-center gap-6 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.6s_both] pointer-events-auto cursor-hover">
                 <!-- Botão Primário (Glow Edge & Hover) -->
-                <a class="group relative isolate inline-flex items-center justify-center gap-3 rounded-none bg-ds3Surface/40 backdrop-blur-md px-6 py-4 text-sm font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:shadow-[0_0_40px_-5px_rgba(141,79,192,0.7)] cursor-hover"
+                <a class="group relative isolate inline-flex items-center justify-center gap-3 rounded-none bg-ds3Surface/70 backdrop-blur-md px-6 py-4 text-sm font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:shadow-[0_0_40px_-5px_rgba(141,79,192,0.7)] cursor-hover"
                     href="#contato" style="--spread: 90deg; --shimmer-color: #8d4fc0;">
 
                     <!-- Borda Animação Masked so não passa no meio -->
@@ -685,7 +743,7 @@
                 </a>
 
                 <!-- Botão Secundário -->
-                <a class="btn-secondary group relative inline-flex justify-center items-center p-4 border border-white/20 rounded-none transition-all duration-300"
+                <a class="btn-secondary group relative inline-flex justify-center items-center p-4 border border-white/20 bg-ds3Surface/30 backdrop-blur-sm rounded-none transition-all duration-300"
                     href="#processo">
                     <button
                         class="btn flex items-center gap-3 bg-transparent text-white font-medium uppercase tracking-wider text-sm relative z-10 cursor-hover">
@@ -700,7 +758,7 @@
             <div
                 class="mt-12 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.8s_both] pointer-events-auto cursor-hover flex items-center gap-3">
                 <div class="h-[1px] w-8 bg-ds3Purple"></div>
-                <span class="text-xs font-mono text-neutral-400 uppercase tracking-widest">
+                <span class="text-xs font-mono text-neutral-100 uppercase tracking-widest">
                     15 anos de Visão técnica unida à alta performance em visualização.
                 </span>
             </div>
@@ -829,11 +887,6 @@
                 <img src="./public/2dobra.png" alt="Axyon Estúdio 3D Edifício"
                     class="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[2000ms] ease-out z-0 relative" />
 
-                <!-- Tech aesthetic overlays -->
-                <div
-                    class="absolute bottom-5 left-5 bg-black/60 backdrop-blur-md px-3 py-1.5 border border-white/10 z-20 transition-transform duration-500 group-hover:translate-x-2">
-                    <span class="text-[9px] font-mono uppercase text-white tracking-[0.2em]">Fig.01_TOWER</span>
-                </div>
                 <div class="absolute top-5 right-5 flex flex-col gap-1 z-20">
                     <div class="w-1 h-1 bg-ds3Purple rounded-full animate-pulse"></div>
                     <div class="w-1 h-1 bg-white/30 rounded-full"></div>
@@ -1110,124 +1163,6 @@
                 </div>
 
             </div>
-        </div>
-    </section>
-
-    <!-- SECTION 4: Portfolio (Interactive Parallax Grid) -->
-    <section id="portfolio" class="parallax-section cursor-hover scroll-mt-24">
-        <div class="portfolio-container">
-            <!-- Header -->
-            <div
-                class="flex flex-col items-center justify-center text-center gap-4 mb-20 max-w-3xl mx-auto px-6 relative z-50 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.1s_both]">
-                <span
-                    class="text-[11px] font-mono text-[#b07ce8] uppercase tracking-[0.25em] mb-2 border border-[#8d4fc0]/60 px-3 py-1 rounded-full bg-[#8d4fc0]/15">Portfolio</span>
-                <h2 class="text-4xl lg:text-5xl text-white font-medium tracking-tighter uppercase">RESULTADO DE ALTA
-                    PERFORMANCE</h2>
-                <p class="text-base lg:text-lg text-neutral-400 font-light leading-relaxed mt-4">
-                    Explore nossa curadoria de visualizações em cores vibrantes. Mova o mouse para sentir a profundidade
-                    interativa.
-                </p>
-            </div>
-
-            <!-- Single Masonry Flow — Fixed height for straight bottom cut -->
-            <div style="max-height: 480vh; overflow: hidden; position: relative;">
-                <div class="portfolio-layer">
-                    <!-- Mix of depth classes for parallax variety -->
-                    <div class="portfolio-card depth-deep"><img src="./public/portfolio/optmized/img (1).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-mid"><img src="./public/portfolio/optmized/img (2).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-front"><img src="./public/portfolio/optmized/img (3).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-deep"><img src="./public/portfolio/optmized/img (4).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-mid"><img src="./public/portfolio/optmized/img (5).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-front"><img src="./public/portfolio/optmized/img (6).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-deep"><img src="./public/portfolio/optmized/img (7).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-mid"><img src="./public/portfolio/optmized/img (8).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-front"><img src="./public/portfolio/optmized/img (9).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-deep"><img src="./public/portfolio/optmized/img (10).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-mid"><img src="./public/portfolio/optmized/img (11).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-front"><img src="./public/portfolio/optmized/img (12).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-deep"><img src="./public/portfolio/optmized/img (13).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-mid"><img src="./public/portfolio/optmized/img (14).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-front"><img src="./public/portfolio/optmized/img (15).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-deep"><img src="./public/portfolio/optmized/img (16).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-mid"><img src="./public/portfolio/optmized/img (17).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-front"><img src="./public/portfolio/optmized/img (18).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-deep"><img src="./public/portfolio/optmized/img (19).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-mid"><img src="./public/portfolio/optmized/img (20).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-front"><img src="./public/portfolio/optmized/img (21).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-deep"><img src="./public/portfolio/optmized/img (22).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-mid"><img src="./public/portfolio/optmized/img (23).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-front"><img src="./public/portfolio/optmized/img (24).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-deep"><img src="./public/portfolio/optmized/img (25).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-mid"><img src="./public/portfolio/optmized/img (26).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-front"><img src="./public/portfolio/optmized/img (27).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-deep"><img src="./public/portfolio/optmized/img (28).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-mid"><img src="./public/portfolio/optmized/img (29).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-front"><img src="./public/portfolio/optmized/img (30).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-deep"><img src="./public/portfolio/optmized/img (31).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-mid"><img src="./public/portfolio/optmized/img (32).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-front"><img src="./public/portfolio/optmized/img (33).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <!-- Portfolio Update — Images 6-9 first -->
-                    <div class="portfolio-card depth-deep"><img src="./public/portfolio-update/optimized/img (6).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-mid"><img src="./public/portfolio-update/optimized/img (7).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-front"><img src="./public/portfolio-update/optimized/img (8).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-deep"><img src="./public/portfolio-update/optimized/img (9).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <!-- Portfolio Update — Remaining images -->
-                    <div class="portfolio-card depth-mid"><img src="./public/portfolio-update/optimized/img (1).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-front"><img src="./public/portfolio-update/optimized/img (2).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-deep"><img src="./public/portfolio-update/optimized/img (3).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-mid"><img src="./public/portfolio-update/optimized/img (4).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-front"><img src="./public/portfolio-update/optimized/img (5).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-deep"><img src="./public/portfolio-update/optimized/img (10).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                    <div class="portfolio-card depth-mid"><img src="./public/portfolio-update/optimized/img (11).webp"
-                            alt="Axyon Portfolio" decoding="async"></div>
-                </div>
-            </div>
-
-
-        </div>
         </div>
     </section>
 
@@ -1531,6 +1466,121 @@
         </div>
     </section>
 
+    <!-- SECTION 4: Portfolio (Interactive Parallax Grid) -->
+    <section id="portfolio" class="parallax-section cursor-hover scroll-mt-24">
+        <div class="portfolio-container">
+            <!-- Header -->
+            <div
+                class="flex flex-col items-center justify-center text-center gap-4 mb-20 max-w-3xl mx-auto px-6 relative z-50 animate-on-scroll [animation:fadeSlideIn_0.8s_ease-out_0.1s_both]">
+                <span
+                    class="text-[11px] font-mono text-[#b07ce8] uppercase tracking-[0.25em] mb-2 border border-[#8d4fc0]/60 px-3 py-1 rounded-full bg-[#8d4fc0]/15">Portfolio</span>
+                <h2 class="text-4xl lg:text-5xl text-white font-medium tracking-tighter uppercase">RESULTADO DE ALTA
+                    PERFORMANCE</h2>
+                <p class="text-base lg:text-lg text-neutral-400 font-light leading-relaxed mt-4">
+                    Explore nossa curadoria de visualizações em cores vibrantes. Mova o mouse para sentir a profundidade
+                    interativa.
+                </p>
+            </div>
+
+            <!-- Single Masonry Flow — Fixed height for straight bottom cut -->
+            <div style="max-height: 480vh; overflow: hidden; position: relative;">
+                <div class="portfolio-layer">
+                    <!-- Mix of depth classes for parallax variety -->
+                    <div class="portfolio-card depth-deep"><img src="./public/portfolio/optmized/img (1).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-mid"><img src="./public/portfolio/optmized/img (2).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-front"><img src="./public/portfolio/optmized/img (3).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-deep"><img src="./public/portfolio/optmized/img (4).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-mid"><img src="./public/portfolio/optmized/img (5).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-front"><img src="./public/portfolio/optmized/img (6).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-deep"><img src="./public/portfolio/optmized/img (7).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-mid"><img src="./public/portfolio/optmized/img (8).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-front"><img src="./public/portfolio/optmized/img (9).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-deep"><img src="./public/portfolio/optmized/img (10).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-mid"><img src="./public/portfolio/optmized/img (11).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-front"><img src="./public/portfolio/optmized/img (12).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-deep"><img src="./public/portfolio/optmized/img (13).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-mid"><img src="./public/portfolio/optmized/img (14).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-front"><img src="./public/portfolio/optmized/img (15).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-deep"><img src="./public/portfolio/optmized/img (16).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-mid"><img src="./public/portfolio/optmized/img (17).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-front"><img src="./public/portfolio/optmized/img (18).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-deep"><img src="./public/portfolio/optmized/img (19).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-mid"><img src="./public/portfolio/optmized/img (20).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-front"><img src="./public/portfolio/optmized/img (21).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-deep"><img src="./public/portfolio/optmized/img (22).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-mid"><img src="./public/portfolio/optmized/img (23).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-front"><img src="./public/portfolio/optmized/img (24).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-deep"><img src="./public/portfolio/optmized/img (25).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-mid"><img src="./public/portfolio/optmized/img (26).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-front"><img src="./public/portfolio/optmized/img (27).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-deep"><img src="./public/portfolio/optmized/img (28).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-mid"><img src="./public/portfolio/optmized/img (29).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-front"><img src="./public/portfolio/optmized/img (30).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-deep"><img src="./public/portfolio/optmized/img (31).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-mid"><img src="./public/portfolio/optmized/img (32).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-front"><img src="./public/portfolio/optmized/img (33).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <!-- Portfolio Update — Images 6-9 first -->
+                    <div class="portfolio-card depth-deep"><img src="./public/portfolio-update/optimized/img (6).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-mid"><img src="./public/portfolio-update/optimized/img (7).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-front"><img src="./public/portfolio-update/optimized/img (8).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-deep"><img src="./public/portfolio-update/optimized/img (9).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <!-- Portfolio Update — Remaining images -->
+                    <div class="portfolio-card depth-mid"><img src="./public/portfolio-update/optimized/img (1).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-front"><img src="./public/portfolio-update/optimized/img (2).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-deep"><img src="./public/portfolio-update/optimized/img (3).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-mid"><img src="./public/portfolio-update/optimized/img (4).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-front"><img src="./public/portfolio-update/optimized/img (5).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-deep"><img src="./public/portfolio-update/optimized/img (10).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                    <div class="portfolio-card depth-mid"><img src="./public/portfolio-update/optimized/img (11).webp"
+                            alt="Axyon Portfolio" decoding="async"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- SECTION 6: Contato (Formulário Centralizado) -->
     <section id="contato" class="relative bg-[#050505] py-32 px-6 lg:px-16 overflow-hidden cursor-hover scroll-mt-24">
         <!-- Background grid subtle -->
@@ -1818,6 +1868,20 @@
                 let timeElapsed = 0;
                 let isHoveringHero = false;
 
+                const isMobileView = window.innerWidth < 1024;
+                const heroBg = document.getElementById("hero-bg");
+
+                if (isMobileView) {
+                    canvas.style.display = 'none';
+                    if (heroBg) {
+                        heroBg.style.filter = 'grayscale(0%) brightness(0.7)';
+                        heroBg.style.opacity = '0.8';
+                    }
+                    return; // Don't run buckets engine on mobile
+                } else {
+                   if (heroBg) heroBg.style.filter = 'grayscale(100%)';
+                }
+
                 const statBuckets = document.getElementById("stat-buckets");
                 const statPercent = document.getElementById("stat-percent");
                 const statTime = document.getElementById("stat-time");
@@ -1966,8 +2030,8 @@
                         const heroBg = document.getElementById("hero-bg");
                         if (heroBg) {
                             const val = Math.max(0, 100 - (pctRatio * 100));
-                            heroBg.style.filter = `grayscale(${val}%)`;
-                            heroBg.style.opacity = 0.4 + (pctRatio * 0.6);
+                            heroBg.style.filter = `grayscale(${val}%) brightness(0.7)`;
+                            heroBg.style.opacity = 0.7 + (pctRatio * 0.3);
                         }
                     }
 
@@ -2108,9 +2172,130 @@
                         }
                     });
                 });
+                // --- 8. Lightbox Gallery Logic ---
+                const lightbox = document.getElementById('lightbox');
+                const lightboxImg = document.getElementById('lightbox-img');
+                const lightboxCurrent = document.getElementById('lightbox-current');
+                const lightboxTotal = document.getElementById('lightbox-total');
+                const lightboxLoader = document.getElementById('lightbox-loader');
+                
+                let galleryImages = [];
+                let currentIndex = 0;
+
+                function updateGalleryState() {
+                    if (galleryImages.length === 0) return;
+                    
+                    lightboxLoader.classList.remove('hidden');
+                    const imgUrl = galleryImages[currentIndex].src;
+                    
+                    // Preload next/prev
+                    const nextImg = new Image();
+                    const prevImg = new Image();
+                    nextImg.src = galleryImages[(currentIndex + 1) % galleryImages.length].src;
+                    prevImg.src = galleryImages[(currentIndex - 1 + galleryImages.length) % galleryImages.length].src;
+
+                    lightboxImg.classList.add('opacity-0', 'scale-95');
+                    
+                    const tempImg = new Image();
+                    tempImg.src = imgUrl;
+                    tempImg.onload = () => {
+                        lightboxImg.src = imgUrl;
+                        lightboxImg.classList.remove('opacity-0', 'scale-95');
+                        lightboxLoader.classList.add('hidden');
+                        lightboxCurrent.innerText = (currentIndex + 1).toString().padStart(2, '0');
+                    };
+                }
+
+                window.openLightbox = (index) => {
+                    currentIndex = index;
+                    lightbox.classList.remove('hidden');
+                    setTimeout(() => lightbox.classList.add('active'), 10);
+                    lightboxTotal.innerText = galleryImages.length.toString().padStart(2, '0');
+                    updateGalleryState();
+                    document.body.style.overflow = 'hidden';
+                };
+
+                window.closeLightbox = () => {
+                    lightbox.classList.remove('active');
+                    setTimeout(() => lightbox.classList.add('hidden'), 300);
+                    document.body.style.overflow = '';
+                };
+
+                window.nextLightbox = (e) => {
+                    if (e) e.stopPropagation();
+                    currentIndex = (currentIndex + 1) % galleryImages.length;
+                    updateGalleryState();
+                };
+
+                window.prevLightbox = (e) => {
+                    if (e) e.stopPropagation();
+                    currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+                    updateGalleryState();
+                };
+
+                // Initialize gallery items
+                const portfolioImgs = document.querySelectorAll('#portfolio img');
+                galleryImages = Array.from(portfolioImgs);
+                
+                portfolioImgs.forEach((img, idx) => {
+                    img.addEventListener('click', () => openLightbox(idx));
+                });
+
+                // Close on backdrop click
+                lightbox.addEventListener('click', (e) => {
+                    if (e.target === lightbox || e.target.id === 'lightbox-img-container') {
+                        closeLightbox();
+                    }
+                });
+
+                // Keyboard support
+                document.addEventListener('keydown', (e) => {
+                    if (lightbox.classList.contains('hidden')) return;
+                    if (e.key === 'Escape') closeLightbox();
+                    if (e.key === 'ArrowRight') nextLightbox();
+                    if (e.key === 'ArrowLeft') prevLightbox();
+                });
             }
         });
     </script>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox"
+        class="fixed inset-0 z-[10005] bg-black/95 hidden flex-col items-center justify-center backdrop-blur-sm transition-all duration-300 opacity-0">
+        <!-- Close -->
+        <button class="absolute top-8 right-8 text-white/50 hover:text-white transition-colors p-2 z-[10006] cursor-hover"
+            onclick="closeLightbox()">
+            <iconify-icon icon="ph:x-bold" width="32"></iconify-icon>
+        </button>
+
+        <!-- Navigation -->
+        <button
+            class="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 text-white/30 hover:text-white transition-colors p-4 z-[10006] lightbox-nav-btn cursor-hover"
+            onclick="prevLightbox(event)">
+            <iconify-icon icon="ph:caret-left-bold" width="32"></iconify-icon>
+        </button>
+        <button
+            class="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 text-white/30 hover:text-white transition-colors p-4 z-[10006] lightbox-nav-btn cursor-hover"
+            onclick="nextLightbox(event)">
+            <iconify-icon icon="ph:caret-right-bold" width="32"></iconify-icon>
+        </button>
+
+        <!-- Image Container -->
+        <div id="lightbox-img-container" class="relative max-w-[95vw] max-h-[85vh] flex items-center justify-center p-4">
+            <img id="lightbox-img" src="" alt="Gallery Image"
+                class="max-w-full max-h-full object-contain shadow-2xl transition-all duration-300 scale-95 opacity-0" />
+            
+            <!-- Loader -->
+            <div id="lightbox-loader" class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div class="w-10 h-10 border-2 border-ds3Purple/20 border-t-ds3Purple rounded-full animate-spin"></div>
+            </div>
+        </div>
+
+        <!-- Counter -->
+        <div class="absolute bottom-8 text-white/40 font-mono text-[10px] tracking-widest uppercase">
+            <span id="lightbox-current" class="text-white">01</span> / <span id="lightbox-total">00</span>
+        </div>
+    </div>
 
 </body>
 
