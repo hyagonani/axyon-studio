@@ -341,6 +341,15 @@
             transform: scale(1.05);
         }
 
+        /* Mobile specific fixes for clicks */
+        @media (max-width: 1024px) {
+            .portfolio-card {
+                transform: none !important;
+                cursor: pointer;
+                -webkit-tap-highlight-color: transparent;
+            }
+        }
+
         /* Depth variants */
         .depth-deep {
             --depth: 5;
@@ -884,8 +893,8 @@
                     class="absolute inset-0 grid-bg grid-bg-mask opacity-30 pointer-events-none z-10 mix-blend-overlay group-hover:opacity-10 transition-opacity duration-1000">
                 </div>
 
-                <img src="./public/2dobra.png" alt="Axyon Estúdio 3D Edifício"
-                    class="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[2000ms] ease-out z-0 relative" />
+                <img id="proposito-img" src="./public/proposito.webp" alt="Axyon Estúdio 3D Edifício"
+                    class="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[2000ms] ease-out z-0 relative cursor-pointer" />
 
                 <div class="absolute top-5 right-5 flex flex-col gap-1 z-20">
                     <div class="w-1 h-1 bg-ds3Purple rounded-full animate-pulse"></div>
@@ -1812,7 +1821,7 @@
         // --- 2. Custom Mouse Cursor logic ---
         onReady(() => {
             const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
-            if (isTouch && window.innerWidth < 1024) return;
+            if (!(isTouch && window.innerWidth < 1024)) {
 
             const dot = document.querySelector('.ds-cursor-dot');
             const ring = document.querySelector('.ds-cursor-ring');
@@ -1857,6 +1866,7 @@
                     }
                 });
             });
+            } // End cursor active conditional block
 
             // --- 3. Rendering Grid Buckets Effect ---
             const canvas = document.getElementById("buckets-canvas");
@@ -1877,10 +1887,11 @@
                         heroBg.style.filter = 'grayscale(0%) brightness(0.7)';
                         heroBg.style.opacity = '0.8';
                     }
-                    return; // Don't run buckets engine on mobile
                 } else {
-                   if (heroBg) heroBg.style.filter = 'grayscale(100%)';
+                    if (heroBg) heroBg.style.filter = 'grayscale(100%)';
                 }
+
+                if (!isMobileView) {
 
                 const statBuckets = document.getElementById("stat-buckets");
                 const statPercent = document.getElementById("stat-percent");
@@ -2068,6 +2079,8 @@
                         statTime.innerText = `00:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
                     }
                 }, 30);
+                } // End if (!isMobileView)
+            } // End if (canvas)
 
                 // --- 4. Timeline Scroll Beam Control ---
                 window.addEventListener('scroll', () => {
@@ -2234,12 +2247,26 @@
                 };
 
                 // Initialize gallery items
+                const portfolioItems = document.querySelectorAll('.portfolio-card');
                 const portfolioImgs = document.querySelectorAll('#portfolio img');
                 galleryImages = Array.from(portfolioImgs);
                 
-                portfolioImgs.forEach((img, idx) => {
-                    img.addEventListener('click', () => openLightbox(idx));
+                // Use the card as the click target for better mobile hit area
+                portfolioItems.forEach((card, idx) => {
+                    const handleOpen = (e) => {
+                        e.preventDefault();
+                        openLightbox(idx);
+                    };
+                    card.addEventListener('click', handleOpen);
                 });
+
+                // Trigger portfolio lightbox from propósito section image
+                const propositoImg = document.getElementById('proposito-img');
+                if (propositoImg) {
+                    propositoImg.addEventListener('click', () => {
+                        window.openLightbox(0); 
+                    });
+                }
 
                 // Close on backdrop click
                 lightbox.addEventListener('click', (e) => {
@@ -2255,7 +2282,6 @@
                     if (e.key === 'ArrowRight') nextLightbox();
                     if (e.key === 'ArrowLeft') prevLightbox();
                 });
-            }
         });
     </script>
 
