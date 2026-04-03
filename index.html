@@ -1841,14 +1841,15 @@
 
         // --- 2. Custom Mouse Cursor logic ---
         onReady(() => {
+            let mouseX = window.innerWidth / 2;
+            let mouseY = window.innerHeight / 2;
+            
             const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
             if (!(isTouch && window.innerWidth < 1024)) {
 
             const dot = document.querySelector('.ds-cursor-dot');
             const ring = document.querySelector('.ds-cursor-ring');
 
-            let mouseX = window.innerWidth / 2;
-            let mouseY = window.innerHeight / 2;
             let ringX = mouseX;
             let ringY = mouseY;
 
