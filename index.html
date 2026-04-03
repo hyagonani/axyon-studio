@@ -1684,7 +1684,10 @@
                 setTimeout(() => {
                     if (preloader) preloader.classList.add('fade-out');
                     document.body.style.overflow = '';
-                    setTimeout(() => { window.RENDER_SYSTEM_READY = true; }, 500);
+                    setTimeout(() => { 
+                        window.RENDER_SYSTEM_READY = true; 
+                        if (window.initGrid) window.initGrid();
+                    }, 500);
                 }, 600);
             });
             
@@ -1823,22 +1826,25 @@
                 let scanY = 0;
                 let isInit = false;
 
-                function initGrid() {
+                window.initGrid = function() {
                     const heroDiv = document.getElementById("hero");
                     const width = window.innerWidth;
-                    // Force height
-                    let height = heroDiv ? heroDiv.clientHeight : window.innerHeight;
+                    // Safari Mobile clientHeight fallback
+                    let height = heroDiv ? (heroDiv.offsetHeight || heroDiv.clientHeight) : window.innerHeight;
                     if (height < 200) height = window.innerHeight;
 
-                    // Throttled re-init
-                    if (isInit && width === lastWidth && Math.abs(height - (canvas.height/(window.devicePixelRatio||1))) < 50) return;
+                    // Throttled re-init but allow first time
+                    if (isInit && width === lastWidth && Math.abs(height - (canvas.height/(window.devicePixelRatio||1))) < 20) return;
                     isInit = true;
 
-                    BUCKET_SIZE = (width < 900) ? 40 : 50;
+                    BUCKET_SIZE = (width < 900) ? 45 : 50;
                     if (width !== lastWidth) scanY = 0;
                     lastWidth = width;
 
-                    const dpr = window.devicePixelRatio || 1;
+                    // Cap DPR on mobile for stability
+                    const isMobile = width < 1024;
+                    const dpr = isMobile ? 1 : (window.devicePixelRatio || 1);
+                    
                     canvas.width = width * dpr;
                     canvas.height = height * dpr;
                     canvas.style.width = width + 'px';
@@ -1903,9 +1909,8 @@
                     // Use CSS pixels for clearRect since transform is active
                     ctx.clearRect(0, 0, window.innerWidth, window.innerHeight + 1000);
                     if (!window.RENDER_SYSTEM_READY) {
-                        // Draw solid overlay while waiting
-                        ctx.fillStyle = '#0a0a0a';
-                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+                        ctx.fillStyle = '#050505';
+                        ctx.fillRect(0, 0, window.innerWidth, window.innerHeight + 500);
                         requestAnimationFrame(renderGrid);
                         return;
                     }
@@ -1977,16 +1982,16 @@
                     const isMobileWindow = window.innerWidth < 1024;
                     const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
-                    // On mobile or touch devices, we always want the auto-reveal to progress
+                    // Double speed on mobile to ensure it finishes
                     if (buckets.length > 0) {
                         const heroH = height || 1000;
-                        const inc = (window.innerWidth < 1024) ? (heroH / 120) : (heroH / 104);
+                        const inc = (window.innerWidth < 1024) ? (heroH / 60) : (heroH / 104);
                         scanY += inc;
 
                         buckets.forEach(b => {
                             if (!b.revealed) {
                                 if (b.y < scanY - BUCKET_SIZE) b.revealed = true;
-                                else if (b.y < scanY + BUCKET_SIZE && Math.random() > 0.4) b.revealed = true;
+                                else if (b.y < scanY + BUCKET_SIZE && Math.random() > 0.45) b.revealed = true;
                             }
                         });
                     }
